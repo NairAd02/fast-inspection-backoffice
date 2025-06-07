@@ -9,7 +9,7 @@ export const apiRoutes = {
 } as const;
 
 export const tagsCacheByRoutes = {
-  config: {
+  configs: {
     singleTag: "config",
     multipleTag: "configs",
   },
