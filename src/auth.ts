@@ -21,7 +21,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
       async authorize(credentials) {
         const { username, password } = credentials as CredentialsType;
-        const res = await login({ username, password });
+        const res = await login({ nombreUsuario: username, contrasena: password });
 
         if (!res.response || res.error) {
           return null;

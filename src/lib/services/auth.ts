@@ -20,8 +20,8 @@ export async function login(credentials: CredentialsDTO) {
 
 export async function signIn(credentials: CredentialsDTO) {
   return signInAuth("credentials", {
-    username: credentials.username,
-    password: credentials.password,
+    username: credentials.nombreUsuario,
+    password: credentials.contrasena,
     redirect: false,
   });
 }
