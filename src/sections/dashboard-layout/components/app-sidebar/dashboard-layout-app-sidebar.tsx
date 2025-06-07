@@ -14,7 +14,7 @@ export function DashBoardLayoutAppSidebar({
   ...props
 }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="icon" {...props}>
+    <Sidebar variant="floating" collapsible="icon" {...props}>
       <SidebarHeader>Logo</SidebarHeader>
       <SidebarContent>
         {groupRoutes.map((groupRoute, index) => (
