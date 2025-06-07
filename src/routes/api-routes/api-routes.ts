@@ -3,7 +3,7 @@ export const apiRoutes = {
     login: `${process.env.NEXT_PUBLIC_API_URL}auth/login`,
   },
   configs: {
-    get: `${process.env.NEXT_PUBLIC_API_URL}config`,
+    get: `${process.env.NEXT_PUBLIC_API_URL}configs/getAllConfigs`,
     getById: `${process.env.NEXT_PUBLIC_API_URL}config/:id`,
   },
 } as const;
