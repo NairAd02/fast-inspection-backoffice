@@ -2,7 +2,6 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { login } from "./lib/services/auth";
 
-
 interface CredentialsType {
   username: string;
   password: string;
@@ -21,7 +20,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
       async authorize(credentials) {
         const { username, password } = credentials as CredentialsType;
-        const res = await login({ nombreUsuario: username, contrasena: password });
+        const res = await login({
+          nombreUsuario: username,
+          contrasena: password,
+        });
 
         if (!res.response || res.error) {
           return null;
@@ -29,8 +31,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const user = res.response;
         return {
           id: user.id,
-          username: user.username,
-          email: user.email,
+          rol: user.rol,
           accessToken: user.accessToken,
         };
       },
@@ -44,8 +45,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
-        token.username = user.username;
-        token.email = user.email;
+        token.rol = user.rol;
         token.accessToken = user.accessToken;
       }
       return token;
@@ -53,7 +53,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async session({ session, token }) {
       session.accessToken = token.accessToken as string;
       session.user.id = token.id as string;
-      session.user.username = token.username as string;
+      session.user.rol = token.rol as string;
       session.user.email = token.email as string;
       return session;
     },
