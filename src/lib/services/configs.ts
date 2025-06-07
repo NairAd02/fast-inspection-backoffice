@@ -12,6 +12,9 @@ export async function getConfigsList(params: IQueryable) {
 
   const res = await fetch(url, {
     method: "GET",
+    headers: {
+      Authorization: "Bearer " + "token",
+    },
     next: { tags: [tagsCacheByRoutes.configs.multipleTag] },
   });
 
