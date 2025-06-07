@@ -2,8 +2,9 @@ import { Config } from "@/lib/types/configs";
 import React from "react";
 import ConfigCard from "../components/config-card/config-card";
 import EmptyContent from "@/components/empty-content/empty-content";
+import { getConfigsList } from "@/lib/services/configs";
 
-const configs: Config[] = [
+/* const configs: Config[] = [
   {
     version: 1,
     nombre: "Configuración 1",
@@ -32,9 +33,13 @@ const configs: Config[] = [
     state: false,
     porcentajeCompletitud: 0.3,
   },
-];
+];*/
 
-export default function ConfigsList() {
+export default async function ConfigsList() {
+  const res = await getConfigsList({});
+
+  if (!res.response || res.error) throw new Error("Error fetching configs");
+  const configs = res.response.data;
   return configs.length > 0 ? (
     <div className=" w-full grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
       {configs.map((config, index) => (
