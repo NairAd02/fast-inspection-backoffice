@@ -8,6 +8,7 @@ export const apiRoutes = {
     createNewConfig: `${process.env.NEXT_PUBLIC_API_URL}configs/createNewConfig`,
     createConfigByOtherConfig: `${process.env.NEXT_PUBLIC_API_URL}configs/createConfigByOtherConfig/:versionOtherConfig`,
     editConfig: `${process.env.NEXT_PUBLIC_API_URL}configs/updateConfig/:version`,
+    deleteConfig: `${process.env.NEXT_PUBLIC_API_URL}configs/deleteConfig/:version`,
   },
 } as const;
 
