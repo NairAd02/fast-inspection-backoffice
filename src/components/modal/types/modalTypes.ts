@@ -13,11 +13,16 @@ export interface SectionModal {
 }
 export interface ModalTypes {
   newConfigModal: SectionModal;
+  editConfigModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
   newConfigModal: {
     name: "newConfigModal",
     title: "Formulario de Configuración",
+  },
+  editConfigModal: {
+    name: "editConfigModal",
+    title: "Formulario de Edición de Configuración",
   },
 };
