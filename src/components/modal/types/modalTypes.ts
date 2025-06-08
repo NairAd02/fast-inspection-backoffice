@@ -20,6 +20,12 @@ export interface ModalTypes {
     cancelButtonText: string;
     confirmButtonText: string;
   };
+  markConfigAsActiveModal: SectionModal & {
+    message: string;
+    warningMessage: string;
+    cancelButtonText: string;
+    confirmButtonText: string;
+  };
 }
 
 export const modalTypes: ModalTypes = {
@@ -37,6 +43,15 @@ export const modalTypes: ModalTypes = {
     message: "¿Está seguro de que desea eliminar la configuración?",
     warningMessage:
       "Esta acción provocará la eliminación permanente de la configuración.",
+    cancelButtonText: "Cancelar",
+    confirmButtonText: "Confirmar",
+  },
+  markConfigAsActiveModal: {
+    name: "markConfigAsActiveModal",
+    title: "Activación de la configuración",
+    message: "¿Está seguro de que desea marcar como activa la configuración?",
+    warningMessage:
+      "Esta acción provocará que la configuración sea la configuración sobre la que se basarán las inspecciones de ahora en adelante.",
     cancelButtonText: "Cancelar",
     confirmButtonText: "Confirmar",
   },
