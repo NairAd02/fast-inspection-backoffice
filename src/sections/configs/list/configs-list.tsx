@@ -1,4 +1,3 @@
-import { Config } from "@/lib/types/configs";
 import React from "react";
 import ConfigCard from "../components/config-card/config-card";
 import EmptyContent from "@/components/empty-content/empty-content";
