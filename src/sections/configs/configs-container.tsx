@@ -1,8 +1,8 @@
 import SectionsHeader from "@/components/sections-header/sections-header";
 import { FileCogIcon } from "lucide-react";
 import React from "react";
-import ConfigsList from "./list/configs-list";
 import { modalTypes } from "@/components/modal/types/modalTypes";
+import ConfigsListContainer from "./list/configs-list-container";
 
 export default function ConfigsContainer() {
   return (
@@ -17,7 +17,7 @@ export default function ConfigsContainer() {
           creationPath: modalTypes.newConfigModal.name,
         }}
       />
-      <ConfigsList />
+      <ConfigsListContainer  />
     </div>
   );
 }
