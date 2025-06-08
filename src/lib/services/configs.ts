@@ -101,3 +101,18 @@ export async function createConfigByOtherConfig(
 
   return await buildApiResponse<Config>(res);
 }
+
+export async function deleteConfig(version: string) {
+  const res = await fetch(
+    apiRoutes.configs.deleteConfig.replace(":version", version),
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + "token",
+        "content-type": "application/json",
+      },
+    }
+  );
+
+  return await buildApiResponse<Config>(res);
+}
