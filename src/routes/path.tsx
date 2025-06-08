@@ -21,7 +21,7 @@ export const paths: ApplicationPath = {
     isProtected: false,
   },
   sign_in: {
-    root: "/sign-in",
+    root: "/landing/sign-in",
     isProtected: false,
   },
   configs: {
