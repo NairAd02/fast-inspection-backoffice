@@ -44,7 +44,7 @@ export default function ConfigCard({
                       : "bg-gray-100 text-gray-600 hover:bg-gray-100"
                   }`}
                 >
-                  {state ? "Activo" : "Inactivo"}
+                  {state ? "Activa" : "Inactiva"}
                 </Badge>
               </div>
             </div>
