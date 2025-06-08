@@ -79,7 +79,7 @@ export async function editConfig(
   return await buildApiResponse<Config>(res);
 }
 
-export async function MarkConfigAsActive(version: string) {
+export async function markConfigAsActive(version: string) {
   const session = await auth();
   const res = await fetch(
     apiRoutes.configs.markConfigAsActive.replace(":version", version),
