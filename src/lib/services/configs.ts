@@ -103,12 +103,13 @@ export async function createConfigByOtherConfig(
 }
 
 export async function deleteConfig(version: string) {
+  const session = await auth();
   const res = await fetch(
     apiRoutes.configs.deleteConfig.replace(":version", version),
     {
       method: "DELETE",
       headers: {
-        Authorization: "Bearer " + "token",
+        Authorization: "Bearer " + session?.accessToken,
         "content-type": "application/json",
       },
     }
