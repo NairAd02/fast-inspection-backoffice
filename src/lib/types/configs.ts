@@ -23,7 +23,7 @@ export interface ConfigCreateDTO {
 }
 
 export const convertConfigCreateDTO = (
-  configCreate: ConfigCreate
+  configCreate: Omit<ConfigCreate, "configReplicate">
 ): ConfigCreateDTO => {
   return { ...configCreate };
 };
