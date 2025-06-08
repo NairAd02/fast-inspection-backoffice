@@ -14,6 +14,12 @@ export interface SectionModal {
 export interface ModalTypes {
   newConfigModal: SectionModal;
   editConfigModal: SectionModal;
+  deleteConfigModal: SectionModal & {
+    message: string;
+    warningMessage: string;
+    cancelButtonText: string;
+    confirmButtonText: string;
+  };
 }
 
 export const modalTypes: ModalTypes = {
@@ -24,5 +30,14 @@ export const modalTypes: ModalTypes = {
   editConfigModal: {
     name: "editConfigModal",
     title: "Formulario de Edición de Configuración",
+  },
+  deleteConfigModal: {
+    name: "deleteConfigModal",
+    title: "Eliminación de Configuración",
+    message: "¿Está seguro de que desea eliminar la configuración?",
+    warningMessage:
+      "Esta acción provocará la eliminación permanente de la configuración.",
+    cancelButtonText: "Cancelar",
+    confirmButtonText: "Confirmar",
   },
 };
