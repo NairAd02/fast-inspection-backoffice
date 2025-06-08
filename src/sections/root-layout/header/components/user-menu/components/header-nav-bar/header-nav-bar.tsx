@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { useSession } from "next-auth/react";
 import React from "react";
 import UserMenu from "../../user-menu";
+import NavigationComponent from "@/components/navigation-component/navigation-component";
+import { paths } from "@/routes/path";
 
 export default function HeaderNavBar() {
   const { data: session, status } = useSession();
@@ -29,9 +31,11 @@ export default function HeaderNavBar() {
         Precios
       </a>
       {!session && (
-        <Button variant="outline" size="sm">
-          Iniciar Sesión
-        </Button>
+        <NavigationComponent href={paths.sign_in.root}>
+          <Button variant="outline" size="sm">
+            Iniciar Sesión
+          </Button>
+        </NavigationComponent>
       )}
       <Button size="sm">Comenzar Gratis</Button>
       {session && <UserMenu />}
