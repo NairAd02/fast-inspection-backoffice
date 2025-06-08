@@ -5,7 +5,11 @@ import { RHFTextField } from "@/components/form/rhf-components/rhf-text-field/rh
 import React from "react";
 import useConfigs from "../hooks/use-configs";
 
-export default function ConfigForm() {
+interface Props {
+  editMode?: boolean;
+}
+
+export default function ConfigForm({ editMode = false }: Props) {
   const { configs, loadingData: loadingDataConfigs } = useConfigs();
   return (
     <div className="flex flex-col gap-4 p-2">
@@ -21,17 +25,19 @@ export default function ConfigForm() {
         placeholder="Introduzca descripción de la configuración"
         fullWidth
       />
-      <RHFSelectField
-        name="configReplicate"
-        label="Configuración a Replicar"
-        placeholder="Seleccione, si lo desea, una configuración a replicar"
-        options={configs.map((config) => ({
-          value: config.version.toString(),
-          label: config.nombre,
-        }))}
-        loading={loadingDataConfigs}
-        clearable
-      />
+      {!editMode && (
+        <RHFSelectField
+          name="configReplicate"
+          label="Configuración a Replicar"
+          placeholder="Seleccione, si lo desea, una configuración a replicar"
+          options={configs.map((config) => ({
+            value: config.version.toString(),
+            label: config.nombre,
+          }))}
+          loading={loadingDataConfigs}
+          clearable
+        />
+      )}
     </div>
   );
 }
