@@ -79,6 +79,22 @@ export async function editConfig(
   return await buildApiResponse<Config>(res);
 }
 
+export async function MarkConfigAsActive(version: string) {
+  const session = await auth();
+  const res = await fetch(
+    apiRoutes.configs.markConfigAsActive.replace(":version", version),
+    {
+      method: "PATCH",
+      headers: {
+        Authorization: "Bearer " + session?.accessToken,
+        "content-type": "application/json",
+      },
+    }
+  );
+
+  return await buildApiResponse<Config>(res);
+}
+
 export async function createConfigByOtherConfig(
   version: string,
   configCreateDTO: ConfigCreateDTO
