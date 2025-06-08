@@ -27,7 +27,7 @@ export default function MarkConfigAsActiveModalContainer() {
     <ConfirmationPanel
       title={
         modalTypes.markConfigAsActiveModal.title ||
-        "Activación de la Configuración"
+        "Cambio de estado de la Configuración"
       }
       message={modalTypes.markConfigAsActiveModal.message}
       warningMessage={modalTypes.markConfigAsActiveModal.warningMessage}

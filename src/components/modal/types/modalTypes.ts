@@ -48,10 +48,10 @@ export const modalTypes: ModalTypes = {
   },
   markConfigAsActiveModal: {
     name: "markConfigAsActiveModal",
-    title: "Activación de la configuración",
-    message: "¿Está seguro de que desea marcar como activa la configuración?",
+    title: "Cambio de estado de la Configuración",
+    message: "¿Está seguro de que desea cambiar el estado de la configuración?",
     warningMessage:
-      "Esta acción provocará que la configuración sea la configuración sobre la que se basarán las inspecciones de ahora en adelante.",
+      "Tenga en cuenta que si la configuración cambia su estado a activa, sobre esta serña que se basarán las inspecciones de ahora en adelante.",
     cancelButtonText: "Cancelar",
     confirmButtonText: "Confirmar",
   },
