@@ -1,3 +1,4 @@
+import { ConfigsFilters } from "@/sections/configs/filters/hooks/use-configs-filters";
 import { ConfigCreate } from "@/sections/configs/form/new/schemas/config-create-schema";
 
 export interface Config {
@@ -25,4 +26,15 @@ export const convertConfigCreateDTO = (
   configCreate: ConfigCreate
 ): ConfigCreateDTO => {
   return { ...configCreate };
+};
+
+export interface ConfigsFiltersDTO {
+  version?: number;
+  nombre?: string;
+}
+
+export const convertConfigsFiltersDTO = (
+  filters: ConfigsFilters
+): ConfigsFiltersDTO => {
+  return { ...filters };
 };
