@@ -10,11 +10,13 @@ import { Config } from "@/lib/types/configs";
 interface Props {
   config: Config;
   onEdit: (id: string) => void;
+  onDelete: (id: string) => void;
 }
 
 export default function ConfigCard({
   config: { version, nombre, descripcion, state, porcentajeCompletitud },
   onEdit,
+  onDelete,
 }: Props) {
   const porcentajeDisplay = porcentajeCompletitud * 100;
 
@@ -98,6 +100,9 @@ export default function ConfigCard({
             variant="outline"
             size="sm"
             className="h-8 px-3 text-red-600 hover:text-red-700 hover:bg-red-50"
+            onClick={() => {
+              onDelete(version.toString());
+            }}
           >
             <Trash2 className="h-3 w-3" />
           </Button>

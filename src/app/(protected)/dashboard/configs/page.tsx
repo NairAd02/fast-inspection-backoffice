@@ -1,6 +1,7 @@
 import Modal from "@/components/modal/modal";
 import { modalTypes } from "@/components/modal/types/modalTypes";
 import ConfigsContainer from "@/sections/configs/configs-container";
+import DeleteConfigModalContainer from "@/sections/configs/delete/delete-config-modal-container";
 import EditConfigModalContainer from "@/sections/configs/form/edit/edit-config-modal-container";
 import NewConfigFormContainer from "@/sections/configs/form/new/new-config-form-container";
 import React from "react";
@@ -21,6 +22,12 @@ export default function ConfigsPage() {
         className="min-h-[36vh]"
       >
         <EditConfigModalContainer />
+      </Modal>
+      <Modal
+        formPath={modalTypes.deleteConfigModal.name}
+        title={modalTypes.deleteConfigModal.title}
+      >
+        <DeleteConfigModalContainer />
       </Modal>
     </>
   );
