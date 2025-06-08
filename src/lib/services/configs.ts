@@ -24,11 +24,14 @@ export async function getConfigsList(params: IQueryable) {
   return await buildApiResponse<PaginationResponse<Config>>(res);
 }
 
-export async function getConfigById(id: string) {
-  const res = await fetch(apiRoutes.configs.getById.replace(":id", id), {
-    method: "GET",
-    next: { tags: [tagsCacheByRoutes.configs.singleTag] },
-  });
+export async function getConfigById(version: string) {
+  const res = await fetch(
+    apiRoutes.configs.getById.replace(":versionConfig", version),
+    {
+      method: "GET",
+      next: { tags: [tagsCacheByRoutes.configs.singleTag] },
+    }
+  );
 
   return await buildApiResponse<ConfigDetails>(res);
 }
