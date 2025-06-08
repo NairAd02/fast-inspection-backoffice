@@ -4,6 +4,7 @@ import ConfigsContainer from "@/sections/configs/configs-container";
 import DeleteConfigModalContainer from "@/sections/configs/delete/delete-config-modal-container";
 import EditConfigModalContainer from "@/sections/configs/form/edit/edit-config-modal-container";
 import NewConfigFormContainer from "@/sections/configs/form/new/new-config-form-container";
+import MarkConfigAsActiveModalContainer from "@/sections/configs/mark-as-active/mark-config-as-active-modal-container";
 import React from "react";
 
 export default function ConfigsPage() {
@@ -28,6 +29,12 @@ export default function ConfigsPage() {
         title={modalTypes.deleteConfigModal.title}
       >
         <DeleteConfigModalContainer />
+      </Modal>
+      <Modal
+        formPath={modalTypes.markConfigAsActiveModal.name}
+        title={modalTypes.markConfigAsActiveModal.title}
+      >
+        <MarkConfigAsActiveModalContainer />
       </Modal>
     </>
   );

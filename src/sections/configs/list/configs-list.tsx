@@ -20,6 +20,16 @@ export default function ConfigsList({ configs }: Props) {
     [handleOpenModal]
   );
 
+  const onMarkAsActive = useCallback(
+    (id: string) => {
+      handleOpenModal({
+        name: modalTypes.markConfigAsActiveModal.name,
+        entity: id,
+      });
+    },
+    [handleOpenModal]
+  );
+
   const onDelete = useCallback(
     (id: string) => {
       handleOpenModal({ name: modalTypes.deleteConfigModal.name, entity: id });
@@ -35,6 +45,7 @@ export default function ConfigsList({ configs }: Props) {
           config={config}
           onEdit={onEdit}
           onDelete={onDelete}
+          onMarkAsActive={onMarkAsActive}
         />
       ))}
     </div>

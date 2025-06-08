@@ -11,12 +11,14 @@ interface Props {
   config: Config;
   onEdit: (id: string) => void;
   onDelete: (id: string) => void;
+  onMarkAsActive: (id: string) => void;
 }
 
 export default function ConfigCard({
   config: { version, nombre, descripcion, state, porcentajeCompletitud },
   onEdit,
   onDelete,
+  onMarkAsActive,
 }: Props) {
   const porcentajeDisplay = porcentajeCompletitud * 100;
 
@@ -91,6 +93,9 @@ export default function ConfigCard({
                   : "text-green-600 hover:text-green-700 hover:bg-green-50"
               }`}
               disabled={state ? false : porcentajeCompletitud < 1}
+              onClick={() => {
+                onMarkAsActive(version.toString());
+              }}
             >
               <Power className="h-3 w-3 mr-1" />
               {state ? "Desactivar" : "Activar"}
