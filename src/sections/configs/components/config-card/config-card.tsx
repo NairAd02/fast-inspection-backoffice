@@ -14,7 +14,7 @@ interface Props {
 export default function ConfigCard({
   config: { version, nombre, descripcion, state, porcentajeCompletitud },
 }: Props) {
-  const porcentajeDisplay = Math.round(porcentajeCompletitud * 100);
+  const porcentajeDisplay = porcentajeCompletitud * 100
 
   return (
     <Card className="w-full hover:shadow-lg transition-shadow duration-200">
