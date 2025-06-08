@@ -18,7 +18,7 @@ export default function ConfigsPage() {
       <Modal
         formPath={modalTypes.editConfigModal.name}
         title={modalTypes.editConfigModal.title}
-        className="min-h-[45vh]"
+        className="min-h-[36vh]"
       >
         <EditConfigModalContainer />
       </Modal>
