@@ -5,7 +5,12 @@ import { QueryParamsURLFactory } from "../request";
 import { IQueryable } from "../types/request";
 import { buildApiResponse } from "../api";
 import { PaginationResponse } from "../types/pagination";
-import { Config, ConfigCreateDTO, ConfigDetails } from "../types/configs";
+import {
+  Config,
+  ConfigCreateDTO,
+  ConfigDetails,
+  ConfigEditDTO,
+} from "../types/configs";
 import { auth } from "@/auth";
 
 export async function getConfigsList(params: IQueryable) {
@@ -46,6 +51,26 @@ export async function createConfig(configCreateDTO: ConfigCreateDTO) {
     },
     body: JSON.stringify(configCreateDTO),
   });
+
+  return await buildApiResponse<Config>(res);
+}
+
+export async function editConfig(
+  version: string,
+  configEditDTO: ConfigEditDTO
+) {
+  const session = await auth();
+  const res = await fetch(
+    apiRoutes.configs.editConfig.replace(":version", version),
+    {
+      method: "PATCH",
+      headers: {
+        Authorization: "Bearer " + session?.accessToken,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(configEditDTO),
+    }
+  );
 
   return await buildApiResponse<Config>(res);
 }
