@@ -6,14 +6,17 @@ import { IQueryable } from "../types/request";
 import { buildApiResponse } from "../api";
 import { PaginationResponse } from "../types/pagination";
 import { Config, ConfigDetails } from "../types/configs";
+import { auth } from "@/auth";
 
 export async function getConfigsList(params: IQueryable) {
+  const session = await auth();
+
   const url = new QueryParamsURLFactory(params, apiRoutes.configs.get).build();
 
   const res = await fetch(url, {
     method: "GET",
     headers: {
-      Authorization: "Bearer " + "token",
+      Authorization: "Bearer " + session?.accessToken,
     },
     next: { tags: [tagsCacheByRoutes.configs.multipleTag] },
   });
