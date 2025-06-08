@@ -46,3 +46,26 @@ export async function createConfig(configCreateDTO: ConfigCreateDTO) {
 
   return await buildApiResponse<Config>(res);
 }
+
+export async function createConfigByOtherConfig(
+  version: string,
+  configCreateDTO: ConfigCreateDTO
+) {
+  const session = await auth();
+  const res = await fetch(
+    apiRoutes.configs.createConfigByOtherConfig.replace(
+      ":versionOtherConfig",
+      version
+    ),
+    {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + session?.accessToken,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(configCreateDTO),
+    }
+  );
+
+  return await buildApiResponse<Config>(res);
+}
