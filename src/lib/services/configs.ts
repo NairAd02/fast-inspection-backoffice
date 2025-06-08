@@ -34,10 +34,11 @@ export async function getConfigById(id: string) {
 }
 
 export async function createConfig(configCreateDTO: ConfigCreateDTO) {
+  const session = await auth();
   const res = await fetch(apiRoutes.configs.createNewConfig, {
     method: "POST",
     headers: {
-      Authorization: "Bearer " + "token",
+      Authorization: "Bearer " + session?.accessToken,
       "content-type": "application/json",
     },
     body: JSON.stringify(configCreateDTO),
