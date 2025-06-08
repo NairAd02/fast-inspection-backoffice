@@ -9,10 +9,12 @@ import { Config } from "@/lib/types/configs";
 
 interface Props {
   config: Config;
+  onEdit: (id: string) => void;
 }
 
 export default function ConfigCard({
   config: { version, nombre, descripcion, state, porcentajeCompletitud },
+  onEdit,
 }: Props) {
   const porcentajeDisplay = porcentajeCompletitud * 100;
 
@@ -67,7 +69,14 @@ export default function ConfigCard({
 
         <div className="flex gap-2 justify-between items-center pt-2 border-t">
           <div className="flex gap-2">
-            <Button variant="outline" size="sm" className="h-8 px-3">
+            <Button
+              variant="outline"
+              size="sm"
+              className="h-8 px-3"
+              onClick={() => {
+                onEdit(version.toString());
+              }}
+            >
               <Edit className="h-3 w-3 mr-1" />
               Editar
             </Button>
