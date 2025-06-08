@@ -20,7 +20,7 @@ export default function ConfigCard({
   onDelete,
   onMarkAsActive,
 }: Props) {
-  const porcentajeDisplay = porcentajeCompletitud * 100;
+  const porcentajeDisplay = porcentajeCompletitud;
 
   return (
     <Card className="w-full hover:shadow-lg transition-shadow duration-200 flex flex-col h-full">
@@ -92,7 +92,7 @@ export default function ConfigCard({
                   ? "text-orange-600 hover:text-orange-700 hover:bg-orange-50"
                   : "text-green-600 hover:text-green-700 hover:bg-green-50"
               }`}
-              disabled={state ? false : porcentajeCompletitud < 1}
+              disabled={state ? false : porcentajeCompletitud < 100}
               onClick={() => {
                 onMarkAsActive(version.toString());
               }}
