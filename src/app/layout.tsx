@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/sections/root-layout/header/header";
 import { SessionProvider } from "next-auth/react";
 import { ModalProvider } from "@/components/modal/context/modalContext";
+import { ToastContainer } from "react-toastify";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +33,7 @@ export default function RootLayout({
       >
         <SessionProvider>
           <ModalProvider>
+            <ToastContainer />
             <main className="flex min-h-screen flex-col">
               <Header />
               {children}
