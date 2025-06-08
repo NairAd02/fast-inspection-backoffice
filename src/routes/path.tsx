@@ -6,6 +6,7 @@ interface Path {
 interface ApplicationPath {
   home: Path;
   sign_in: Path;
+  profile: Path;
   configs: Path;
   edifications: Path;
 }
@@ -23,6 +24,10 @@ export const paths: ApplicationPath = {
   sign_in: {
     root: "/landing/sign-in",
     isProtected: false,
+  },
+  profile: {
+    root: "/landing/profile",
+    isProtected: true,
   },
   configs: {
     root: "/dashboard/configs",
