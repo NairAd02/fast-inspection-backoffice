@@ -2,6 +2,7 @@ import SectionsHeader from "@/components/sections-header/sections-header";
 import { FileCogIcon } from "lucide-react";
 import React from "react";
 import ConfigsList from "./list/configs-list";
+import { modalTypes } from "@/components/modal/types/modalTypes";
 
 export default function ConfigsContainer() {
   return (
@@ -10,6 +11,11 @@ export default function ConfigsContainer() {
         sectionIcon={<FileCogIcon />}
         sectionTitle="Gestión de Configuraciones"
         sectionDescription="Gestione la configuraciones usadas para la inspección de deterioros"
+        addButton={{
+          isModalRedirect: true,
+          buttonText: "Nueva Configuración",
+          creationPath: modalTypes.newConfigModal.name,
+        }}
       />
       <ConfigsList />
     </div>
