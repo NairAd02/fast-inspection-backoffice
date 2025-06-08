@@ -29,6 +29,7 @@ export default function NewConfigFormContainer() {
     defaultValues: {
       nombre: "",
       descripcion: "",
+      configReplicate: ""
     },
   });
 

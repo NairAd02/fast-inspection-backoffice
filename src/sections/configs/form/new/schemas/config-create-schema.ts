@@ -3,6 +3,7 @@ import { z } from "zod";
 export interface ConfigCreate {
   nombre: string;
   descripcion: string;
+  configReplicate: string;
 }
 
 export const configCreateSchema = z.object({
@@ -12,4 +13,5 @@ export const configCreateSchema = z.object({
   descripcion: z
     .string()
     .min(1, { message: "La descripción de la configuración es requerida" }),
+  configReplicate: z.string(),
 });
