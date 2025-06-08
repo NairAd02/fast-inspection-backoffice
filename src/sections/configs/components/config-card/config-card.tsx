@@ -90,6 +90,7 @@ export default function ConfigCard({
                   ? "text-orange-600 hover:text-orange-700 hover:bg-orange-50"
                   : "text-green-600 hover:text-green-700 hover:bg-green-50"
               }`}
+              disabled={state ? false : porcentajeCompletitud < 1}
             >
               <Power className="h-3 w-3 mr-1" />
               {state ? "Desactivar" : "Activar"}
