@@ -1,4 +1,5 @@
 import { ConfigsFilters } from "@/sections/configs/filters/hooks/use-configs-filters";
+import { ConfigEdit } from "@/sections/configs/form/edit/schemas/config-edit-schema";
 import { ConfigCreate } from "@/sections/configs/form/new/schemas/config-create-schema";
 
 export interface Config {
@@ -22,10 +23,19 @@ export interface ConfigCreateDTO {
   descripcion: string;
 }
 
+export interface ConfigEditDTO {
+  nombre: string;
+  descripcion: string;
+}
+
 export const convertConfigCreateDTO = (
   configCreate: Omit<ConfigCreate, "configReplicate">
 ): ConfigCreateDTO => {
   return { ...configCreate };
+};
+
+export const convertConfigEditDTO = (configEdit: ConfigEdit): ConfigEditDTO => {
+  return { ...configEdit };
 };
 
 export interface ConfigsFiltersDTO {
