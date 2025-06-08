@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/sections/root-layout/header/header";
 import { SessionProvider } from "next-auth/react";
+import { ModalProvider } from "@/components/modal/context/modalContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,10 +31,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SessionProvider>
-          <main className="flex min-h-screen flex-col">
-            <Header />
-            {children}
-          </main>
+          <ModalProvider>
+            <main className="flex min-h-screen flex-col">
+              <Header />
+              {children}
+            </main>
+          </ModalProvider>
         </SessionProvider>
       </body>
     </html>
