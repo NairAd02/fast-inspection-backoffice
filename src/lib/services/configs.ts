@@ -5,7 +5,7 @@ import { QueryParamsURLFactory } from "../request";
 import { IQueryable } from "../types/request";
 import { buildApiResponse } from "../api";
 import { PaginationResponse } from "../types/pagination";
-import { Config, ConfigDetails } from "../types/configs";
+import { Config, ConfigCreateDTO, ConfigDetails } from "../types/configs";
 import { auth } from "@/auth";
 
 export async function getConfigsList(params: IQueryable) {
@@ -31,4 +31,17 @@ export async function getConfigById(id: string) {
   });
 
   return await buildApiResponse<ConfigDetails>(res);
+}
+
+export async function createConfig(configCreateDTO: ConfigCreateDTO) {
+  const res = await fetch(apiRoutes.configs.createNewConfig, {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer " + "token",
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(configCreateDTO),
+  });
+
+  return await buildApiResponse<Config>(res);
 }
