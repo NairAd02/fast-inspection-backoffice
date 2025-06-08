@@ -14,11 +14,11 @@ interface Props {
 export default function ConfigCard({
   config: { version, nombre, descripcion, state, porcentajeCompletitud },
 }: Props) {
-  const porcentajeDisplay = porcentajeCompletitud * 100
+  const porcentajeDisplay = porcentajeCompletitud * 100;
 
   return (
-    <Card className="w-full hover:shadow-lg transition-shadow duration-200">
-      <CardHeader className="pb-3">
+    <Card className="w-full hover:shadow-lg transition-shadow duration-200 flex flex-col h-full">
+      <CardHeader className="pb-3 flex-shrink-0">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-blue-100 rounded-lg">
@@ -46,25 +46,27 @@ export default function ConfigCard({
         </div>
       </CardHeader>
 
-      <CardContent className="space-y-4">
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          {descripcion}
-        </p>
+      <CardContent className="flex flex-col flex-1 min-h-0 gap-4">
+        <div className="flex flex-col flex-1 min-h-0 gap-2">
+          <p className="text-sm text-muted-foreground leading-relaxed line-clamp-4 break-words">
+            {descripcion}
+          </p>
 
-        <div className="space-y-2">
-          <div className="flex justify-between items-center">
-            <span className="text-sm font-medium text-gray-700">
-              Completitud
-            </span>
-            <span className="text-sm font-semibold text-blue-600">
-              {porcentajeDisplay}%
-            </span>
+          <div className="space-y-2">
+            <div className="flex justify-between items-center">
+              <span className="text-sm font-medium text-gray-700">
+                Completitud
+              </span>
+              <span className="text-sm font-semibold text-blue-600">
+                {porcentajeDisplay}%
+              </span>
+            </div>
+            <Progress value={porcentajeDisplay} className="h-2" />
           </div>
-          <Progress value={porcentajeDisplay} className="h-2" />
         </div>
 
-        <div className="flex  gap-2 justify-between items-center pt-2 border-t">
-          <div className="flex  gap-2">
+        <div className="flex gap-2 justify-between items-center pt-2 border-t">
+          <div className="flex gap-2">
             <Button variant="outline" size="sm" className="h-8 px-3">
               <Edit className="h-3 w-3 mr-1" />
               Editar
