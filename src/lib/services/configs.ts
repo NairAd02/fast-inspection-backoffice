@@ -30,10 +30,14 @@ export async function getConfigsList(params: IQueryable) {
 }
 
 export async function getConfigById(version: string) {
+  const session = await auth();
   const res = await fetch(
     apiRoutes.configs.getById.replace(":versionConfig", version),
     {
       method: "GET",
+      headers: {
+        Authorization: "Bearer " + session?.accessToken,
+      },
       next: { tags: [tagsCacheByRoutes.configs.singleTag] },
     }
   );
