@@ -1,7 +1,10 @@
 "use client";
 import { useCallback, useState } from "react";
 import { ConfigCreate } from "../form/new/schemas/config-create-schema";
-import { createConfig as createConfigService } from "@/lib/services/configs";
+import {
+  createConfigByOtherConfig,
+  createConfig as createConfigService,
+} from "@/lib/services/configs";
 import { convertConfigCreateDTO } from "@/lib/types/configs";
 
 interface Props {
@@ -17,8 +20,15 @@ export default function useCreateConfig({ onCreateAction }: Props) {
       try {
         setLoading(true);
         setError(null);
+        const { configReplicate, ...restConfig } = config;
 
-        const res = await createConfigService(convertConfigCreateDTO(config));
+        const res =
+          configReplicate === ""
+            ? await createConfigService(convertConfigCreateDTO(restConfig))
+            : await createConfigByOtherConfig(
+                configReplicate,
+                convertConfigCreateDTO(restConfig)
+              );
         if (!res.response || res.error) {
           console.log(res.error);
           setError("Error en la creación de la configuración");
