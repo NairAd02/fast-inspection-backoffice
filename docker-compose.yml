@@ -15,3 +15,6 @@ services:
     networks:
       - fast_inspection_network
 
+networks:
+  fast_inspection_network:
+    name: fast_inspection_network
