@@ -26,6 +26,7 @@ export interface ModalTypes {
     cancelButtonText: string;
     confirmButtonText: string;
   };
+  replicateConfigModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
@@ -54,5 +55,9 @@ export const modalTypes: ModalTypes = {
       "Tenga en cuenta que si la configuración cambia su estado a activa, sobre esta serña que se basarán las inspecciones de ahora en adelante.",
     cancelButtonText: "Cancelar",
     confirmButtonText: "Confirmar",
+  },
+  replicateConfigModal: {
+    name: "replicateConfigModal",
+    title: "Formulario de Replicación de Configuración",
   },
 };
