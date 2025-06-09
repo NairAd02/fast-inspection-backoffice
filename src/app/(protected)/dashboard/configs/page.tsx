@@ -1,5 +1,6 @@
 import Modal from "@/components/modal/modal";
 import { modalTypes } from "@/components/modal/types/modalTypes";
+import { SearchParamsPagination } from "@/lib/types/pagination";
 import ConfigsContainer from "@/sections/configs/configs-container";
 import DeleteConfigModalContainer from "@/sections/configs/delete/delete-config-modal-container";
 import EditConfigModalContainer from "@/sections/configs/form/edit/edit-config-modal-container";
@@ -7,10 +8,14 @@ import NewConfigFormContainer from "@/sections/configs/form/new/new-config-form-
 import MarkConfigAsActiveModalContainer from "@/sections/configs/mark-as-active/mark-config-as-active-modal-container";
 import React from "react";
 
-export default function ConfigsPage() {
+type Props = {
+  searchParams: Promise<SearchParamsPagination>;
+};
+
+export default async function ConfigsPage({ searchParams }: Props) {
   return (
     <>
-      <ConfigsContainer />
+      <ConfigsContainer searchParams={await searchParams} />
       <Modal
         formPath={modalTypes.newConfigModal.name}
         title={modalTypes.newConfigModal.title}

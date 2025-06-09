@@ -2,6 +2,7 @@ import React from "react";
 import { getConfigsList } from "@/lib/services/configs";
 import ConfigsList from "./configs-list";
 import ConfigsFiltersContainer from "../filters/configs-filters-container";
+import { SearchParamsPagination } from "@/lib/types/pagination";
 
 /* const configs: Config[] = [
   {
@@ -34,8 +35,13 @@ import ConfigsFiltersContainer from "../filters/configs-filters-container";
   },
 ];*/
 
-export default async function ConfigsListContainer() {
-  const res = await getConfigsList({});
+interface Props {
+  searchParams: SearchParamsPagination
+}
+
+
+export default async function ConfigsListContainer({searchParams}: Props) {
+  const res = await getConfigsList(searchParams);
 
   if (!res.response || res.error) throw new Error("Error fetching configs");
   const configs = res.response.data;

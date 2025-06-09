@@ -3,8 +3,13 @@ import { FileCogIcon } from "lucide-react";
 import React from "react";
 import { modalTypes } from "@/components/modal/types/modalTypes";
 import ConfigsListContainer from "./list/configs-list-container";
+import { SearchParamsPagination } from "@/lib/types/pagination";
 
-export default function ConfigsContainer() {
+interface Props {
+  searchParams: SearchParamsPagination
+}
+
+export default function ConfigsContainer({searchParams}: Props) {
   return (
     <div className="flex flex-col gap-4">
       <SectionsHeader
@@ -17,7 +22,7 @@ export default function ConfigsContainer() {
           creationPath: modalTypes.newConfigModal.name,
         }}
       />
-      <ConfigsListContainer  />
+      <ConfigsListContainer searchParams={searchParams}  />
     </div>
   );
 }
