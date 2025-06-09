@@ -1,6 +1,7 @@
 import React from "react";
 import { getConfigsList } from "@/lib/services/configs";
 import ConfigsList from "./configs-list";
+import ConfigsFiltersContainer from "../filters/configs-filters-container";
 
 /* const configs: Config[] = [
   {
@@ -38,5 +39,8 @@ export default async function ConfigsListContainer() {
 
   if (!res.response || res.error) throw new Error("Error fetching configs");
   const configs = res.response.data;
-  return <ConfigsList configs={configs} />;
+  return <div className="flex flex-col justify-center gap-6">
+    <ConfigsFiltersContainer />
+    <ConfigsList configs={configs} />
+  </div>;
 }
