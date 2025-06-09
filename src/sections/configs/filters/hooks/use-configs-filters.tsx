@@ -6,7 +6,7 @@ import { Pagination } from "@/lib/types/pagination";
 import { Dispatch, SetStateAction, useState } from "react";
 
 export interface ConfigsFilters {
-  version?: number;
+  version?: string;
   nombre?: string;
 }
 

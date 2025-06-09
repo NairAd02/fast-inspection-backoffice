@@ -46,5 +46,8 @@ export interface ConfigsFiltersDTO {
 export const convertConfigsFiltersDTO = (
   filters: ConfigsFilters
 ): ConfigsFiltersDTO => {
-  return { ...filters };
+  return {
+    ...filters,
+    version: filters.version ? Number(filters.version) : undefined,
+  };
 };
