@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { Settings, Edit, Trash2, Power } from "lucide-react";
+import { Settings, Edit, Trash2, Power, BadgePlusIcon } from "lucide-react";
 import { Config } from "@/lib/types/configs";
 
 interface Props {
@@ -12,6 +12,7 @@ interface Props {
   onEdit: (id: string) => void;
   onDelete: (id: string) => void;
   onMarkAsActive: (id: string) => void;
+  onReplicate: (id: string) => void;
 }
 
 export default function ConfigCard({
@@ -19,6 +20,7 @@ export default function ConfigCard({
   onEdit,
   onDelete,
   onMarkAsActive,
+  onReplicate,
 }: Props) {
   const porcentajeDisplay = porcentajeCompletitud;
 
@@ -71,8 +73,19 @@ export default function ConfigCard({
           </div>
         </div>
 
-        <div className="flex gap-2 justify-between items-center pt-2 border-t">
+        <div className="flex 2xs:flex-row flex-col gap-2 justify-between items-center pt-2 border-t">
           <div className="flex gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              className="h-8 px-3"
+              onClick={() => {
+                onReplicate(version.toString());
+              }}
+            >
+              <BadgePlusIcon className="h-3 w-3 mr-1" />
+              Replicar
+            </Button>
             <Button
               variant="outline"
               size="sm"
@@ -105,7 +118,7 @@ export default function ConfigCard({
           <Button
             variant="outline"
             size="sm"
-            className="h-8 px-3 text-red-600 hover:text-red-700 hover:bg-red-50"
+            className="h-8 px-3 text-red-600 hover:text-red-700 hover:bg-red-50 w-full 2xs:w-auto"
             onClick={() => {
               onDelete(version.toString());
             }}

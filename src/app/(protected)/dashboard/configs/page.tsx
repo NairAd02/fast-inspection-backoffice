@@ -5,6 +5,7 @@ import ConfigsContainer from "@/sections/configs/configs-container";
 import DeleteConfigModalContainer from "@/sections/configs/delete/delete-config-modal-container";
 import EditConfigModalContainer from "@/sections/configs/form/edit/edit-config-modal-container";
 import NewConfigFormContainer from "@/sections/configs/form/new/new-config-form-container";
+import ReplicateConfigModalContainer from "@/sections/configs/form/replicate/replicate-config-modal-container";
 import MarkConfigAsActiveModalContainer from "@/sections/configs/mark-as-active/mark-config-as-active-modal-container";
 import React from "react";
 
@@ -40,6 +41,13 @@ export default async function ConfigsPage({ searchParams }: Props) {
         title={modalTypes.markConfigAsActiveModal.title}
       >
         <MarkConfigAsActiveModalContainer />
+      </Modal>
+      <Modal
+        formPath={modalTypes.replicateConfigModal.name}
+        title={modalTypes.replicateConfigModal.title}
+        className="min-h-[36vh]"
+      >
+        <ReplicateConfigModalContainer />
       </Modal>
     </>
   );

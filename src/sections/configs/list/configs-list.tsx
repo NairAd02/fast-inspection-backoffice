@@ -20,6 +20,16 @@ export default function ConfigsList({ configs }: Props) {
     [handleOpenModal]
   );
 
+  const onReplicate = useCallback(
+    (id: string) => {
+      handleOpenModal({
+        name: modalTypes.replicateConfigModal.name,
+        entity: id,
+      });
+    },
+    [handleOpenModal]
+  );
+
   const onMarkAsActive = useCallback(
     (id: string) => {
       handleOpenModal({
@@ -46,6 +56,7 @@ export default function ConfigsList({ configs }: Props) {
           onEdit={onEdit}
           onDelete={onDelete}
           onMarkAsActive={onMarkAsActive}
+          onReplicate={onReplicate}
         />
       ))}
     </div>
