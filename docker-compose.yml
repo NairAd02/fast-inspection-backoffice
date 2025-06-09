@@ -7,7 +7,7 @@ services:
     ports:
       - "3010:3010"
     environment:
-      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://66.55.75.130:3000/}
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://fast_inspection_gateway:3000/}
       - AUTH_SECRET=${AUTH_SECRET:-kagkhasghdgakjdghakghdkajgdkjasgdkagsdjgasjgdasdkgajdgaksd}
       - NODE_ENV=production
       - AUTH_MODE=${AUTH_MODE:-dev}
