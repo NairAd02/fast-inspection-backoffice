@@ -9,6 +9,7 @@ interface Props {
   label?: string;
   placeHolder?: string;
   value?: string;
+  type?: "text" | "number";
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -17,6 +18,7 @@ export default function SearchInput({
   label,
   placeHolder = "Introduzca valor a buscar",
   value,
+  type = "text",
   onChange,
 }: Props) {
   return (
@@ -26,6 +28,7 @@ export default function SearchInput({
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
         <Input
           id={id}
+          type={type}
           placeholder={placeHolder}
           value={value || ""}
           onChange={onChange}
