@@ -1,0 +1,36 @@
+name: Deploy to VPS
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Add SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.VPS_SSH_KEY }}
+          known_hosts: "github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl"
+
+      - name: Execute Deploy Script
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }} "
+            cd /home/deployer && 
+            git clone git@github.com:NairAd02/fast-inspection-backoffice.git || true && 
+            cd fast-inspection-backoffice &&
+            rm -f .env &&
+            echo 'NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}' > .env &&
+            echo 'AUTH_SECRET=${{ secrets.AUTH_SECRET }}' >> .env &&
+            echo 'AUTH_MODE=${{ secrets.AUTH_MODE }}' >> .env &&
+            git pull origin main && 
+            docker-compose down &&
+            docker-compose pull && 
+            docker-compose up -d --build
+          "
