@@ -41,7 +41,11 @@ export default function NewConfigFormContainer({ replicateConfig }: Props) {
   });
 
   const handleClose = () => {
-    handleCloseModal(modalTypes.newConfigModal.name);
+    handleCloseModal(
+      !replicateConfig
+        ? modalTypes.newConfigModal.name
+        : modalTypes.replicateConfigModal.name
+    );
   };
 
   function onSubmit(config: ConfigCreate) {
