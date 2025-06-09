@@ -14,8 +14,13 @@ import {
 import useCreateConfig from "../../hooks/use-create-config";
 import { revalidateServerTags } from "@/lib/cache";
 import ConfigForm from "../config-form";
+import { ConfigDetails } from "@/lib/types/configs";
 
-export default function NewConfigFormContainer() {
+interface Props {
+  replicateConfig?: ConfigDetails;
+}
+
+export default function NewConfigFormContainer({ replicateConfig }: Props) {
   const { handleCloseModal } = useContext(ModalContext);
   const { loading: submitLoading, createConfig } = useCreateConfig({
     onCreateAction: () => {
@@ -29,7 +34,9 @@ export default function NewConfigFormContainer() {
     defaultValues: {
       nombre: "",
       descripcion: "",
-      configReplicate: ""
+      configReplicate: replicateConfig
+        ? replicateConfig.version.toString()
+        : "",
     },
   });
 
@@ -46,7 +53,7 @@ export default function NewConfigFormContainer() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
-        <ConfigForm />
+        <ConfigForm replicateConfig={replicateConfig} />
         <div className="flex gap-2 justify-end">
           <Button type="button" variant={"destructive"} onClick={handleClose}>
             Cancelar
