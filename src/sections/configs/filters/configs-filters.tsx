@@ -17,6 +17,7 @@ export default function ConfigsFilters({
         id="version"
         placeHolder="Buscar por versión..."
         value={filters.version}
+        type="number"
         onChange={(e) => {
           handleChangeFilters({ version: e.target.value || undefined });
         }}
