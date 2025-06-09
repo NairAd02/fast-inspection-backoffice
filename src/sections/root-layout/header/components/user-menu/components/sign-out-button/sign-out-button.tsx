@@ -8,7 +8,7 @@ import React, { useCallback } from "react";
 
 export default function SignOutButton() {
   const router = useRouter();
-  const { signOut, loading } = useSignOut({
+  const { signOut } = useSignOut({
     onSignOutAction: () => {
       router.push(paths.sign_in.root);
     },
