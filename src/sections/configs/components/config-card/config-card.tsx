@@ -4,8 +4,17 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { Settings, Edit, Trash2, Power, BadgePlusIcon } from "lucide-react";
+import {
+  Settings,
+  Edit,
+  Trash2,
+  Power,
+  BadgePlusIcon,
+  FolderDot,
+} from "lucide-react";
 import { Config } from "@/lib/types/configs";
+import NavigationComponent from "@/components/navigation-component/navigation-component";
+import { paths } from "@/routes/path";
 
 interface Props {
   config: Config;
@@ -126,6 +135,19 @@ export default function ConfigCard({
             <Trash2 className="h-3 w-3" />
           </Button>
         </div>
+
+        <NavigationComponent
+          href={paths.config_management({ id: version.toString() }).root}
+        >
+          <Button
+            variant="outline"
+            size="sm"
+            className="size-10 px-3 sm:text-lg w-full"
+          >
+            <FolderDot className="size-6" />
+            Administrar
+          </Button>
+        </NavigationComponent>
       </CardContent>
     </Card>
   );
