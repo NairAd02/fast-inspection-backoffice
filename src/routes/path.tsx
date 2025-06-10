@@ -3,44 +3,30 @@ interface Path {
   isProtected: boolean;
 }
 
-interface PathWithParams extends Path {
-  (params?: Record<string, string>, query?: Record<string, string>): Path;
-}
-
 interface ApplicationPath {
   home: Path;
   sign_in: Path;
+  profile: Path;
   configs: Path;
-  config_management: PathWithParams;
+  config_management: (
+    params?: Record<string, string>,
+    query?: Record<string, string>
+  ) => Path;
   edifications: Path;
 }
 
-function buildPathWithParams(
-  basePath: string,
-  params?: Record<string, string>,
-  query?: Record<string, string>
-): Path {
-  // Replace route parameters
-  let pathWithParams = basePath;
-  if (params) {
-    for (const [key, value] of Object.entries(params)) {
-      pathWithParams = pathWithParams.replace(`:${key}`, value);
-    }
-  }
+function buildQueryString(query: Record<string, string> = {}): string {
+  const params = new URLSearchParams(query);
+  return params.toString();
+}
 
-  // Add query parameters
-  let queryString = "";
-  if (query) {
-    const params = new URLSearchParams(query);
-    queryString = params.toString();
-  }
-
-  return {
-    root: queryString ? `${pathWithParams}?${queryString}` : pathWithParams,
-    isProtected:
-      basePath.startsWith("/dashboard") ||
-      basePath.startsWith("/landing/profile"),
-  };
+function replaceParamsInPath(
+  path: string,
+  params: Record<string, string> = {}
+): string {
+  return Object.entries(params).reduce((acc, [key, value]) => {
+    return acc.replace(`[${key}]`, value);
+  }, path);
 }
 
 export const paths: ApplicationPath = {
@@ -52,18 +38,23 @@ export const paths: ApplicationPath = {
     root: "/landing/sign-in",
     isProtected: false,
   },
+  profile: {
+    root: "/landing/profile",
+    isProtected: true,
+  },
   configs: {
     root: "/dashboard/configs",
     isProtected: true,
   },
-  config_management: Object.assign(
-    (params?: Record<string, string>, query?: Record<string, string>) =>
-      buildPathWithParams("/configs/:id", params, query),
-    {
-      root: "/configs/:id",
+  config_management: (params = {}, query = {}) => {
+    const basePath = "/dashboard/configs";
+    const pathWithParams = replaceParamsInPath(basePath, params);
+    const queryString = buildQueryString(query);
+    return {
+      root: queryString ? `${pathWithParams}?${queryString}` : pathWithParams,
       isProtected: false,
-    }
-  ),
+    };
+  },
   edifications: {
     root: "/dashboard/edifications",
     isProtected: true,
@@ -71,23 +62,38 @@ export const paths: ApplicationPath = {
 } as const;
 
 export const isProtectedRoute = (route: string): boolean => {
-  const routeWithoutQuery = route.split("?")[0];
+  const [routeWithoutQuery, _] = route.split("?");
 
-  // Check exact matches first
+  // Primero intentamos hacer match con rutas estáticas
+  for (const key in paths) {
+    const path = paths[key as keyof ApplicationPath];
+
+    if (typeof path !== "function") {
+      if (path.root === routeWithoutQuery) {
+        return path.isProtected;
+      }
+    }
+  }
+
+  // Luego intentamos con rutas dinámicas
   for (const key in paths) {
     const path = paths[key as keyof ApplicationPath];
 
     if (typeof path === "function") {
-      // For dynamic paths, we need to check pattern matching
-      const basePath = path.root;
-      const pattern = new RegExp(
-        "^" + basePath.replace(/:\w+/g, "[^/]+") + "$"
-      );
-      if (pattern.test(routeWithoutQuery)) {
-        return path().isProtected;
+      // Obtenemos el path base sin parámetros reemplazados
+      const basePath = path({} as any).root.split("?")[0];
+
+      // Creamos un regex para hacer match con los parámetros
+      const regexPattern =
+        basePath.replace(/\[([^\]]+)\]/g, "([^/]+)").replace(/\//g, "\\/") +
+        "$";
+
+      const regex = new RegExp(regexPattern);
+
+      if (regex.test(routeWithoutQuery)) {
+        const pathObj = path({} as any);
+        return pathObj.isProtected;
       }
-    } else if (path.root === routeWithoutQuery) {
-      return path.isProtected;
     }
   }
 
