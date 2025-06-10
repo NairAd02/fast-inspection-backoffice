@@ -4,12 +4,13 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "./tooltip";
 interface Props {
   children: ReactNode;
   content: ReactNode;
+  className?: string
 }
 
-export default function TooltipContainer({ children, content }: Props) {
+export default function TooltipContainer({ children, content, className }: Props) {
   return (
     <Tooltip>
-      <TooltipTrigger>{children}</TooltipTrigger>
+      <TooltipTrigger className={className}>{children}</TooltipTrigger>
       <TooltipContent>{content}</TooltipContent>
     </Tooltip>
   );
