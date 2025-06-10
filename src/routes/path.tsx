@@ -47,7 +47,7 @@ export const paths: ApplicationPath = {
     isProtected: true,
   },
   config_management: (params = {}, query = {}) => {
-    const basePath = "/dashboard/configs";
+    const basePath = "/dashboard/configs/[id]";
     const pathWithParams = replaceParamsInPath(basePath, params);
     const queryString = buildQueryString(query);
     return {
