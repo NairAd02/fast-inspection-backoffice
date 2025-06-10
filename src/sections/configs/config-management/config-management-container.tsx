@@ -14,7 +14,6 @@ export default function ConfigManagementContainer({ version }: Props) {
   return (
     <div className="min-h-screen  p-6">
       <div className="space-y-6">
-        {/* Header con botón de regreso */}
         <div className="flex items-center gap-4">
           <NavigationComponent href={paths.configs.root}>
             <Button variant="ghost" size="sm" className="gap-2">
