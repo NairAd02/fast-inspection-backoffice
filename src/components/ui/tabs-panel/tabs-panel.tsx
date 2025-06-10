@@ -10,6 +10,7 @@ interface Props {
   tabs: TabsType[];
   fullWidth?: boolean;
   children?: ReactNode;
+  center?: boolean;
 }
 
 export type TabsType = {
@@ -26,6 +27,7 @@ const TabPanel = ({
   onClickTab,
   fullWidth,
   children,
+  center = false,
 }: Props) => {
   const handleValueChange = (value: string) => {
     onSelectTab?.(value);
@@ -37,7 +39,7 @@ const TabPanel = ({
       onValueChange={handleValueChange}
       className={fullWidth ? "w-full" : ""}
     >
-      <TabsList className={`flex ${fullWidth ? "w-full" : ""}`}>
+      <TabsList className={`flex ${center ? "justify-center" : ""} ${fullWidth ? "w-full" : ""}`}>
         {tabs.map((item) => (
           <TabsTrigger
             key={item.value}
@@ -73,9 +75,14 @@ function TabItem(props: TabItemProps) {
 interface TabContainerProps {
   tabs: TabsType[];
   fullWidth?: boolean;
+  center?: boolean;
 }
 
-function TabsContainer({ tabs, fullWidth = true }: TabContainerProps) {
+function TabsContainer({
+  tabs,
+  fullWidth = true,
+  center = false,
+}: TabContainerProps) {
   const { tabValue, setTabValue } = useContext(TabsPanelContext);
 
   return (
