@@ -11,13 +11,18 @@ export default function ReplicateConfigModalContainer() {
   const { getInfoModal } = useContext(ModalContext);
   const infoModal = getInfoModal(modalTypes.replicateConfigModal.name);
   const id = infoModal && infoModal.entity ? infoModal.entity : null;
+  const actionExecute =
+    infoModal && infoModal.actionExecute ? infoModal.actionExecute : undefined;
   const { config, loading, error, fetchConfig } = useConfig({ id });
 
   return (
     <div className="flex flex-1 flex-col h-full w-full">
       {!loading ? (
         config && !error ? (
-          <NewConfigFormContainer replicateConfig={config} />
+          <NewConfigFormContainer
+            replicateConfig={config}
+            actionExecute={actionExecute}
+          />
         ) : (
           <FetchingDataErrorPanel
             message={error as string}

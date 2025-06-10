@@ -18,15 +18,20 @@ import { ConfigDetails } from "@/lib/types/configs";
 
 interface Props {
   replicateConfig?: ConfigDetails;
+  actionExecute?: () => void;
 }
 
-export default function NewConfigFormContainer({ replicateConfig }: Props) {
+export default function NewConfigFormContainer({
+  replicateConfig,
+  actionExecute,
+}: Props) {
   const { handleCloseModal } = useContext(ModalContext);
   const { loading: submitLoading, createConfig } = useCreateConfig({
     onCreateAction: () => {
       toast.success("Configuración creada con éxito");
       handleClose();
       revalidateServerTags(tagsCacheByRoutes.configs.multipleTag);
+      if (actionExecute) actionExecute;
     },
   });
   const form = useForm<ConfigCreate>({
