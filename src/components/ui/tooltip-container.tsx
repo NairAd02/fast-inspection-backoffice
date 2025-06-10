@@ -4,13 +4,21 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "./tooltip";
 interface Props {
   children: ReactNode;
   content: ReactNode;
-  className?: string
+  className?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export default function TooltipContainer({ children, content, className }: Props) {
+export default function TooltipContainer({
+  children,
+  content,
+  className,
+  onClick,
+}: Props) {
   return (
     <Tooltip>
-      <TooltipTrigger className={className}>{children}</TooltipTrigger>
+      <TooltipTrigger className={className} onClick={onClick}>
+        {children}
+      </TooltipTrigger>
       <TooltipContent>{content}</TooltipContent>
     </Tooltip>
   );
