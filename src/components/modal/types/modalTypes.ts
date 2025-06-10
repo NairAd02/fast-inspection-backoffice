@@ -6,6 +6,7 @@ export interface InfoModal {
   actionInsert?: (element: any) => void;
   onClose?: () => void;
   onOpen?: () => void;
+  actionExecute?: () => void
 }
 export interface SectionModal {
   name: string;
