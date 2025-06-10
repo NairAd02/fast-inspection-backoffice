@@ -18,6 +18,7 @@ export default function MarkConfigAsActiveModalContainer() {
       toast.success("Configuración activada con éxito");
       onCloseModal();
       revalidateServerTags(tagsCacheByRoutes.configs.multipleTag);
+      revalidateServerTags(tagsCacheByRoutes.configs.singleTag + ": " + id);
     },
   });
   const onCloseModal = useCallback(() => {
