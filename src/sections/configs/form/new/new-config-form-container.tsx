@@ -31,7 +31,7 @@ export default function NewConfigFormContainer({
       toast.success("Configuración creada con éxito");
       handleClose();
       revalidateServerTags(tagsCacheByRoutes.configs.multipleTag);
-      if (actionExecute) actionExecute;
+      if (actionExecute) actionExecute();
     },
   });
   const form = useForm<ConfigCreate>({
