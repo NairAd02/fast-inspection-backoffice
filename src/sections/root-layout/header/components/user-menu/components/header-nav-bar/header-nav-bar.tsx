@@ -37,7 +37,7 @@ export default function HeaderNavBar() {
           </Button>
         </NavigationComponent>
       )}
-      <Button size="sm">Comenzar Gratis</Button>
+      <Button size="sm">Comenzar</Button>
       {session && <UserMenu />}
     </nav>
   );
