@@ -25,6 +25,9 @@ export default function EditConfigFormContainer({ config }: Props) {
       toast.success("Configuración editada con éxito");
       handleClose();
       revalidateServerTags(tagsCacheByRoutes.configs.multipleTag);
+      revalidateServerTags(
+        tagsCacheByRoutes.configs.singleTag + ": " + config.version
+      );
     },
   });
   const form = useForm<ConfigEdit>({
