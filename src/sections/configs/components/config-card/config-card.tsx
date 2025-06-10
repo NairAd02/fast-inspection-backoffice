@@ -22,6 +22,7 @@ interface Props {
   onDelete: (id: string) => void;
   onMarkAsActive: (id: string) => void;
   onReplicate: (id: string) => void;
+  withAdministrationButton?: boolean;
 }
 
 export default function ConfigCard({
@@ -30,6 +31,7 @@ export default function ConfigCard({
   onDelete,
   onMarkAsActive,
   onReplicate,
+  withAdministrationButton = true,
 }: Props) {
   const porcentajeDisplay = porcentajeCompletitud;
 
@@ -136,18 +138,20 @@ export default function ConfigCard({
           </Button>
         </div>
 
-        <NavigationComponent
-          href={paths.config_management({ id: version.toString() }).root}
-        >
-          <Button
-            variant="outline"
-            size="sm"
-            className="size-10 px-3 sm:text-lg w-full"
+        {withAdministrationButton && (
+          <NavigationComponent
+            href={paths.config_management({ id: version.toString() }).root}
           >
-            <FolderDot className="size-6" />
-            Administrar
-          </Button>
-        </NavigationComponent>
+            <Button
+              variant="outline"
+              size="sm"
+              className="size-10 px-3 sm:text-lg w-full"
+            >
+              <FolderDot className="size-6" />
+              Administrar
+            </Button>
+          </NavigationComponent>
+        )}
       </CardContent>
     </Card>
   );
