@@ -12,12 +12,15 @@ export default function DeleteConfigModalContainer() {
   const { getInfoModal, handleCloseModal } = useContext(ModalContext);
   const infoModal = getInfoModal(modalTypes.deleteConfigModal.name);
   const id = infoModal && infoModal.entity ? infoModal.entity : null;
+  const actionExecute =
+    infoModal && infoModal.actionExecute ? infoModal.actionExecute : null;
   const { deleteConfig, loading } = useDeleteConfig({
     id,
     onDeleteAction: () => {
       toast.success("Configuración eliminada con éxito");
       onCloseModal();
       revalidateServerTags(tagsCacheByRoutes.configs.multipleTag);
+      if (actionExecute) actionExecute();
     },
   });
   const onCloseModal = useCallback(() => {
