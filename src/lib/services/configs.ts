@@ -38,7 +38,7 @@ export async function getConfigById(version: string) {
       headers: {
         Authorization: "Bearer " + session?.accessToken,
       },
-      next: { tags: [tagsCacheByRoutes.configs.singleTag] },
+      next: { tags: [tagsCacheByRoutes.configs.singleTag + ": " + version] },
     }
   );
 
