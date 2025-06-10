@@ -39,7 +39,11 @@ const TabPanel = ({
       onValueChange={handleValueChange}
       className={fullWidth ? "w-full" : ""}
     >
-      <TabsList className={`flex ${center ? "justify-center" : ""} ${fullWidth ? "w-full" : ""}`}>
+      <TabsList
+        className={`flex ${center ? "justify-center" : ""} ${
+          fullWidth ? "w-full" : ""
+        }`}
+      >
         {tabs.map((item) => (
           <TabsTrigger
             key={item.value}
@@ -91,6 +95,7 @@ function TabsContainer({
       tabs={tabs}
       onSelectTab={setTabValue}
       fullWidth={fullWidth}
+      center={center}
     >
       {tabs.map((tab) => (
         <TabItem key={tab.value} value={tab.value}>
