@@ -1,5 +1,144 @@
+"use client";
+import { SystemDetails } from "@/lib/types/systems";
 import React from "react";
+import {
+  HierarchicalTree,
+  TreeAction,
+  TreeItem,
+} from "@/components/ui/hierarchical-tree";
+import DeteriororationTypeTreeItem from "@/sections/deterioration-types/components/deterioration-type-tree-item/deterioration-type-tree-item";
+import MaterialTreeItem from "@/sections/materials/components/material-tree-item/material-tree-item";
+import SubsystemTreeItem from "@/sections/subsystems/components/subsystem-tree-item/subsystem-tree-item";
+import SystemTreeItem from "@/sections/systems/components/system-tree-item/system-tree-item";
+import { EditIcon, PlusIcon, Trash2Icon } from "lucide-react";
+interface Props {
+  systems: SystemDetails[];
+}
 
-export default function InspectionsStructureSection() {
-  return <div>Estructura de Inspecciones</div>;
+export default function InspectionsStructureSection({ systems }: Props) {
+  const systemsActions: TreeAction[] = [
+    {
+      icon: <PlusIcon className="h-3 w-3" />,
+      label: "Añadir subsistema",
+      onClick: (id) => console.log("Añadir subsistema al sistema:", id),
+      variant: "ghost",
+    },
+    {
+      icon: <EditIcon className="h-3 w-3" />,
+      label: "Editar sistema",
+      onClick: (id) => console.log("Editar sistema:", id),
+      variant: "ghost",
+    },
+    {
+      icon: <Trash2Icon className="h-3 w-3" />,
+      label: "Eliminar sistema",
+      onClick: (id) => console.log("Eliminar sistema:", id),
+      variant: "destructive",
+    },
+  ];
+
+  const subsystemsActions: TreeAction[] = [
+    {
+      icon: <PlusIcon className="h-3 w-3" />,
+      label: "Añadir material",
+      onClick: (id) => console.log("Añadir material al subsistema:", id),
+      variant: "ghost",
+    },
+    {
+      icon: <EditIcon className="h-3 w-3" />,
+      label: "Editar subsistema",
+      onClick: (id) => console.log("Editar subsistema:", id),
+      variant: "ghost",
+    },
+    {
+      icon: <Trash2Icon className="h-3 w-3" />,
+      label: "Eliminar subsistema",
+      onClick: (id) => console.log("Eliminar subsistema:", id),
+      variant: "destructive",
+    },
+  ];
+
+  const materialsActions: TreeAction[] = [
+    {
+      icon: <PlusIcon className="h-3 w-3" />,
+      label: "Añadir tipo de deterioro",
+      onClick: (id) => console.log("Añadir tipo de deterioro al material:", id),
+      variant: "ghost",
+    },
+    {
+      icon: <EditIcon className="h-3 w-3" />,
+      label: "Editar material",
+      onClick: (id) => console.log("Editar material:", id),
+      variant: "ghost",
+    },
+    {
+      icon: <Trash2Icon className="h-3 w-3" />,
+      label: "Eliminar material",
+      onClick: (id) => console.log("Eliminar material:", id),
+      variant: "destructive",
+    },
+  ];
+
+  const deteriorationTypesActions: TreeAction[] = [
+    {
+      icon: <EditIcon className="h-3 w-3" />,
+      label: "Editar tipo de deterioro",
+      onClick: (id) => console.log("Editar tipo de deterioro:", id),
+      variant: "ghost",
+    },
+    {
+      icon: <Trash2Icon className="h-3 w-3" />,
+      label: "Eliminar tipo de deterioro",
+      onClick: (id) => console.log("Eliminar tipo de deterioro:", id),
+      variant: "destructive",
+    },
+  ];
+
+  const data: TreeItem[] = systems.map((system, index) => {
+    const { subSistemasConfig, ...restSystem } = system;
+    return {
+      id: "S" + system.id.toString(),
+      dataId: system.id.toString(),
+      content: <SystemTreeItem key={index} system={restSystem} />,
+      actions: systemsActions,
+      children: subSistemasConfig.map((subsystem, index) => {
+        const { materialesConfig, ...restSubsytem } = subsystem;
+        return {
+          id: "SUB" + subsystem.id.toString(),
+          dataId: subsystem.id.toString(),
+          content: <SubsystemTreeItem key={index} subsystem={restSubsytem} />,
+          actions: subsystemsActions,
+          children: materialesConfig.map((material, index) => {
+            const { tiposDeteriorosConfig, ...restMaterial } = material;
+            return {
+              id: "M" + material.id.toString(),
+              dataId: material.id.toString(),
+              content: <MaterialTreeItem key={index} material={restMaterial} />,
+              actions: materialsActions,
+              children: tiposDeteriorosConfig.map(
+                (deteriorationType, index) => {
+                  return {
+                    id: "T" + deteriorationType.id.toString(),
+                    dataId: deteriorationType.id.toString(),
+                    content: (
+                      <DeteriororationTypeTreeItem
+                        key={index}
+                        deteriorationType={deteriorationType}
+                      />
+                    ),
+                    actions: deteriorationTypesActions,
+                  };
+                }
+              ),
+            };
+          }),
+        };
+      }),
+    };
+  });
+  return (
+    <div className="w-full">
+      <HierarchicalTree data={data} />
+    </div>
+  );
 }
