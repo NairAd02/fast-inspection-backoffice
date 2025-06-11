@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 export interface TreeAction {
   icon: React.ReactNode;
   label: string;
-  onClick: (item: TreeItem) => void;
+  onClick: (id: string) => void;
   variant?:
     | "default"
     | "destructive"
@@ -21,6 +21,7 @@ export interface TreeAction {
 
 export interface TreeItem {
   id: string;
+  dataId: string
   content: ReactNode;
   actions: TreeAction[];
   children?: TreeItem[];
@@ -99,7 +100,7 @@ function HierarchicalTreeItem({
               variant={action.variant || "ghost"}
               size="sm"
               className="h-6 w-6 p-0"
-              onClick={() => action.onClick(item)}
+              onClick={() => action.onClick(item.dataId)}
               title={action.label}
             >
               {action.icon}
