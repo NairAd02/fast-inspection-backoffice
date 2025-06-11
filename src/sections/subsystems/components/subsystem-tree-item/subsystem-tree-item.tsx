@@ -16,7 +16,7 @@ export default function SubsystemTreeItem({ subsystem }: Props) {
           <span className="font-medium text-green-900">{subsystem.nombre}</span>
           <Badge variant={"default"}>{"SUB-" + subsystem.id}</Badge>
           <Badge variant={"secondary"}>
-            {"Cantidad de subsistemas: " + subsystem.cantMateriales}
+            {"Cantidad de materiales: " + subsystem.cantMateriales}
           </Badge>
         </div>
       </div>
