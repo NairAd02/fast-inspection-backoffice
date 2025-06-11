@@ -32,7 +32,7 @@ export default function ConfigGeneralInformationSection({ config }: Props) {
         },
       });
     },
-    [handleOpenModal]
+    [handleOpenModal, router]
   );
 
   const onMarkAsActive = useCallback(
@@ -55,7 +55,7 @@ export default function ConfigGeneralInformationSection({ config }: Props) {
         },
       });
     },
-    [handleOpenModal]
+    [handleOpenModal, router]
   );
   return (
     <ConfigCard
