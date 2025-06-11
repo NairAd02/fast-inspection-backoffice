@@ -49,7 +49,7 @@ export default function ConfigManagementSectionsContainer({ version }: Props) {
         ),
       },
     ],
-    []
+    [version]
   );
   return <ConfigManagementSections tabs={tabs} />;
 }
