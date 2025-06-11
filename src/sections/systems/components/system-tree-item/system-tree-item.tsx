@@ -13,9 +13,7 @@ export default function SystemTreeItem({ system }: Props) {
       <BuildingIcon className="h-5 w-5 text-blue-600" />
       <div className="flex flex-col gap-1">
         <div className="flex items-center gap-2">
-          <Badge variant={"default"} className="font-semibold">
-            {system.nombre}
-          </Badge>
+          <span className="font-semibold text-blue-900">{system.nombre}</span>
           <Badge variant={"default"}>{"S-" + system.id}</Badge>
           <Badge variant={"secondary"}>
             {"Cantidad de subsistemas: " + system.cantSubsistemas}
