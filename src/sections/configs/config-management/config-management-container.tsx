@@ -2,9 +2,9 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import ConfigGeneralInformationSectionContainer from "./config-general-information-section/config-general-information-section-container";
 import { Suspense } from "react";
-import ConfigManagementSections from "./config-management-sections/config-management-sections";
 import NavigationComponent from "@/components/navigation-component/navigation-component";
 import { paths } from "@/routes/path";
+import ConfigManagementSectionsContainer from "./config-management-sections/config-management-sections-container";
 
 interface Props {
   version: string;
@@ -37,7 +37,7 @@ export default function ConfigManagementContainer({ version }: Props) {
         </Suspense>
 
         {/* Config Management Sections */}
-        <ConfigManagementSections version={version} />
+        <ConfigManagementSectionsContainer version={version} />
       </div>
     </div>
   );
