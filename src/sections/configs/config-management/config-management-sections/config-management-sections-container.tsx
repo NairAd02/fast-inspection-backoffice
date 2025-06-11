@@ -1,9 +1,9 @@
 import React, { useMemo } from "react";
-import InspectionsStructureSection from "./sections/inspections-structure-section/inspections-structure-section";
 import SectionContainer from "./sections/section-container/section-container";
 import ToolsSection from "./sections/tools-section/tools-section";
 import IndicesSection from "./sections/indices-section/indices-section";
 import ConfigManagementSections from "./config-management-sections";
+import InspectionsStructureSectionContainer from "./sections/inspections-structure-section/inspections-structure-section-container";
 
 interface Props {
   version: string;
@@ -20,7 +20,7 @@ export default function ConfigManagementSectionsContainer({ version }: Props) {
             title="Estructura de las Inspecciones"
             description="Administre la estructura de las inspecciones de esta configuración"
           >
-            <InspectionsStructureSection version={version} />
+            <InspectionsStructureSectionContainer version={version} />
           </SectionContainer>
         ),
       },
