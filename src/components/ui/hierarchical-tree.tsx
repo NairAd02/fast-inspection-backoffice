@@ -1,86 +1,66 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState } from "react"
-import { ChevronDown, ChevronRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import type React from "react";
+import { ReactNode, useState } from "react";
+import { ChevronDown, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 // Tipos base para el Tree jerárquico
-export interface TreeAction<T = any> {
-  icon: React.ReactNode
-  label: string
-  onClick: (item: HierarchicalTreeData<T>) => void
-  variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link"
+export interface TreeAction {
+  icon: React.ReactNode;
+  label: string;
+  onClick: (item: TreeItem) => void;
+  variant?:
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | "link";
 }
 
-export interface HierarchicalTreeData<T = any> {
-  id: string
-  type: string // Tipo de entidad (sistema, subsistema, material, etc.)
-  data: T
-  children?: HierarchicalTreeData<any>[] // Los hijos pueden ser de cualquier tipo
-  // Componente específico para este item (opcional)
-  contentComponent?: React.ComponentType<{ data: T; item: HierarchicalTreeData<T> }>
-  // Acciones específicas para este item (opcional)
-  actions?: TreeAction<T>[]
+export interface TreeItem {
+  id: string;
+  content: ReactNode;
+  actions: TreeAction[];
+  children?: TreeItem[];
 }
 
-export interface TreeItemProps<T = any> {
-  item: HierarchicalTreeData<T>
-  defaultContentComponent?: React.ComponentType<{ data: any; item: HierarchicalTreeData<any> }>
-  defaultActions?: TreeAction<any>[]
-  level?: number
-  onToggle?: (id: string, expanded: boolean) => void
-  expandedItems?: Set<string>
-  // Mapa de componentes por tipo
-  componentMap?: Record<string, React.ComponentType<{ data: any; item: HierarchicalTreeData<any> }>>
-  // Mapa de acciones por tipo
-  actionsMap?: Record<string, TreeAction<any>[]>
+export interface TreeItemProps {
+  item: TreeItem;
+  level?: number;
+  onToggle?: (id: string, expanded: boolean) => void;
+  expandedItems?: Set<string>;
 }
 
 export interface HierarchicalTreeProps {
-  data: HierarchicalTreeData<any>[]
-  // Componente por defecto (fallback)
-  defaultContentComponent?: React.ComponentType<{ data: any; item: HierarchicalTreeData<any> }>
-  // Acciones por defecto (fallback)
-  defaultActions?: TreeAction<any>[]
-  // Mapa de componentes por tipo de entidad
-  componentMap?: Record<string, React.ComponentType<{ data: any; item: HierarchicalTreeData<any> }>>
-  // Mapa de acciones por tipo de entidad
-  actionsMap?: Record<string, TreeAction<any>[]>
-  defaultExpanded?: boolean
+  data: TreeItem[];
+
+  defaultExpanded?: boolean;
 }
 
 // Componente TreeItem individual
 function HierarchicalTreeItem({
   item,
-  defaultContentComponent,
-  defaultActions = [],
   level = 0,
   onToggle,
   expandedItems,
-  componentMap = {},
-  actionsMap = {},
 }: TreeItemProps) {
-  const hasChildren = item.children && item.children.length > 0
-  const isExpanded = expandedItems?.has(item.id) || false
-  const paddingLeft = level * 24
+  const hasChildren = item.children && item.children.length > 0;
+  const isExpanded = expandedItems?.has(item.id) || false;
+  const paddingLeft = level * 24;
 
   // Determinar qué componente usar (prioridad: item específico > mapa por tipo > por defecto)
-  const ContentComponent = item.contentComponent || componentMap[item.type] || defaultContentComponent
+  const ContentComponent = item.content;
 
   // Determinar qué acciones usar (prioridad: item específico > mapa por tipo > por defecto)
-  const actions = item.actions || actionsMap[item.type] || defaultActions
+  const actions = item.actions;
 
   const handleToggle = () => {
     if (hasChildren && onToggle) {
-      onToggle(item.id, !isExpanded)
+      onToggle(item.id, !isExpanded);
     }
-  }
-
-  if (!ContentComponent) {
-    console.warn(`No ContentComponent found for item type: ${item.type}`)
-    return null
-  }
+  };
 
   return (
     <div className="w-full">
@@ -109,9 +89,7 @@ function HierarchicalTreeItem({
         </Button>
 
         {/* Contenido personalizado */}
-        <div className="flex-1 min-w-0">
-          <ContentComponent data={item.data} item={item} />
-        </div>
+        <div className="flex-1 min-w-0">{ContentComponent}</div>
 
         {/* Acciones */}
         <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -137,58 +115,50 @@ function HierarchicalTreeItem({
             <HierarchicalTreeItem
               key={child.id}
               item={child}
-              defaultContentComponent={defaultContentComponent}
-              defaultActions={defaultActions}
               level={level + 1}
               onToggle={onToggle}
               expandedItems={expandedItems}
-              componentMap={componentMap}
-              actionsMap={actionsMap}
             />
           ))}
         </div>
       )}
     </div>
-  )
+  );
 }
 
 // Componente Tree principal
 export function HierarchicalTree({
   data,
-  defaultContentComponent,
-  defaultActions = [],
-  componentMap = {},
-  actionsMap = {},
   defaultExpanded = false,
 }: HierarchicalTreeProps) {
   const [expandedItems, setExpandedItems] = useState<Set<string>>(() => {
     if (defaultExpanded) {
-      const getAllIds = (items: HierarchicalTreeData<any>[]): string[] => {
-        const ids: string[] = []
+      const getAllIds = (items: TreeItem[]): string[] => {
+        const ids: string[] = [];
         items.forEach((item) => {
-          ids.push(item.id)
+          ids.push(item.id);
           if (item.children) {
-            ids.push(...getAllIds(item.children))
+            ids.push(...getAllIds(item.children));
           }
-        })
-        return ids
-      }
-      return new Set(getAllIds(data))
+        });
+        return ids;
+      };
+      return new Set(getAllIds(data));
     }
-    return new Set<string>()
-  })
+    return new Set<string>();
+  });
 
   const handleToggle = (id: string, expanded: boolean) => {
     setExpandedItems((prev) => {
-      const newSet = new Set(prev)
+      const newSet = new Set(prev);
       if (expanded) {
-        newSet.add(id)
+        newSet.add(id);
       } else {
-        newSet.delete(id)
+        newSet.delete(id);
       }
-      return newSet
-    })
-  }
+      return newSet;
+    });
+  };
 
   return (
     <div className="w-full border rounded-lg bg-background">
@@ -196,14 +166,10 @@ export function HierarchicalTree({
         <HierarchicalTreeItem
           key={item.id}
           item={item}
-          defaultContentComponent={defaultContentComponent}
-          defaultActions={defaultActions}
           onToggle={handleToggle}
           expandedItems={expandedItems}
-          componentMap={componentMap}
-          actionsMap={actionsMap}
         />
       ))}
     </div>
-  )
+  );
 }
