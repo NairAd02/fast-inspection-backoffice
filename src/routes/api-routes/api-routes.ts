@@ -17,5 +17,6 @@ export const tagsCacheByRoutes = {
   configs: {
     singleTag: "config",
     multipleTag: "configs",
+    systemsTag: "systems",
   },
 } as const;
