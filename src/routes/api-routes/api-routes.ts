@@ -10,6 +10,7 @@ export const apiRoutes = {
     editConfig: `${process.env.NEXT_PUBLIC_API_URL}configs/updateConfig/:version`,
     deleteConfig: `${process.env.NEXT_PUBLIC_API_URL}configs/deleteConfig/:version`,
     markConfigAsActive: `${process.env.NEXT_PUBLIC_API_URL}configs/marcarAsActivaConfig/:version`,
+    getSystemsConfig: `${process.env.NEXT_PUBLIC_API_URL}configs/getSistemasConfig/:version`,
   },
 } as const;
 
