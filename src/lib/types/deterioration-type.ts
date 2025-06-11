@@ -6,4 +6,10 @@ export interface DeteriorationType {
   cantCausas: number;
 }
 
-export interface DeteriorationTypeDetails {}
+export interface DeteriorationTypeDetails {
+   id: number;
+  nombre: string;
+  detectabilidad: number;
+  cantCamposAfectados: number;
+  cantCausas: number;
+}
