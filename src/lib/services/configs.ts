@@ -12,6 +12,7 @@ import {
   ConfigEditDTO,
 } from "../types/configs";
 import { auth } from "@/auth";
+import { SystemDetails } from "../types/systems";
 
 export async function getConfigsList(params: IQueryable) {
   const session = await auth();
@@ -27,6 +28,22 @@ export async function getConfigsList(params: IQueryable) {
   });
 
   return await buildApiResponse<PaginationResponse<Config>>(res);
+}
+
+export async function getSystemsConfig(version: string) {
+  const session = await auth();
+  const res = await fetch(
+    apiRoutes.configs.getSystemsConfig.replace(":version", version),
+    {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + session?.accessToken,
+      },
+      next: { tags: [tagsCacheByRoutes.configs.systemsTag + ": " + version] },
+    }
+  );
+
+  return await buildApiResponse<SystemDetails[]>(res);
 }
 
 export async function getConfigById(version: string) {
