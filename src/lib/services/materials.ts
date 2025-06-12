@@ -52,3 +52,16 @@ export async function editMaterial(
 
   return await buildApiResponse<Material>(res);
 }
+
+export async function deleteMaterial(id: string) {
+  const session = await auth();
+  const res = await fetch(apiRoutes.materials.delete.replace(":id", id), {
+    method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + session?.accessToken,
+      "content-type": "application/json",
+    },
+  });
+
+  return await buildApiResponse<Material>(res);
+}
