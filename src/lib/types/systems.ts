@@ -1,6 +1,7 @@
 import { SystemCreate } from "@/sections/systems/form/new/schemas/system-create-schema";
 import { SubsystemDetails } from "./subsystems";
 import { Tool } from "./tools";
+import { SystemEdit } from "@/sections/systems/form/edit/schemas/system-edit-schema";
 
 export interface System {
   id: number;
@@ -28,6 +29,10 @@ export interface SystemCreateDTO {
   };
 }
 
+export interface SystemEditDTO {
+  nombre: string;
+}
+
 export const convertSystemCreateDTO = (
   system: SystemCreate,
   configVersion: string
@@ -36,5 +41,11 @@ export const convertSystemCreateDTO = (
     ...system,
     herramienta: { id: system.herramienta },
     config: { version: configVersion },
+  };
+};
+
+export const convertSystemEditDTO = (system: SystemEdit): SystemEditDTO => {
+  return {
+    ...system,
   };
 };
