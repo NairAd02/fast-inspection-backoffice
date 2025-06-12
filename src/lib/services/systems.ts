@@ -45,3 +45,16 @@ export async function editSystem(id: string, systemEditDTO: SystemEditDTO) {
 
   return await buildApiResponse<System>(res);
 }
+
+export async function deleteSystem(id: string) {
+  const session = await auth();
+  const res = await fetch(apiRoutes.systems.delete.replace(":id", id), {
+    method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + session?.accessToken,
+      "content-type": "application/json",
+    },
+  });
+
+  return await buildApiResponse<System>(res);
+}
