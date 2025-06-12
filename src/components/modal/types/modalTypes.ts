@@ -30,6 +30,7 @@ export interface ModalTypes {
   replicateConfigModal: SectionModal;
   newSystemModal: SectionModal;
   editSystemModal: SectionModal;
+  deleteSystemModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
@@ -70,5 +71,9 @@ export const modalTypes: ModalTypes = {
   editSystemModal: {
     name: "editSystemModal",
     title: "Formulario de edición de Sistema",
+  },
+  deleteSystemModal: {
+    name: "deleteSystemModal",
+    title: "Formulario de eliminación de Sistema",
   },
 };
