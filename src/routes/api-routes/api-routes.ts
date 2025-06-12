@@ -19,6 +19,7 @@ export const apiRoutes = {
     delete: `${process.env.NEXT_PUBLIC_API_URL}sistemas-config/deleteSistemaConfig/:id`,
   },
   subsystems: {
+    getById: `${process.env.NEXT_PUBLIC_API_URL}subsistemas-config/getSubsistemaConfig/:id`,
     create: `${process.env.NEXT_PUBLIC_API_URL}subsistemas-config/createSubsistemaConfig`,
     edit: `${process.env.NEXT_PUBLIC_API_URL}subsistemas-config/updateSubsistemaConfig/:id`,
   },
