@@ -80,7 +80,7 @@ export const modalTypes: ModalTypes = {
   },
   deleteSystemModal: {
     name: "deleteSystemModal",
-    title: "Formulario de eliminación de Sistema",
+    title: "Eliminación de Sistema",
     message: "¿Está seguro de que desea eliminar el sistema?",
     warningMessage:
       "Esta acción provocará la eliminación permanente del sistema.",
