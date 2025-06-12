@@ -61,7 +61,9 @@ export default function InspectionsStructureSection({
     {
       icon: <PlusIcon className="h-3 w-3" />,
       label: "Añadir material",
-      onClick: (id) => console.log("Añadir material al subsistema:", id),
+      onClick: (id) => {
+        handleOpenModal({ name: modalTypes.newMaterialModal.name, entity: id });
+      },
       variant: "ghost",
     },
     {
