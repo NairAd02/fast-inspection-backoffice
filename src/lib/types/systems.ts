@@ -8,6 +8,7 @@ export interface System {
   nombre: string;
   cantSubsistemas: number;
   herramienta: Tool;
+  configVersion: number;
 }
 
 export interface SystemDetails {
