@@ -28,7 +28,12 @@ export default function InspectionsStructureSection({
     {
       icon: <PlusIcon className="h-3 w-3" />,
       label: "Añadir subsistema",
-      onClick: (id) => console.log("Añadir subsistema al sistema:", id),
+      onClick: (id) => {
+        handleOpenModal({
+          name: modalTypes.newSubsystemModal.name,
+          entity: id,
+        });
+      },
       variant: "ghost",
     },
     {
