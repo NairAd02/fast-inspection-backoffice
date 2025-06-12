@@ -2,6 +2,7 @@ export interface InfoModal {
   name: string;
   // matadata
   entity?: string; // id entity
+  secondaryEntity?: string;
   elements?: any[];
   actionInsert?: (element: any) => void;
   onClose?: () => void;
@@ -30,7 +31,12 @@ export interface ModalTypes {
   replicateConfigModal: SectionModal;
   newSystemModal: SectionModal;
   editSystemModal: SectionModal;
-  deleteSystemModal: SectionModal;
+  deleteSystemModal: SectionModal & {
+    message: string;
+    warningMessage: string;
+    cancelButtonText: string;
+    confirmButtonText: string;
+  };
 }
 
 export const modalTypes: ModalTypes = {
@@ -75,5 +81,10 @@ export const modalTypes: ModalTypes = {
   deleteSystemModal: {
     name: "deleteSystemModal",
     title: "Formulario de eliminación de Sistema",
+    message: "¿Está seguro de que desea eliminar el sistema?",
+    warningMessage:
+      "Esta acción provocará la eliminación permanente del sistema.",
+    cancelButtonText: "Cancelar",
+    confirmButtonText: "Confirmar",
   },
 };
