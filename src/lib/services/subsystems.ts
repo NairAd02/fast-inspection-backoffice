@@ -7,7 +7,7 @@ import { buildApiResponse } from "../api";
 
 export async function createSubsystem(subsystemCreateDTO: SubsystemCreateDTO) {
   const session = await auth();
-  const res = await fetch(apiRoutes.subsystem.create, {
+  const res = await fetch(apiRoutes.subsystems.create, {
     method: "POST",
     headers: {
       Authorization: "Bearer " + session?.accessToken,
@@ -21,7 +21,7 @@ export async function createSubsystem(subsystemCreateDTO: SubsystemCreateDTO) {
 
 export async function editSubsystem(id: string, subsystemEditDTO: SubsystemEditDTO) {
   const session = await auth();
-  const res = await fetch(apiRoutes.subsystem.edit.replace(":id", id), {
+  const res = await fetch(apiRoutes.subsystems.edit.replace(":id", id), {
     method: "PATCH",
     headers: {
       Authorization: "Bearer " + session?.accessToken,
