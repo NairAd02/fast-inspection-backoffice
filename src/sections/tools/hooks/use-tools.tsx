@@ -4,11 +4,17 @@ import { useCallback, useEffect, useState, useRef } from "react";
 import { debounce } from "lodash";
 import useClientPagination from "@/hooks/use-client-pagination";
 import { Pagination } from "@/lib/types/pagination";
-import useToolsFilters from "../filters/hooks/use-tools-filters";
+import useToolsFilters, {
+  ToolsFilters,
+} from "../filters/hooks/use-tools-filters";
 import { getToolsList } from "@/lib/services/tools";
 import { Tool } from "@/lib/types/tools";
 
-export default function useTools() {
+interface Props {
+  defaultsFilters?: ToolsFilters;
+}
+
+export default function useTools({ defaultsFilters }: Props) {
   const [tools, setTools] = useState<Tool[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loadingData, setLoadingData] = useState(true);
@@ -21,6 +27,7 @@ export default function useTools() {
   const [pagination, setPagination] = useState<Pagination>(clientPagination);
   const { filters, handleChangeFilters, handleResetFilters } = useToolsFilters({
     setPagination: setClientPagination,
+    defaultsFilters,
   });
 
   const debouncedFetchRef = useRef(
