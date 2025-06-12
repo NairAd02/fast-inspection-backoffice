@@ -1,5 +1,6 @@
 import { MaterialCreate } from "@/sections/materials/form/new/schemas/material-create-schema";
 import { DeteriorationType } from "./deterioration-type";
+import { MaterialEdit } from "@/sections/materials/form/edit/schemas/material-edit-schema";
 
 export interface Material {
   id: number;
@@ -21,6 +22,10 @@ export interface MaterialCreateDTO {
   };
 }
 
+export interface MaterialEditDTO {
+  nombre: string;
+}
+
 export const convertMaterialCreateDTO = (
   materialCreate: MaterialCreate,
   subsystemId: string
@@ -28,5 +33,13 @@ export const convertMaterialCreateDTO = (
   return {
     ...materialCreate,
     subsistemaConfig: { id: subsystemId },
+  };
+};
+
+export const convertMaterialEditDTO = (
+  materialEdit: MaterialEdit
+): MaterialEditDTO => {
+  return {
+    ...materialEdit,
   };
 };
