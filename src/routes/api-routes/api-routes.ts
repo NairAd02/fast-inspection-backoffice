@@ -24,6 +24,9 @@ export const apiRoutes = {
     edit: `${process.env.NEXT_PUBLIC_API_URL}subsistemas-config/updateSubsistemaConfig/:id`,
     delete: `${process.env.NEXT_PUBLIC_API_URL}subsistemas-config/deleteSubsistemaConfig/:id`,
   },
+  materials: {
+    create: `${process.env.NEXT_PUBLIC_API_URL}materiales-config/createMaterialConfig`,
+  },
   tools: {
     get: `${process.env.NEXT_PUBLIC_API_URL}herramienta-analisis-criticidad/getAllHerramientasAnalisisCriticidad`,
   },
@@ -42,6 +45,10 @@ export const tagsCacheByRoutes = {
   subsystems: {
     singleTag: "system",
     multipleTag: "systems",
+  },
+  materials: {
+    singleTag: "material",
+    multipleTag: "materials",
   },
   tools: {
     singleTag: "tool",
