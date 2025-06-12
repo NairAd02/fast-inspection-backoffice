@@ -14,6 +14,7 @@ export const apiRoutes = {
   },
   systems: {
     create: `${process.env.NEXT_PUBLIC_API_URL}sistemas-config/createSistemaConfig`,
+    edit: `${process.env.NEXT_PUBLIC_API_URL}sistemas-config/updateSistemaConfig/:id`,
   },
   tools: {
     get: `${process.env.NEXT_PUBLIC_API_URL}herramienta-analisis-criticidad/getAllHerramientasAnalisisCriticidad`,
