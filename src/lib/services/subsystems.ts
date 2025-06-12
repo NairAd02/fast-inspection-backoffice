@@ -52,3 +52,16 @@ export async function editSubsystem(
 
   return await buildApiResponse<Subsystem>(res);
 }
+
+export async function deleteSubsystem(id: string) {
+  const session = await auth();
+  const res = await fetch(apiRoutes.subsystems.delete.replace(":id", id), {
+    method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + session?.accessToken,
+      "content-type": "application/json",
+    },
+  });
+
+  return await buildApiResponse<Subsystem>(res);
+}
