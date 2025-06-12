@@ -12,6 +12,9 @@ export const apiRoutes = {
     markConfigAsActive: `${process.env.NEXT_PUBLIC_API_URL}configs/marcarAsActivaConfig/:version`,
     getSystemsConfig: `${process.env.NEXT_PUBLIC_API_URL}configs/getSistemasConfig/:version`,
   },
+  systems: {
+    create: `${process.env.NEXT_PUBLIC_API_URL}sistemas-config/createSistemaConfig`,
+  },
 } as const;
 
 export const tagsCacheByRoutes = {
@@ -19,5 +22,9 @@ export const tagsCacheByRoutes = {
     singleTag: "config",
     multipleTag: "configs",
     systemsTag: "systems",
+  },
+  systems: {
+    singleTag: "system",
+    multipleTag: "systems",
   },
 } as const;
