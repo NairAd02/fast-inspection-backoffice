@@ -2,8 +2,21 @@
 
 import { auth } from "@/auth";
 import { System, SystemCreateDTO, SystemEditDTO } from "../types/systems";
-import { apiRoutes } from "@/routes/api-routes/api-routes";
+import { apiRoutes, tagsCacheByRoutes } from "@/routes/api-routes/api-routes";
 import { buildApiResponse } from "../api";
+
+export async function getSystemById(id: string) {
+  const session = await auth();
+  const res = await fetch(apiRoutes.systems.getById.replace(":id", id), {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + session?.accessToken,
+    },
+    next: { tags: [tagsCacheByRoutes.systems.singleTag + ": " + id] },
+  });
+
+  return await buildApiResponse<System>(res);
+}
 
 export async function createSystem(systemCreateDTO: SystemCreateDTO) {
   const session = await auth();
