@@ -1,0 +1,65 @@
+"use client";
+import { zodResolver } from "@hookform/resolvers/zod";
+import React, { useContext } from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import { Button } from "@/components/ui/button";
+import { ModalContext } from "@/components/modal/context/modalContext";
+import { modalTypes } from "@/components/modal/types/modalTypes";
+import { toast } from "react-toastify";
+import { RevalidateConfigInformationContext } from "@/sections/configs/context/revalidate-config-information-context/revalidate-config-information-context";
+import {
+  MaterialCreate,
+  materialCreateSchema,
+} from "./schemas/material-create-schema";
+import useCreateMaterial from "../../hooks/use-create-material";
+import MaterialForm from "../material-form";
+
+interface Props {
+  subsystemId: string;
+}
+
+export default function NewMaterialFormContainer({ subsystemId }: Props) {
+  const { handleCloseModal } = useContext(ModalContext);
+  const { revalidateConfigInformation } = useContext(
+    RevalidateConfigInformationContext
+  );
+  const { loading: submitLoading, createMaterial } = useCreateMaterial({
+    onCreateAction: () => {
+      toast.success("Material creado con éxito");
+      handleClose();
+      revalidateConfigInformation();
+    },
+  });
+  const form = useForm<MaterialCreate>({
+    resolver: zodResolver(materialCreateSchema),
+    defaultValues: {
+      nombre: "",
+    },
+  });
+
+  const handleClose = () => {
+    handleCloseModal(modalTypes.newMaterialModal.name);
+  };
+
+  function onSubmit(materialCreate: MaterialCreate) {
+    createMaterial(materialCreate, subsystemId);
+  }
+  return (
+    <FormProvider {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
+      >
+        <MaterialForm />
+        <div className="flex gap-2 justify-end">
+          <Button type="button" variant={"destructive"} onClick={handleClose}>
+            Cancelar
+          </Button>
+          <Button variant={"default"} type="submit" disabled={submitLoading}>
+            Crear Material
+          </Button>
+        </div>
+      </form>
+    </FormProvider>
+  );
+}
