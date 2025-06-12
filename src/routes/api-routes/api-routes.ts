@@ -26,6 +26,7 @@ export const apiRoutes = {
   },
   materials: {
     create: `${process.env.NEXT_PUBLIC_API_URL}materiales-config/createMaterialConfig`,
+    edit: `${process.env.NEXT_PUBLIC_API_URL}materiales-config/updateMaterialConfig/:id`,
   },
   tools: {
     get: `${process.env.NEXT_PUBLIC_API_URL}herramienta-analisis-criticidad/getAllHerramientasAnalisisCriticidad`,
