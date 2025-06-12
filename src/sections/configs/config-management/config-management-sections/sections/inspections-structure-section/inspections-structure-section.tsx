@@ -42,7 +42,13 @@ export default function InspectionsStructureSection({
     {
       icon: <Trash2Icon className="h-3 w-3" />,
       label: "Eliminar sistema",
-      onClick: (id) => console.log("Eliminar sistema:", id),
+      onClick: (id) => {
+        handleOpenModal({
+          name: modalTypes.deleteSystemModal.name,
+          entity: id,
+          secondaryEntity: configVersion,
+        });
+      },
       variant: "destructive",
     },
   ];
