@@ -17,7 +17,7 @@ export default function SystemForm({ configVersion, editMode = false }: Props) {
         placeholder="Introduzca nombre del sistema"
         fullWidth
       />
-      {editMode && configVersion && (
+      {!editMode && configVersion && (
         <SystemToolsField configVersion={configVersion} />
       )}
     </div>
