@@ -25,6 +25,7 @@ export const apiRoutes = {
     delete: `${process.env.NEXT_PUBLIC_API_URL}subsistemas-config/deleteSubsistemaConfig/:id`,
   },
   materials: {
+    getById: `${process.env.NEXT_PUBLIC_API_URL}materiales-config/getMaterial/:id`,
     create: `${process.env.NEXT_PUBLIC_API_URL}materiales-config/createMaterialConfig`,
     edit: `${process.env.NEXT_PUBLIC_API_URL}materiales-config/updateMaterialConfig/:id`,
   },
