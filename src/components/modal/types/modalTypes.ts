@@ -39,6 +39,12 @@ export interface ModalTypes {
   };
   newSubsystemModal: SectionModal;
   editSubsystemModal: SectionModal;
+  deleteSubsystemModal: SectionModal & {
+    message: string;
+    warningMessage: string;
+    cancelButtonText: string;
+    confirmButtonText: string;
+  };
 }
 
 export const modalTypes: ModalTypes = {
@@ -96,5 +102,14 @@ export const modalTypes: ModalTypes = {
   editSubsystemModal: {
     name: "editSubsystemModal",
     title: "Formulario de edición de Subsistema",
+  },
+  deleteSubsystemModal: {
+    name: "deleteSubsystemModal",
+    title: "Eliminación de Subsistema",
+    message: "¿Está seguro de que desea eliminar el subsistema?",
+    warningMessage:
+      "Esta acción provocará la eliminación permanente del subsistema.",
+    cancelButtonText: "Cancelar",
+    confirmButtonText: "Confirmar",
   },
 };
