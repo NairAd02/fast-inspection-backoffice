@@ -1,6 +1,6 @@
 "use client";
 import { SystemDetails } from "@/lib/types/systems";
-import React from "react";
+import React, { useContext } from "react";
 import {
   HierarchicalTree,
   TreeAction,
@@ -12,6 +12,8 @@ import SubsystemTreeItem from "@/sections/subsystems/components/subsystem-tree-i
 import SystemTreeItem from "@/sections/systems/components/system-tree-item/system-tree-item";
 import { EditIcon, PlusIcon, Trash2Icon } from "lucide-react";
 import AddSystemButton from "./components/add-system-button/add-system-button";
+import { ModalContext } from "@/components/modal/context/modalContext";
+import { modalTypes } from "@/components/modal/types/modalTypes";
 interface Props {
   configVersion: string;
   systems: SystemDetails[];
@@ -21,6 +23,7 @@ export default function InspectionsStructureSection({
   configVersion,
   systems,
 }: Props) {
+  const { handleOpenModal } = useContext(ModalContext);
   const systemsActions: TreeAction[] = [
     {
       icon: <PlusIcon className="h-3 w-3" />,
@@ -31,7 +34,9 @@ export default function InspectionsStructureSection({
     {
       icon: <EditIcon className="h-3 w-3" />,
       label: "Editar sistema",
-      onClick: (id) => console.log("Editar sistema:", id),
+      onClick: (id) => {
+        handleOpenModal({ name: modalTypes.editSystemModal.name, entity: id });
+      },
       variant: "ghost",
     },
     {

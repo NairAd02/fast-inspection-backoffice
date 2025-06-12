@@ -1,6 +1,7 @@
 import Modal from "@/components/modal/modal";
 import { modalTypes } from "@/components/modal/types/modalTypes";
 import ConfigManagementContainer from "@/sections/configs/config-management/config-management-container";
+import EditSystemModalContainer from "@/sections/systems/form/edit/edit-system-form-modal-containter";
 import NewSystemModalContainer from "@/sections/systems/form/new/new-system-form-modal-container";
 import React from "react";
 
@@ -18,6 +19,12 @@ export default async function ConfigManagementPage({ params }: Props) {
         title={modalTypes.newSystemModal.title}
       >
         <NewSystemModalContainer />
+      </Modal>
+      <Modal
+        formPath={modalTypes.editSystemModal.name}
+        title={modalTypes.editSystemModal.title}
+      >
+        <EditSystemModalContainer />
       </Modal>
     </>
   );
