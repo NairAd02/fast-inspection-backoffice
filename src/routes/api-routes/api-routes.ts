@@ -20,6 +20,7 @@ export const apiRoutes = {
   },
   subsystem: {
     create: `${process.env.NEXT_PUBLIC_API_URL}subsistemas-config/createSubsistemaConfig`,
+    edit: `${process.env.NEXT_PUBLIC_API_URL}subsistemas-config/updateSubsistemaConfig/:id`,
   },
   tools: {
     get: `${process.env.NEXT_PUBLIC_API_URL}herramienta-analisis-criticidad/getAllHerramientasAnalisisCriticidad`,
@@ -33,6 +34,10 @@ export const tagsCacheByRoutes = {
     systemsTag: "systems",
   },
   systems: {
+    singleTag: "system",
+    multipleTag: "systems",
+  },
+  subsystems: {
     singleTag: "system",
     multipleTag: "systems",
   },
