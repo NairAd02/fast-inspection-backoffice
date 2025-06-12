@@ -7,15 +7,20 @@ import { Dispatch, SetStateAction, useState } from "react";
 
 export interface ToolsFilters {
   nombre?: string;
+  versionConfig?: string;
 }
 
 interface Props {
   setPagination?: Dispatch<SetStateAction<Pagination>>;
+  defaultsFilters?: ToolsFilters;
 }
 
-export default function useToolsFilters({ setPagination }: Props) {
+export default function useToolsFilters({
+  setPagination,
+  defaultsFilters = {},
+}: Props) {
   const { updateFiltersInUrl } = useUrlFilters();
-  const [filters, setFilters] = useState<ToolsFilters>({});
+  const [filters, setFilters] = useState<ToolsFilters>(defaultsFilters);
 
   async function handleChangeFilters(updatedFilters: Partial<ToolsFilters>) {
     const newFilters = {
