@@ -7,10 +7,7 @@ import { ModalContext } from "@/components/modal/context/modalContext";
 import { modalTypes } from "@/components/modal/types/modalTypes";
 import { tagsCacheByRoutes } from "@/routes/api-routes/api-routes";
 import { toast } from "react-toastify";
-
 import { revalidateServerTags } from "@/lib/cache";
-
-import { ConfigDetails } from "@/lib/types/configs";
 import useCreateSystem from "../../hooks/use-create-system";
 import {
   SystemCreate,
