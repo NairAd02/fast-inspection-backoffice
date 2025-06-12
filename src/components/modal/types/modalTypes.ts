@@ -47,6 +47,12 @@ export interface ModalTypes {
   };
   newMaterialModal: SectionModal;
   editMaterialModal: SectionModal;
+  deleteMaterialModal: SectionModal & {
+    message: string;
+    warningMessage: string;
+    cancelButtonText: string;
+    confirmButtonText: string;
+  };
 }
 
 export const modalTypes: ModalTypes = {
@@ -121,5 +127,14 @@ export const modalTypes: ModalTypes = {
   editMaterialModal: {
     name: "editMaterialModal",
     title: "Formulario de edición de Material",
+  },
+  deleteMaterialModal: {
+    name: "deleteMaterialModal",
+    title: "Eliminación de Material",
+    message: "¿Está seguro de que desea eliminar el material?",
+    warningMessage:
+      "Esta acción provocará la eliminación permanente del material.",
+    cancelButtonText: "Cancelar",
+    confirmButtonText: "Confirmar",
   },
 };
