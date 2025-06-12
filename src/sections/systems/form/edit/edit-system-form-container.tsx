@@ -5,13 +5,12 @@ import { FormProvider, useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { ModalContext } from "@/components/modal/context/modalContext";
 import { modalTypes } from "@/components/modal/types/modalTypes";
-import { tagsCacheByRoutes } from "@/routes/api-routes/api-routes";
 import { toast } from "react-toastify";
-import { revalidateServerTags } from "@/lib/cache";
 import SystemForm from "../system-form";
 import { System } from "@/lib/types/systems";
 import useEditSystem from "../../hooks/use-edit-system";
 import { SystemEdit, systemEditSchema } from "./schemas/system-edit-schema";
+import { RevalidateConfigInformationContext } from "@/sections/configs/context/revalidate-config-information-context/revalidate-config-information-context";
 
 interface Props {
   system: System;
@@ -19,14 +18,15 @@ interface Props {
 
 export default function EditSystemFormContainer({ system }: Props) {
   const { handleCloseModal } = useContext(ModalContext);
+  const { revalidateConfigInformation } = useContext(
+    RevalidateConfigInformationContext
+  );
   const { loading: submitLoading, editSystem } = useEditSystem({
     id: system.id.toString(),
     onEditAction: () => {
       toast.success("Sistema editado con éxito");
       handleClose();
-      revalidateServerTags(
-        tagsCacheByRoutes.configs.systemsTag + ": " + system.configVersion
-      );
+      revalidateConfigInformation();
     },
   });
   const form = useForm<SystemEdit>({

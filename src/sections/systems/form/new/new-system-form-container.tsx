@@ -5,15 +5,14 @@ import { FormProvider, useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { ModalContext } from "@/components/modal/context/modalContext";
 import { modalTypes } from "@/components/modal/types/modalTypes";
-import { tagsCacheByRoutes } from "@/routes/api-routes/api-routes";
 import { toast } from "react-toastify";
-import { revalidateServerTags } from "@/lib/cache";
 import useCreateSystem from "../../hooks/use-create-system";
 import {
   SystemCreate,
   systemCreateSchema,
 } from "./schemas/system-create-schema";
 import SystemForm from "../system-form";
+import { RevalidateConfigInformationContext } from "@/sections/configs/context/revalidate-config-information-context/revalidate-config-information-context";
 
 interface Props {
   configVersion: string;
@@ -21,13 +20,14 @@ interface Props {
 
 export default function NewSystemFormContainer({ configVersion }: Props) {
   const { handleCloseModal } = useContext(ModalContext);
+  const { revalidateConfigInformation } = useContext(
+    RevalidateConfigInformationContext
+  );
   const { loading: submitLoading, createSystem } = useCreateSystem({
     onCreateAction: () => {
       toast.success("Sistema creado con éxito");
       handleClose();
-      revalidateServerTags(
-        tagsCacheByRoutes.configs.systemsTag + ": " + configVersion
-      );
+      revalidateConfigInformation();
     },
   });
   const form = useForm<SystemCreate>({
