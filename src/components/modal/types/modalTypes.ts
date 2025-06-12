@@ -37,6 +37,7 @@ export interface ModalTypes {
     cancelButtonText: string;
     confirmButtonText: string;
   };
+  newSubsystemModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
@@ -86,5 +87,9 @@ export const modalTypes: ModalTypes = {
       "Esta acción provocará la eliminación permanente del sistema.",
     cancelButtonText: "Cancelar",
     confirmButtonText: "Confirmar",
+  },
+   newSubsystemModal: {
+    name: "newSubsystemModal",
+    title: "Formulario de creación de Subsistema",
   },
 };
