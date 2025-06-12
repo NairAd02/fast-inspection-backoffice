@@ -1,9 +1,26 @@
 "use server";
 
 import { auth } from "@/auth";
-import { Subsystem, SubsystemCreateDTO, SubsystemEditDTO } from "../types/subsystems";
-import { apiRoutes } from "@/routes/api-routes/api-routes";
+import {
+  Subsystem,
+  SubsystemCreateDTO,
+  SubsystemEditDTO,
+} from "../types/subsystems";
+import { apiRoutes, tagsCacheByRoutes } from "@/routes/api-routes/api-routes";
 import { buildApiResponse } from "../api";
+
+export async function getSubsystemById(id: string) {
+  const session = await auth();
+  const res = await fetch(apiRoutes.subsystems.getById.replace(":id", id), {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + session?.accessToken,
+    },
+    next: { tags: [tagsCacheByRoutes.subsystems.singleTag + ": " + id] },
+  });
+
+  return await buildApiResponse<Subsystem>(res);
+}
 
 export async function createSubsystem(subsystemCreateDTO: SubsystemCreateDTO) {
   const session = await auth();
@@ -19,7 +36,10 @@ export async function createSubsystem(subsystemCreateDTO: SubsystemCreateDTO) {
   return await buildApiResponse<Subsystem>(res);
 }
 
-export async function editSubsystem(id: string, subsystemEditDTO: SubsystemEditDTO) {
+export async function editSubsystem(
+  id: string,
+  subsystemEditDTO: SubsystemEditDTO
+) {
   const session = await auth();
   const res = await fetch(apiRoutes.subsystems.edit.replace(":id", id), {
     method: "PATCH",
