@@ -100,7 +100,12 @@ export default function InspectionsStructureSection({
     {
       icon: <EditIcon className="h-3 w-3" />,
       label: "Editar material",
-      onClick: (id) => console.log("Editar material:", id),
+      onClick: (id) => {
+        handleOpenModal({
+          name: modalTypes.editMaterialModal.name,
+          entity: id,
+        });
+      },
       variant: "ghost",
     },
     {

@@ -2,6 +2,7 @@ import Modal from "@/components/modal/modal";
 import { modalTypes } from "@/components/modal/types/modalTypes";
 import ConfigManagementContainer from "@/sections/configs/config-management/config-management-container";
 import { RevalidateConfigInformationProvider } from "@/sections/configs/context/revalidate-config-information-context/revalidate-config-information-context";
+import EditMaterialModalContainer from "@/sections/materials/form/edit/edit-material-form-modal-container";
 import NewMaterialModalContainer from "@/sections/materials/form/new/new-material-form-modal-container";
 import DeleteSubsystemModalContainer from "@/sections/subsystems/delete/delete-subsystem-modal-container";
 import EditSubsystemModalContainer from "@/sections/subsystems/form/edit/edit-subsystem-form-modal-container";
@@ -69,6 +70,13 @@ export default async function ConfigManagementPage({ params }: Props) {
           title={modalTypes.newMaterialModal.title}
         >
           <NewMaterialModalContainer />
+        </Modal>
+
+        <Modal
+          formPath={modalTypes.editMaterialModal.name}
+          title={modalTypes.editMaterialModal.title}
+        >
+          <EditMaterialModalContainer />
         </Modal>
       </RevalidateConfigInformationProvider>
     </>
