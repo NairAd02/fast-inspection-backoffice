@@ -28,6 +28,7 @@ export const apiRoutes = {
     getById: `${process.env.NEXT_PUBLIC_API_URL}materiales-config/getMaterial/:id`,
     create: `${process.env.NEXT_PUBLIC_API_URL}materiales-config/createMaterialConfig`,
     edit: `${process.env.NEXT_PUBLIC_API_URL}materiales-config/updateMaterialConfig/:id`,
+    delete: `${process.env.NEXT_PUBLIC_API_URL}materiales-config/deleteMaterialConfig/:id`,
   },
   tools: {
     get: `${process.env.NEXT_PUBLIC_API_URL}herramienta-analisis-criticidad/getAllHerramientasAnalisisCriticidad`,
