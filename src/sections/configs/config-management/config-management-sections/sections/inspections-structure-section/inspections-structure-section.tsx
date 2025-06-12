@@ -67,7 +67,12 @@ export default function InspectionsStructureSection({
     {
       icon: <EditIcon className="h-3 w-3" />,
       label: "Editar subsistema",
-      onClick: (id) => console.log("Editar subsistema:", id),
+      onClick: (id) => {
+        handleOpenModal({
+          name: modalTypes.editSubsystemModal.name,
+          entity: id,
+        });
+      },
       variant: "ghost",
     },
     {
