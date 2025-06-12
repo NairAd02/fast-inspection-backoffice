@@ -4,6 +4,7 @@ import ToolsSection from "./sections/tools-section/tools-section";
 import IndicesSection from "./sections/indices-section/indices-section";
 import ConfigManagementSections from "./config-management-sections";
 import InspectionsStructureSectionContainer from "./sections/inspections-structure-section/inspections-structure-section-container";
+import { PackageIcon } from "lucide-react";
 
 interface Props {
   version: string;
@@ -14,6 +15,7 @@ export default function ConfigManagementSectionsContainer({ version }: Props) {
     () => [
       {
         label: "Estructura de las inspecciones",
+        icon: <PackageIcon />,
         value: "1",
         component: (
           <SectionContainer
@@ -26,6 +28,7 @@ export default function ConfigManagementSectionsContainer({ version }: Props) {
       },
       {
         label: "Herramientas",
+        icon: <PackageIcon />,
         value: "2",
         component: (
           <SectionContainer
@@ -38,6 +41,7 @@ export default function ConfigManagementSectionsContainer({ version }: Props) {
       },
       {
         label: "Índices Calculables",
+        icon: <PackageIcon />,
         value: "3",
         component: (
           <SectionContainer
