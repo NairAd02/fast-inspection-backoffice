@@ -1,7 +1,7 @@
 "use server";
 
 import { auth } from "@/auth";
-import { Subsystem, SubsystemCreateDTO } from "../types/subsystems";
+import { Subsystem, SubsystemCreateDTO, SubsystemEditDTO } from "../types/subsystems";
 import { apiRoutes } from "@/routes/api-routes/api-routes";
 import { buildApiResponse } from "../api";
 
@@ -14,6 +14,20 @@ export async function createSubsystem(subsystemCreateDTO: SubsystemCreateDTO) {
       "content-type": "application/json",
     },
     body: JSON.stringify(subsystemCreateDTO),
+  });
+
+  return await buildApiResponse<Subsystem>(res);
+}
+
+export async function editSubsystem(id: string, subsystemEditDTO: SubsystemEditDTO) {
+  const session = await auth();
+  const res = await fetch(apiRoutes.subsystem.edit.replace(":id", id), {
+    method: "PATCH",
+    headers: {
+      Authorization: "Bearer " + session?.accessToken,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(subsystemEditDTO),
   });
 
   return await buildApiResponse<Subsystem>(res);
