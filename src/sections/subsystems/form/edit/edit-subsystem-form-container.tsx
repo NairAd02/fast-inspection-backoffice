@@ -35,7 +35,7 @@ export default function EditSubsystemFormContainer({ subsystem }: Props) {
   const form = useForm<SubsystemEdit>({
     resolver: zodResolver(subsystemEditSchema),
     defaultValues: {
-      nombre: "",
+      nombre: subsystem.nombre,
     },
   });
 
