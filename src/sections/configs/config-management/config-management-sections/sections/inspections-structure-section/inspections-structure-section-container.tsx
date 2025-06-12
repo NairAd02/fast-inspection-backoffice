@@ -13,5 +13,7 @@ export default async function InspectionsStructureSectionContainer({
   if (!response || error) throw new Error("Error fetching systems");
   const systems = response;
 
-  return <InspectionsStructureSection systems={systems} />;
+  return (
+    <InspectionsStructureSection configVersion={version} systems={systems} />
+  );
 }

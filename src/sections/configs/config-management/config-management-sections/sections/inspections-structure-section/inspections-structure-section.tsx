@@ -11,11 +11,16 @@ import MaterialTreeItem from "@/sections/materials/components/material-tree-item
 import SubsystemTreeItem from "@/sections/subsystems/components/subsystem-tree-item/subsystem-tree-item";
 import SystemTreeItem from "@/sections/systems/components/system-tree-item/system-tree-item";
 import { EditIcon, PlusIcon, Trash2Icon } from "lucide-react";
+import AddSystemButton from "./components/add-system-button/add-system-button";
 interface Props {
+  configVersion: string;
   systems: SystemDetails[];
 }
 
-export default function InspectionsStructureSection({ systems }: Props) {
+export default function InspectionsStructureSection({
+  configVersion,
+  systems,
+}: Props) {
   const systemsActions: TreeAction[] = [
     {
       icon: <PlusIcon className="h-3 w-3" />,
@@ -137,7 +142,10 @@ export default function InspectionsStructureSection({ systems }: Props) {
     };
   });
   return (
-    <div className="w-full">
+    <div className="flex flex-col bg-white gap-4 w-full">
+      <div className="flex justify-between gap-2">
+        <AddSystemButton configVersion={configVersion} />
+      </div>
       <HierarchicalTree data={data} />
     </div>
   );
