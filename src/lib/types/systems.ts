@@ -16,3 +16,13 @@ export interface SystemDetails {
   configVersion: number;
   subSistemasConfig: SubsystemDetails[];
 }
+
+export interface SystemCreateDTO {
+  nombre: string;
+  herramienta: {
+    id: number;
+  };
+  config: {
+    version: number;
+  };
+}
