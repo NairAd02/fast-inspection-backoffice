@@ -29,6 +29,7 @@ export interface ModalTypes {
   };
   replicateConfigModal: SectionModal;
   newSystemModal: SectionModal;
+  editSystemModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
@@ -65,5 +66,9 @@ export const modalTypes: ModalTypes = {
   newSystemModal: {
     name: "newSystemModal",
     title: "Formulario de creación de Sistema",
+  },
+  editSystemModal: {
+    name: "editSystemModal",
+    title: "Formulario de edición de Sistema",
   },
 };
