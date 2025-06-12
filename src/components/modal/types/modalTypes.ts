@@ -45,6 +45,7 @@ export interface ModalTypes {
     cancelButtonText: string;
     confirmButtonText: string;
   };
+  newMaterialModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
@@ -111,5 +112,9 @@ export const modalTypes: ModalTypes = {
       "Esta acción provocará la eliminación permanente del subsistema.",
     cancelButtonText: "Cancelar",
     confirmButtonText: "Confirmar",
+  },
+  newMaterialModal: {
+    name: "newMaterialModal",
+    title: "Formulario de creación de Material",
   },
 };
