@@ -78,7 +78,12 @@ export default function InspectionsStructureSection({
     {
       icon: <Trash2Icon className="h-3 w-3" />,
       label: "Eliminar subsistema",
-      onClick: (id) => console.log("Eliminar subsistema:", id),
+      onClick: (id) => {
+        handleOpenModal({
+          name: modalTypes.deleteSubsystemModal.name,
+          entity: id,
+        });
+      },
       variant: "destructive",
     },
   ];
