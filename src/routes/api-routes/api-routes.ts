@@ -15,6 +15,9 @@ export const apiRoutes = {
   systems: {
     create: `${process.env.NEXT_PUBLIC_API_URL}sistemas-config/createSistemaConfig`,
   },
+  tools: {
+    get: `${process.env.NEXT_PUBLIC_API_URL}herramienta-analisis-criticidad/getAllHerramientasAnalisisCriticidad`,
+  },
 } as const;
 
 export const tagsCacheByRoutes = {
@@ -26,5 +29,9 @@ export const tagsCacheByRoutes = {
   systems: {
     singleTag: "system",
     multipleTag: "systems",
+  },
+  tools: {
+    singleTag: "tool",
+    multipleTag: "tools",
   },
 } as const;
