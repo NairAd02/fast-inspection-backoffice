@@ -46,7 +46,6 @@ export default function InspectionsStructureSection({
         handleOpenModal({
           name: modalTypes.deleteSystemModal.name,
           entity: id,
-          secondaryEntity: configVersion,
         });
       },
       variant: "destructive",
