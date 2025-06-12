@@ -111,7 +111,12 @@ export default function InspectionsStructureSection({
     {
       icon: <Trash2Icon className="h-3 w-3" />,
       label: "Eliminar material",
-      onClick: (id) => console.log("Eliminar material:", id),
+      onClick: (id) => {
+        handleOpenModal({
+          name: modalTypes.deleteMaterialModal.name,
+          entity: id,
+        });
+      },
       variant: "destructive",
     },
   ];
