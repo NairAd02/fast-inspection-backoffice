@@ -6,7 +6,7 @@ export interface InfoModal {
   actionInsert?: (element: any) => void;
   onClose?: () => void;
   onOpen?: () => void;
-  actionExecute?: () => void
+  actionExecute?: () => void;
 }
 export interface SectionModal {
   name: string;
@@ -28,6 +28,7 @@ export interface ModalTypes {
     confirmButtonText: string;
   };
   replicateConfigModal: SectionModal;
+  newSystemModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
@@ -60,5 +61,9 @@ export const modalTypes: ModalTypes = {
   replicateConfigModal: {
     name: "replicateConfigModal",
     title: "Formulario de Replicación de Configuración",
+  },
+  newSystemModal: {
+    name: "newSystemModal",
+    title: "Formulario de creación de Sistema",
   },
 };
