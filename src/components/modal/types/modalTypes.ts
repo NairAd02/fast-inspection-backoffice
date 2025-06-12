@@ -46,6 +46,7 @@ export interface ModalTypes {
     confirmButtonText: string;
   };
   newMaterialModal: SectionModal;
+  editMaterialModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
@@ -116,5 +117,9 @@ export const modalTypes: ModalTypes = {
   newMaterialModal: {
     name: "newMaterialModal",
     title: "Formulario de creación de Material",
+  },
+  editMaterialModal: {
+    name: "editMaterialModal",
+    title: "Formulario de edición de Material",
   },
 };
