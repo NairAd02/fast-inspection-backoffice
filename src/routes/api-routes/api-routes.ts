@@ -13,6 +13,7 @@ export const apiRoutes = {
     getSystemsConfig: `${process.env.NEXT_PUBLIC_API_URL}configs/getSistemasConfig/:version`,
   },
   systems: {
+    getById: `${process.env.NEXT_PUBLIC_API_URL}sistemas-config/getSistemaConfig/:id`,
     create: `${process.env.NEXT_PUBLIC_API_URL}sistemas-config/createSistemaConfig`,
     edit: `${process.env.NEXT_PUBLIC_API_URL}sistemas-config/updateSistemaConfig/:id`,
   },
