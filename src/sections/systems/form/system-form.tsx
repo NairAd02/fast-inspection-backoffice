@@ -1,17 +1,14 @@
 "use client";
-import { RHFSelectField } from "@/components/form/rhf-components/rhf-select-field/rhf-select-field";
 import { RHFTextField } from "@/components/form/rhf-components/rhf-text-field/rhf-text-field";
-import useTools from "@/sections/tools/hooks/use-tools";
 import React from "react";
+import SystemToolsField from "./system-tools-field";
 
 interface Props {
-  configVersion: string;
+  configVersion?: string;
+  editMode?: boolean;
 }
 
-export default function SystemForm({ configVersion }: Props) {
-  const { tools, loadingData: loadingDataTools } = useTools({
-    defaultsFilters: { versionConfig: configVersion },
-  });
+export default function SystemForm({ configVersion, editMode = false }: Props) {
   return (
     <div className="flex flex-col gap-4 p-2">
       <RHFTextField
@@ -20,15 +17,9 @@ export default function SystemForm({ configVersion }: Props) {
         placeholder="Introduzca nombre del sistema"
         fullWidth
       />
-      <RHFSelectField
-        name="herramienta"
-        options={tools.map((tool) => ({
-          value: tool.id.toString(),
-          label: tool.nombre,
-        }))}
-        loading={loadingDataTools}
-        fullWidth
-      />
+      {editMode && configVersion && (
+        <SystemToolsField configVersion={configVersion} />
+      )}
     </div>
   );
 }
