@@ -3,6 +3,7 @@ import React, { ReactNode, useContext } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../tabs";
 import { TabsPanelContext } from "./context/tabs-panel-context";
 
+
 interface Props {
   currentTab: string;
   onSelectTab?: (value: string) => void;
@@ -40,13 +41,12 @@ const TabPanel = ({
       <TabsList className={`flex ${fullWidth ? "w-full" : ""}`}>
         {tabs.map((item) => (
           <TabsTrigger
-            key={item.value}
             value={item.value}
             className={`flex items-center gap-2 ${fullWidth ? "flex-1" : ""}`}
             onClick={() => onClickTab?.(item)}
           >
             {item.icon && item.icon}
-            {item.label}
+            <p className="hidden sm:flex">{item.label}</p>
           </TabsTrigger>
         ))}
       </TabsList>
