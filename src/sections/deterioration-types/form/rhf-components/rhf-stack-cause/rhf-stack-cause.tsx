@@ -9,7 +9,7 @@ export default function RHFStackCause({ index }: Props) {
   return (
     <div className="flex items-center">
       <RHFTextField
-        name={`causa.${index}.nombre`}
+        name={`causas.${index}.nombre`}
         placeholder="Introduzca el nombre de la causa"
         fullWidth
       />
