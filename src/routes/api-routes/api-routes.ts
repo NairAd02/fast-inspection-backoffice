@@ -30,6 +30,9 @@ export const apiRoutes = {
     edit: `${process.env.NEXT_PUBLIC_API_URL}materiales-config/updateMaterialConfig/:id`,
     delete: `${process.env.NEXT_PUBLIC_API_URL}materiales-config/deleteMaterialConfig/:id`,
   },
+  deteriorationTypes: {
+    create: `${process.env.NEXT_PUBLIC_API_URL}tipo-deterioro-analisis-criticidad-config/createTipoDeterioroAnalisisCriticidadConfig`,
+  },
   tools: {
     get: `${process.env.NEXT_PUBLIC_API_URL}herramienta-analisis-criticidad/getAllHerramientasAnalisisCriticidad`,
   },
@@ -52,6 +55,10 @@ export const tagsCacheByRoutes = {
   materials: {
     singleTag: "material",
     multipleTag: "materials",
+  },
+  deteriorationTypes: {
+    singleTag: "deteriorationType",
+    multipleTag: "deteriorationTypes",
   },
   tools: {
     singleTag: "tool",
