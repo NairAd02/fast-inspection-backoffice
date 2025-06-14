@@ -2,6 +2,8 @@ import Modal from "@/components/modal/modal";
 import { modalTypes } from "@/components/modal/types/modalTypes";
 import ConfigManagementContainer from "@/sections/configs/config-management/config-management-container";
 import { RevalidateConfigInformationProvider } from "@/sections/configs/context/revalidate-config-information-context/revalidate-config-information-context";
+import DeteriorationTypeForm from "@/sections/deterioration-types/form/deterioration-type-form";
+import NewDeteriorationTypeModalContainer from "@/sections/deterioration-types/form/new/new-deterioration-type-form-container";
 import DeleteMaterialModalContainer from "@/sections/materials/delete/delete-material-modal-container";
 import EditMaterialModalContainer from "@/sections/materials/form/edit/edit-material-form-modal-container";
 import NewMaterialModalContainer from "@/sections/materials/form/new/new-material-form-modal-container";
@@ -85,6 +87,16 @@ export default async function ConfigManagementPage({ params }: Props) {
           title={modalTypes.deleteMaterialModal.title}
         >
           <DeleteMaterialModalContainer />
+        </Modal>
+
+        {/* Modals Deterioration Types */}
+        <Modal
+          formPath={modalTypes.newDeteriorationTypeModal.name}
+          title={modalTypes.newDeteriorationTypeModal.title}
+          maxWidth="max-w-4xl"
+          className="min-w-[100vh] max-h-[90vh]"
+        >
+          <NewDeteriorationTypeModalContainer />
         </Modal>
       </RevalidateConfigInformationProvider>
     </>
