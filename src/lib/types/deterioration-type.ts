@@ -1,4 +1,4 @@
-import { Cause } from "./causes";
+import { Cause, CauseCreateDTO } from "./causes";
 import { DefinedFieldCreateDTO } from "./defined-fields";
 
 export interface DeteriorationType {
@@ -21,7 +21,7 @@ export interface DeteriorationTypeCreateDTO {
   nombre: string;
   detectabilidad: number;
   camposDefinidos: DefinedFieldCreateDTO[];
-  causas: Cause[];
+  causas: CauseCreateDTO[];
   materialConfig: {
     id: string;
   };
