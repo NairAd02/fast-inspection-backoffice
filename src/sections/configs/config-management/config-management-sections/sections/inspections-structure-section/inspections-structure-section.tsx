@@ -94,7 +94,12 @@ export default function InspectionsStructureSection({
     {
       icon: <PlusIcon className="h-3 w-3" />,
       label: "Añadir tipo de deterioro",
-      onClick: (id) => console.log("Añadir tipo de deterioro al material:", id),
+      onClick: (id) => {
+        handleOpenModal({
+          name: modalTypes.newDeteriorationTypeModal.name,
+          entity: id,
+        });
+      },
       variant: "ghost",
     },
     {
