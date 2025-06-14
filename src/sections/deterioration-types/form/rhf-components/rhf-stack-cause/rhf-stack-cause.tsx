@@ -5,7 +5,7 @@ interface Props {
   index: number;
 }
 
-export default function RHFStackCausa({ index }: Props) {
+export default function RHFStackCause({ index }: Props) {
   return (
     <div className="flex items-center">
       <RHFTextField
