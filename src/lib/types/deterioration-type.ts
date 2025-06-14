@@ -42,7 +42,14 @@ export const convertDeteriorationTypeCreateDTO = (
       ...deteriorationTypeCreate.camposDefinidosTexto,
       ...deteriorationTypeCreate.camposDefinidosImagen,
       ...deteriorationTypeCreate.camposDefinidosNumericos,
-      ...deteriorationTypeCreate.camposDefinidosSeleccion,
+      ...deteriorationTypeCreate.camposDefinidosSeleccion.map(
+        (selectionDefinedField) => ({
+          ...selectionDefinedField,
+          opciones: selectionDefinedField.opciones.map(
+            (option) => option.nombre
+          ),
+        })
+      ),
     ],
     materialConfig: { id: materialId },
   };
