@@ -53,6 +53,7 @@ export interface ModalTypes {
     cancelButtonText: string;
     confirmButtonText: string;
   };
+  newDeteriorationTypeModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
@@ -136,5 +137,9 @@ export const modalTypes: ModalTypes = {
       "Esta acción provocará la eliminación permanente del material.",
     cancelButtonText: "Cancelar",
     confirmButtonText: "Confirmar",
+  },
+  newDeteriorationTypeModal: {
+    name: "newDeteriorationTypeModal",
+    title: "Formulario de creación de Tipo de Deterioro",
   },
 };
