@@ -1,3 +1,4 @@
+import { DeteriorationTypeCreate } from "@/sections/deterioration-types/form/new/schemas/deterioration-type-create-schema";
 import { Cause, CauseCreateDTO } from "./causes";
 import { DefinedFieldCreateDTO } from "./defined-fields";
 
@@ -27,3 +28,22 @@ export interface DeteriorationTypeCreateDTO {
   };
   camposAfectados: { id: string }[];
 }
+
+export const convertDeteriorationTypeCreateDTO = (
+  deteriorationTypeCreate: DeteriorationTypeCreate,
+  materialId: string
+): DeteriorationTypeCreateDTO => {
+  return {
+    ...deteriorationTypeCreate,
+    camposAfectados: deteriorationTypeCreate.camposAfectados.map(
+      (affectedField) => ({ id: affectedField })
+    ),
+    camposDefinidos: [
+      ...deteriorationTypeCreate.camposDefinidosTexto,
+      ...deteriorationTypeCreate.camposDefinidosImagen,
+      ...deteriorationTypeCreate.camposDefinidosNumericos,
+      ...deteriorationTypeCreate.camposDefinidosSeleccion,
+    ],
+    materialConfig: { id: materialId },
+  };
+};
