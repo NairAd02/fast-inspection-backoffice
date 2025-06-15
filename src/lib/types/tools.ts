@@ -1,9 +1,18 @@
 import { ToolsFilters } from "@/sections/tools/filters/hooks/use-tools-filters";
+import { FieldCreateDTO } from "./fields";
 
 export interface Tool {
   id: number;
   nombre: string;
   tipo: TipoHerramienta;
+}
+
+export interface ToolCreateDTO {
+  nombre: string;
+  campos: FieldCreateDTO[];
+  config: {
+    version: string;
+  };
 }
 
 export interface ToolsFiltersDTO {
