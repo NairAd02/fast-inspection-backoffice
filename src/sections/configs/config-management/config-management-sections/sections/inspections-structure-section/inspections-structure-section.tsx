@@ -143,7 +143,12 @@ export default function InspectionsStructureSection({
     {
       icon: <Trash2Icon className="h-3 w-3" />,
       label: "Eliminar tipo de deterioro",
-      onClick: (id) => console.log("Eliminar tipo de deterioro:", id),
+      onClick: (id) => {
+        handleOpenModal({
+          name: modalTypes.deleteDeteriorationTypeModal.name,
+          entity: id,
+        });
+      },
       variant: "destructive",
     },
   ];
