@@ -6,7 +6,7 @@ import { QueryParamsURLFactory } from "../request";
 import { apiRoutes, tagsCacheByRoutes } from "@/routes/api-routes/api-routes";
 import { buildApiResponse } from "../api";
 import { PaginationResponse } from "../types/pagination";
-import { Tool } from "../types/tools";
+import { Tool, ToolCreateDTO } from "../types/tools";
 
 export async function getToolsList(params: IQueryable) {
   const session = await auth();
@@ -22,4 +22,18 @@ export async function getToolsList(params: IQueryable) {
   });
 
   return await buildApiResponse<PaginationResponse<Tool>>(res);
+}
+
+export async function createTool(toolCreateDTO: ToolCreateDTO) {
+  const session = await auth();
+  const res = await fetch(apiRoutes.tools.create, {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer " + session?.accessToken,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(toolCreateDTO),
+  });
+
+  return await buildApiResponse<Tool>(res);
 }
