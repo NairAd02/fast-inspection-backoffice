@@ -46,6 +46,7 @@ export default function useTools({ defaultsFilters }: Props) {
             perPage: clientPagination.pageSize,
           },
           versionConfig: filters.versionConfig,
+          nombre: filters.nombre
         });
 
         if (!res.response || res.error)
