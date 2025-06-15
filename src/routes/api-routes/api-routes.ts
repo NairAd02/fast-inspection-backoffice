@@ -34,6 +34,7 @@ export const apiRoutes = {
     getById: `${process.env.NEXT_PUBLIC_API_URL}tipo-deterioro-analisis-criticidad-config/getTipoDeterioroAnalisisCriticidad/:id`,
     create: `${process.env.NEXT_PUBLIC_API_URL}tipo-deterioro-analisis-criticidad-config/createTipoDeterioroAnalisisCriticidadConfig`,
     edit: `${process.env.NEXT_PUBLIC_API_URL}tipo-deterioro-analisis-criticidad-config/updateTipoDeterioroAnalisisCriticidad/:id`,
+    delete: `${process.env.NEXT_PUBLIC_API_URL}tipo-deterioros-config/deleteTipoDeterioroConfig/:id`,
   },
   tools: {
     get: `${process.env.NEXT_PUBLIC_API_URL}herramienta-analisis-criticidad/getAllHerramientasAnalisisCriticidad`,
