@@ -26,6 +26,7 @@ import {
 import { DataTablePagination } from "./data-table-pagination";
 import React, { ReactNode } from "react";
 import { Button } from "./button";
+import { Loader2 } from "lucide-react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -33,6 +34,7 @@ interface DataTableProps<TData, TValue> {
   dataEmptyText?: string;
   initialVisibilityState?: VisibilityState;
   filters?: ReactNode;
+  isLoading?: boolean;
 }
 
 export function DataTable<TData, TValue>({
@@ -41,6 +43,7 @@ export function DataTable<TData, TValue>({
   dataEmptyText = "No hay resultados.",
   initialVisibilityState = {},
   filters,
+  isLoading = false,
 }: DataTableProps<TData, TValue>) {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>(initialVisibilityState);
@@ -58,7 +61,7 @@ export function DataTable<TData, TValue>({
   return (
     <div className="flex flex-col gap-4">
       <div className="flex gap-4 items-center py-4">
-         {filters && filters}
+        {filters && filters}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
@@ -84,9 +87,15 @@ export function DataTable<TData, TValue>({
                 );
               })}
           </DropdownMenuContent>
-        </DropdownMenu>   
+        </DropdownMenu>
       </div>
-      <div className="rounded-md border">
+      <div className="rounded-md border relative">
+        {isLoading && (
+          <div className="absolute inset-0 bg-white bg-opacity-50 flex items-center justify-center z-10">
+            <Loader2 className="h-8 w-8 animate-spin" />
+          </div>
+        )}
+
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -107,7 +116,20 @@ export function DataTable<TData, TValue>({
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length ? (
+            {isLoading ? (
+              Array(table.getState().pagination.pageSize)
+                .fill(0)
+                .map((_, index) => (
+                  <TableRow key={`skeleton-${index}`}>
+                    {table.getAllLeafColumns().map((column) => (
+                      <TableCell key={`skeleton-cell-${column.id}-${index}`}>
+                        <div className="h-6 bg-gray-100 rounded animate-pulse"></div>
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ))
+            ) : table.getRowModel().rows?.length ? (
+              // Datos cargados
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
