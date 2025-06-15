@@ -13,11 +13,13 @@ export interface ToolsFilters {
 interface Props {
   setPagination?: Dispatch<SetStateAction<Pagination>>;
   defaultsFilters?: ToolsFilters;
+  urlPagination?: boolean;
 }
 
 export default function useToolsFilters({
   setPagination,
   defaultsFilters = {},
+  urlPagination = false,
 }: Props) {
   const { updateFiltersInUrl } = useUrlFilters();
   const [filters, setFilters] = useState<ToolsFilters>(defaultsFilters);
@@ -31,14 +33,14 @@ export default function useToolsFilters({
       ...prev,
       ...updatedFilters,
     }));
-    updateFiltersInUrl(convertToolsFiltersDTO(newFilters));
+    if (urlPagination) updateFiltersInUrl(convertToolsFiltersDTO(newFilters));
     if (setPagination)
       setPagination((oldPagination) => ({ ...oldPagination, page: 1 }));
   }
 
   function handleResetFilters() {
     setFilters({});
-    updateFiltersInUrl({});
+    if (urlPagination) updateFiltersInUrl({});
     if (setPagination)
       setPagination((oldPagination) => ({ ...oldPagination, page: 1 }));
   }
