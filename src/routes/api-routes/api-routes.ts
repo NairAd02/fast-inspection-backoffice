@@ -32,6 +32,7 @@ export const apiRoutes = {
   },
   deteriorationTypes: {
     create: `${process.env.NEXT_PUBLIC_API_URL}tipo-deterioro-analisis-criticidad-config/createTipoDeterioroAnalisisCriticidadConfig`,
+    edit: `${process.env.NEXT_PUBLIC_API_URL}tipo-deterioro-analisis-criticidad-config/updateTipoDeterioroAnalisisCriticidad/:id`,
   },
   tools: {
     get: `${process.env.NEXT_PUBLIC_API_URL}herramienta-analisis-criticidad/getAllHerramientasAnalisisCriticidad`,
