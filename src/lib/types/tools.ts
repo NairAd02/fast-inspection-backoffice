@@ -3,7 +3,7 @@ import { ToolsFilters } from "@/sections/tools/filters/hooks/use-tools-filters";
 export interface Tool {
   id: number;
   nombre: string;
-  tipo: string;
+  tipo: TipoHerramienta;
 }
 
 export interface ToolsFiltersDTO {
@@ -17,3 +17,27 @@ export const convertToolsFiltersDTO = (
     ...filters,
   };
 };
+
+export enum TipoHerramienta {
+  AnalisisCriticidad = "herramientaAnalisisCriticidad",
+}
+
+export const toolsTypeMap: Map<
+  TipoHerramienta,
+  {
+    name: string;
+    color:
+      | "default"
+      | "primary"
+      | "secondary"
+      | "error"
+      | "info"
+      | "success"
+      | "warning";
+  }
+> = new Map([
+  [
+    TipoHerramienta.AnalisisCriticidad,
+    { name: "Análisis de Criticidad", color: "primary" },
+  ],
+]);
