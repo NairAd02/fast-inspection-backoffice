@@ -1,4 +1,4 @@
-import ToolsListContainer from "@/sections/tools/list/tools-list-container";
+import ToolsList from "@/sections/tools/list/tools-list";
 import React from "react";
 
 interface Props {
@@ -6,5 +6,5 @@ interface Props {
 }
 
 export default function ToolsSection({ configVersion }: Props) {
-  return <ToolsListContainer configVersion={configVersion} />;
+  return <ToolsList configVersion={configVersion} />;
 }
