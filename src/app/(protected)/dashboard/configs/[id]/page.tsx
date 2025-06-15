@@ -96,7 +96,7 @@ export default async function ConfigManagementPage({ params }: Props) {
           formPath={modalTypes.newDeteriorationTypeModal.name}
           title={modalTypes.newDeteriorationTypeModal.title}
           maxWidth="max-w-4xl"
-          className="min-w-[100vh] max-h-[90vh]"
+          className="max-h-[90vh]"
         >
           <NewDeteriorationTypeModalContainer />
         </Modal>
@@ -105,7 +105,7 @@ export default async function ConfigManagementPage({ params }: Props) {
           formPath={modalTypes.editDeteriorationTypeModal.name}
           title={modalTypes.editDeteriorationTypeModal.title}
           maxWidth="max-w-4xl"
-          className="min-w-[100vh] min-h-[70vh] max-h-[90vh]"
+          className="min-h-[70vh] max-h-[90vh]"
         >
           <EditDeteriorationTypeModalContainer />
         </Modal>
@@ -121,7 +121,7 @@ export default async function ConfigManagementPage({ params }: Props) {
           formPath={modalTypes.detailsDeteriorationTypeModal.name}
           title={modalTypes.detailsDeteriorationTypeModal.title}
           maxWidth="max-w-4xl"
-          className="min-w-[100vh] min-h-[70vh] max-h-[90vh]"
+          className="min-h-[70vh] max-h-[90vh]"
         >
           <DeteriorationTypeDetailsModalContainer />
         </Modal>
