@@ -1,5 +1,10 @@
+import ToolsListContainer from "@/sections/tools/list/tools-list-container";
 import React from "react";
 
-export default function ToolsSection() {
-  return <div>ToolsSection</div>;
+interface Props {
+  configVersion: string;
+}
+
+export default function ToolsSection({ configVersion }: Props) {
+  return <ToolsListContainer configVersion={configVersion} />;
 }
