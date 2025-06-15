@@ -27,6 +27,7 @@ import { DataTablePagination } from "./data-table-pagination";
 import React, { ReactNode } from "react";
 import { Button } from "./button";
 import { Loader2 } from "lucide-react";
+import { LoadingSpinner } from "./loading-spinner";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -90,12 +91,6 @@ export function DataTable<TData, TValue>({
         </DropdownMenu>
       </div>
       <div className="rounded-md border relative">
-        {isLoading && (
-          <div className="absolute inset-0 bg-white bg-opacity-50 flex items-center justify-center z-10">
-            <Loader2 className="h-8 w-8 animate-spin" />
-          </div>
-        )}
-
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -117,19 +112,17 @@ export function DataTable<TData, TValue>({
           </TableHeader>
           <TableBody>
             {isLoading ? (
-              Array(table.getState().pagination.pageSize)
-                .fill(0)
-                .map((_, index) => (
-                  <TableRow key={`skeleton-${index}`}>
-                    {table.getAllLeafColumns().map((column) => (
-                      <TableCell key={`skeleton-cell-${column.id}-${index}`}>
-                        <div className="h-6 bg-gray-100 rounded animate-pulse"></div>
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                ))
+              <TableRow>
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
+                >
+                  <div className="flex items-center justify-center">
+                    <LoadingSpinner className="size-12" />
+                  </div>
+                </TableCell>
+              </TableRow>
             ) : table.getRowModel().rows?.length ? (
-              // Datos cargados
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
