@@ -3,7 +3,7 @@ import { useFieldArray, useFormContext } from "react-hook-form";
 import { TextDefinedFieldCreate } from "../../new/schemas/text-defined-field-create-schema";
 import { DefinedFieldTypes } from "@/lib/types/defined-fields";
 import { NumericDefinedFieldCreate } from "../../new/schemas/numeric-defined-field-create-schema";
-import { ImageDefinedFieldCreate } from "../../new/schemas/image-defined-field-schema";
+import { ImageDefinedFieldCreate } from "../../new/schemas/image-defined-field-create-schema";
 import { SelectionDefinedFieldCreate } from "../../new/schemas/selection-defined-field-create-schema";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import PopoverContainer from "@/components/ui/popover-container";
