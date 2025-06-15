@@ -2,6 +2,7 @@ import { DeteriorationTypeCreate } from "@/sections/deterioration-types/form/new
 import { Cause, CauseCreateDTO } from "./causes";
 import { DefinedField, DefinedFieldCreateDTO } from "./defined-fields";
 import { Field } from "./fields";
+import { DeteriorationTypeEdit } from "@/sections/deterioration-types/form/edit/schemas/deterioration-type-edit-schema";
 
 export interface DeteriorationType {
   id: number;
@@ -38,9 +39,6 @@ export interface DeteriorationTypeEditDTO {
   detectabilidad: number;
   camposDefinidos: DefinedFieldCreateDTO[];
   causas: CauseCreateDTO[];
-  materialConfig: {
-    id: string;
-  };
   camposAfectados: { id: string }[];
 }
 
@@ -70,5 +68,32 @@ export const convertDeteriorationTypeCreateDTO = (
       })),
     ],
     materialConfig: { id: materialId },
+  };
+};
+
+export const convertDeteriorationTypeEditDTO = (
+  deteriorationTypeEdit: DeteriorationTypeEdit
+): DeteriorationTypeEditDTO => {
+  const {
+    camposDefinidosImagen,
+    camposDefinidosNumericos,
+    camposDefinidosSeleccion,
+    camposDefinidosTexto,
+    ...rest
+  } = deteriorationTypeEdit;
+  return {
+    ...rest,
+    camposAfectados: rest.camposAfectados.map((affectedField) => ({
+      id: affectedField,
+    })),
+    camposDefinidos: [
+      ...camposDefinidosTexto,
+      ...camposDefinidosImagen,
+      ...camposDefinidosNumericos,
+      ...camposDefinidosSeleccion.map((selectionDefinedField) => ({
+        ...selectionDefinedField,
+        opciones: selectionDefinedField.opciones.map((option) => option.nombre),
+      })),
+    ],
   };
 };
