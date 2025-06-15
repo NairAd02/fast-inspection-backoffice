@@ -55,9 +55,9 @@ export const convertDeteriorationTypeCreateDTO = (
   } = deteriorationTypeCreate;
   return {
     ...rest,
-    camposAfectados: rest.camposAfectados.map(
-      (affectedField) => ({ id: affectedField })
-    ),
+    camposAfectados: rest.camposAfectados.map((affectedField) => ({
+      id: affectedField,
+    })),
     camposDefinidos: [
       ...camposDefinidosTexto,
       ...camposDefinidosImagen,
@@ -96,4 +96,10 @@ export const convertDeteriorationTypeEditDTO = (
       })),
     ],
   };
+};
+
+export const getDetectabilityLevel = (level: number) => {
+  if (level === 1) return { text: "Baja", variant: "success" as const };
+  if (level === 2) return { text: "Media", variant: "secondary" as const };
+  return { text: "Alta", variant: "destructive" as const };
 };
