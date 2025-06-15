@@ -1,6 +1,7 @@
 import { DeteriorationTypeCreate } from "@/sections/deterioration-types/form/new/schemas/deterioration-type-create-schema";
-import { CauseCreateDTO } from "./causes";
-import { DefinedFieldCreateDTO } from "./defined-fields";
+import { Cause, CauseCreateDTO } from "./causes";
+import { DefinedField, DefinedFieldCreateDTO } from "./defined-fields";
+import { Field } from "./fields";
 
 export interface DeteriorationType {
   id: number;
@@ -14,11 +15,25 @@ export interface DeteriorationTypeDetails {
   id: number;
   nombre: string;
   detectabilidad: number;
+  camposAfectados: Field[];
   cantCamposAfectados: number;
   cantCausas: number;
+  camposDefinidos: DefinedField[];
+  causas: Cause[];
 }
 
 export interface DeteriorationTypeCreateDTO {
+  nombre: string;
+  detectabilidad: number;
+  camposDefinidos: DefinedFieldCreateDTO[];
+  causas: CauseCreateDTO[];
+  materialConfig: {
+    id: string;
+  };
+  camposAfectados: { id: string }[];
+}
+
+export interface DeteriorationTypeEditDTO {
   nombre: string;
   detectabilidad: number;
   camposDefinidos: DefinedFieldCreateDTO[];
