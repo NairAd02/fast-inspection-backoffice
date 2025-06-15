@@ -61,6 +61,7 @@ export interface ModalTypes {
     cancelButtonText: string;
     confirmButtonText: string;
   };
+  detailsDeteriorationTypeModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
@@ -161,5 +162,9 @@ export const modalTypes: ModalTypes = {
       "Esta acción provocará la eliminación permanente del tipo de deterioro.",
     cancelButtonText: "Cancelar",
     confirmButtonText: "Confirmar",
+  },
+  detailsDeteriorationTypeModal: {
+    name: "detailsDeteriorationTypeModal",
+    title: "Detalles de Tipo de Deterioro",
   },
 };
