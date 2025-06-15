@@ -38,6 +38,7 @@ export const apiRoutes = {
   },
   tools: {
     get: `${process.env.NEXT_PUBLIC_API_URL}herramienta-analisis-criticidad/getAllHerramientasAnalisisCriticidad`,
+    create: `${process.env.NEXT_PUBLIC_API_URL}herramienta-analisis-criticidad/createHerramientaAnalisisCriticidad`,
   },
   fields: {
     get: `${process.env.NEXT_PUBLIC_API_URL}campo/getAllCampos`,
