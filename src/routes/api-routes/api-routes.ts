@@ -36,6 +36,9 @@ export const apiRoutes = {
   tools: {
     get: `${process.env.NEXT_PUBLIC_API_URL}herramienta-analisis-criticidad/getAllHerramientasAnalisisCriticidad`,
   },
+  fields: {
+    get: `${process.env.NEXT_PUBLIC_API_URL}campo/getAllCampos`,
+  },
 } as const;
 
 export const tagsCacheByRoutes = {
@@ -63,5 +66,9 @@ export const tagsCacheByRoutes = {
   tools: {
     singleTag: "tool",
     multipleTag: "tools",
+  },
+  fields: {
+    singleTag: "field",
+    multipleTag: "fields",
   },
 } as const;
