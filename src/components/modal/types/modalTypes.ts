@@ -54,6 +54,7 @@ export interface ModalTypes {
     confirmButtonText: string;
   };
   newDeteriorationTypeModal: SectionModal;
+  editDeteriorationTypeModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
@@ -141,5 +142,9 @@ export const modalTypes: ModalTypes = {
   newDeteriorationTypeModal: {
     name: "newDeteriorationTypeModal",
     title: "Formulario de creación de Tipo de Deterioro",
+  },
+  editDeteriorationTypeModal: {
+    name: "editDeteriorationTypeModal",
+    title: "Formulario de edición de Tipo de Deterioro",
   },
 };
