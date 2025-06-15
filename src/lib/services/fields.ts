@@ -5,7 +5,8 @@ import { QueryParamsURLFactory } from "../request";
 import { apiRoutes, tagsCacheByRoutes } from "@/routes/api-routes/api-routes";
 import { buildApiResponse } from "../api";
 import { PaginationResponse } from "../types/pagination";
-import { Field } from "react-hook-form";
+import { Field } from "../types/fields";
+
 
 export async function getFieldsList(params: IQueryable) {
   const session = await auth();
