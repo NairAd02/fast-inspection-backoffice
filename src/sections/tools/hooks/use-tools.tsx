@@ -25,7 +25,12 @@ export default function useTools({ defaultsFilters }: Props) {
     clientHandlePageSizeChange,
   } = useClientPagination();
   const [pagination, setPagination] = useState<Pagination>(clientPagination);
-  const { filters, handleChangeFilters, handleResetFilters } = useToolsFilters({
+  const {
+    filters,
+    handleChangeFilters,
+    handleResetFilters,
+    getActiveFiltersCount,
+  } = useToolsFilters({
     setPagination: setClientPagination,
     defaultsFilters,
   });
@@ -78,11 +83,14 @@ export default function useTools({ defaultsFilters }: Props) {
     loadingData,
     error,
     pagination,
-    filters,
+    filters: {
+      filters: filters,
+      handleChangeFilters,
+      handleResetFilters,
+      getActiveFiltersCount,
+    },
     fetchTools,
     clientHandleChangePage,
     clientHandlePageSizeChange,
-    handleChangeFilters,
-    handleResetFilters,
   };
 }
