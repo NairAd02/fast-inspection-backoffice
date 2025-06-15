@@ -64,3 +64,19 @@ export async function getDeteriorationTypeById(id: string) {
 
   return await buildApiResponse<DeteriorationTypeDetails>(res);
 }
+
+export async function deleteDeteriorationType(id: string) {
+  const session = await auth();
+  const res = await fetch(
+    apiRoutes.deteriorationTypes.delete.replace(":id", id),
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + session?.accessToken,
+        "content-type": "application/json",
+      },
+    }
+  );
+
+  return await buildApiResponse<DeteriorationType>(res);
+}
