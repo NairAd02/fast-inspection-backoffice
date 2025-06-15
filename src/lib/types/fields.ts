@@ -1,3 +1,5 @@
+import { FieldCreate } from "@/sections/tools/form/new/schemas/field-create-schema";
+
 export interface Field {
   id: number;
   nombre: string;
@@ -9,6 +11,16 @@ export interface FieldCreateDTO {
   nivelImportancia: number;
   configVersion: string;
 }
+
+export const convertFieldCreateDTO = (
+  fieldCreate: FieldCreate,
+  configVersion: string
+): FieldCreateDTO => {
+  return {
+    ...fieldCreate,
+    configVersion,
+  };
+};
 
 // Get importance level badge variant
 export const getImportanceBadgeVariant = (level: number) => {
