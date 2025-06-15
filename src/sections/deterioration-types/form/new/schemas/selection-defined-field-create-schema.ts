@@ -4,7 +4,7 @@ import { z } from "zod";
 export interface SelectionDefinedFieldCreate {
   nombre: string;
   tipo: DefinedFieldTypes;
-  opciones: string[];
+  opciones: { nombre: string }[];
 }
 
 export const selectionDefinedFieldCreateSchema = z.object({
@@ -18,6 +18,12 @@ export const selectionDefinedFieldCreateSchema = z.object({
     DefinedFieldTypes.TEXT,
   ]),
   opciones: z
-    .array(z.string())
+    .array(
+      z.object({
+        nombre: z
+          .string()
+          .min(1, { message: "El nombre de la opción es requerido" }),
+      })
+    )
     .min(1, { message: "Se debe de seleccionar al menos una opción" }),
 });
