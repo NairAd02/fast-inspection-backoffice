@@ -39,7 +39,10 @@ export default function useToolsFilters({
   }
 
   function handleResetFilters() {
-    setFilters({});
+    setFilters((prev) => ({
+      nombre: undefined,
+      versionConfig: prev.versionConfig,
+    }));
     if (urlPagination) updateFiltersInUrl({});
     if (setPagination)
       setPagination((oldPagination) => ({ ...oldPagination, page: 1 }));
