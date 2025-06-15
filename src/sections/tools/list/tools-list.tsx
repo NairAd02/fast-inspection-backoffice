@@ -8,13 +8,18 @@ import { ColumnDef } from "@tanstack/react-table";
 import { EditIcon, Trash2Icon } from "lucide-react";
 import React, { useCallback, useContext } from "react";
 import useTools from "../hooks/use-tools";
+import ToolsFiltersContainer from "../filters/tools-filters-container";
 
 interface Props {
   configVersion: string;
 }
 
 export default function ToolsList({ configVersion }: Props) {
-  const { tools, loadingData: loadingDataTools } = useTools({
+  const {
+    tools,
+    loadingData: loadingDataTools,
+    filters,
+  } = useTools({
     defaultsFilters: {
       versionConfig: configVersion,
     },
@@ -95,6 +100,14 @@ export default function ToolsList({ configVersion }: Props) {
         data={tools}
         isLoading={loadingDataTools}
         initialVisibilityState={{ id: false }}
+        filters={
+          <ToolsFiltersContainer
+            filters={filters.filters}
+            getActiveFiltersCount={filters.getActiveFiltersCount}
+            handleChangeFilters={filters.handleChangeFilters}
+            handleResetFilters={filters.handleResetFilters}
+          />
+        }
       />
     </div>
   );
