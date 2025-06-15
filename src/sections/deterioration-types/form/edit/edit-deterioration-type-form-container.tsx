@@ -13,7 +13,10 @@ import {
   DeteriorationTypeEdit,
   deteriorationTypeEditSchema,
 } from "./schemas/deterioration-type-edit-schema";
-import { DefinedFieldTypes } from "@/lib/types/defined-fields";
+import {
+  DefinedFieldTypes,
+  SelectionDefinedField,
+} from "@/lib/types/defined-fields";
 import useEditDeteriorationType from "../../hooks/use-edit-deterioration-type";
 
 interface Props {
@@ -53,9 +56,19 @@ export default function EditDeteriorationFormContainer({
       camposDefinidosNumericos: deteriorationType.camposDefinidos.filter(
         (definedField) => definedField.tipo === DefinedFieldTypes.NUMERIC
       ),
-      camposDefinidosSeleccion: deteriorationType.camposDefinidos.filter(
-        (definedField) => definedField.tipo === DefinedFieldTypes.SELECTION
-      ),
+      camposDefinidosSeleccion: deteriorationType.camposDefinidos
+        .filter(
+          (definedField) => definedField.tipo === DefinedFieldTypes.SELECTION
+        )
+        .map((definedField) => {
+          const selectionDefinedField = definedField as SelectionDefinedField;
+          return {
+            ...selectionDefinedField,
+            opciones: selectionDefinedField.opciones.map((option) => ({
+              nombre: option,
+            })),
+          };
+        }),
       camposDefinidosTexto: deteriorationType.camposDefinidos.filter(
         (definedField) => definedField.tipo === DefinedFieldTypes.TEXT
       ),
