@@ -4,11 +4,17 @@ import { useCallback, useEffect, useState, useRef } from "react";
 import { debounce } from "lodash";
 import useClientPagination from "@/hooks/use-client-pagination";
 import { Pagination } from "@/lib/types/pagination";
-import useFieldsFilters from "../filters/hooks/use-fields-filters";
+import useFieldsFilters, {
+  FieldsFilters,
+} from "../filters/hooks/use-fields-filters";
 import { Field } from "@/lib/types/fields";
 import { getFieldsList } from "@/lib/services/fields";
 
-export default function useFields() {
+interface Props {
+  defaultsFilters?: FieldsFilters;
+}
+
+export default function useFields({ defaultsFilters }: Props) {
   const [fields, setFields] = useState<Field[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loadingData, setLoadingData] = useState(true);
@@ -20,7 +26,7 @@ export default function useFields() {
   } = useClientPagination();
   const [pagination, setPagination] = useState<Pagination>(clientPagination);
   const { filters, handleChangeFilters, handleResetFilters } = useFieldsFilters(
-    { setPagination: setClientPagination }
+    { setPagination: setClientPagination, defaultsFilters }
   );
 
   const debouncedFetchRef = useRef(
