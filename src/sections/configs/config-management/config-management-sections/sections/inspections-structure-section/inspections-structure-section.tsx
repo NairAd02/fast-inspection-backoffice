@@ -10,7 +10,7 @@ import DeteriororationTypeTreeItem from "@/sections/deterioration-types/componen
 import MaterialTreeItem from "@/sections/materials/components/material-tree-item/material-tree-item";
 import SubsystemTreeItem from "@/sections/subsystems/components/subsystem-tree-item/subsystem-tree-item";
 import SystemTreeItem from "@/sections/systems/components/system-tree-item/system-tree-item";
-import { EditIcon, PlusIcon, Trash2Icon } from "lucide-react";
+import { EditIcon, EyeIcon, PlusIcon, Trash2Icon } from "lucide-react";
 import AddSystemButton from "./components/add-system-button/add-system-button";
 import { ModalContext } from "@/components/modal/context/modalContext";
 import { modalTypes } from "@/components/modal/types/modalTypes";
@@ -128,6 +128,17 @@ export default function InspectionsStructureSection({
   ];
 
   const deteriorationTypesActions: TreeAction[] = [
+    {
+      icon: <EyeIcon className="h-3 w-3" />,
+      label: "Ver detalles",
+      onClick: (id) => {
+        handleOpenModal({
+          name: modalTypes.detailsDeteriorationTypeModal.name,
+          entity: id,
+        });
+      },
+      variant: "ghost",
+    },
     {
       icon: <EditIcon className="h-3 w-3" />,
       label: "Editar tipo de deterioro",
