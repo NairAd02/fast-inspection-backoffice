@@ -39,3 +39,19 @@ export enum DefinedFieldTypes {
   NUMERIC = "CampoDefinidoNumerico",
   SELECTION = "CampoDefinidoSeleccion",
 }
+
+// Get field type display name
+export const getFieldTypeDisplayName = (type: DefinedFieldTypes) => {
+  switch (type) {
+    case DefinedFieldTypes.IMAGE:
+      return "Imagen";
+    case DefinedFieldTypes.TEXT:
+      return "Texto";
+    case DefinedFieldTypes.NUMERIC:
+      return "Numérico";
+    case DefinedFieldTypes.SELECTION:
+      return "Selección";
+    default:
+      return "Desconocido";
+  }
+};
