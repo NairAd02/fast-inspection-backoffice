@@ -4,10 +4,16 @@ export interface Field {
   nivelImportancia: number;
 }
 
- // Get importance level badge variant
- export const getImportanceBadgeVariant = (level: number) => {
-    if (level >= 8) return "destructive";
-    if (level >= 6) return "secondary";
-    if (level >= 4) return "outline";
-    return "success";
-  };
+export interface FieldCreateDTO {
+  nombre: String;
+  nivelImportancia: number;
+  configVersion: string;
+}
+
+// Get importance level badge variant
+export const getImportanceBadgeVariant = (level: number) => {
+  if (level >= 8) return "destructive";
+  if (level >= 6) return "secondary";
+  if (level >= 4) return "outline";
+  return "success";
+};
