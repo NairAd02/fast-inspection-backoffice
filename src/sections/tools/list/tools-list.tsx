@@ -7,12 +7,18 @@ import { Tool, toolsTypeMap } from "@/lib/types/tools";
 import { ColumnDef } from "@tanstack/react-table";
 import { EditIcon, Trash2Icon } from "lucide-react";
 import React, { useCallback, useContext } from "react";
+import useTools from "../hooks/use-tools";
 
 interface Props {
-  tools: Tool[];
+  configVersion: string;
 }
 
-export default function ToolsList({ tools }: Props) {
+export default function ToolsList({ configVersion }: Props) {
+  const { tools, loadingData: loadingDataTools } = useTools({
+    defaultsFilters: {
+      versionConfig: configVersion,
+    },
+  });
   const { handleOpenModal } = useContext(ModalContext);
 
   const handleEdit = useCallback(
@@ -87,6 +93,7 @@ export default function ToolsList({ tools }: Props) {
       <DataTable
         columns={columns}
         data={tools}
+        isLoading={loadingDataTools}
         initialVisibilityState={{ id: false }}
       />
     </div>
