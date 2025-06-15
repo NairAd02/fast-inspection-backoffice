@@ -14,7 +14,7 @@ import {
 import {
   ImageDefinedFieldCreate,
   imageDefinedFieldCreateSchema,
-} from "./image-defined-field-schema";
+} from "./image-defined-field-create-schema";
 
 export interface DeteriorationTypeCreate {
   nombre: string;
