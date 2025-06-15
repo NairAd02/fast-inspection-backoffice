@@ -1,5 +1,6 @@
 import { ToolsFilters } from "@/sections/tools/filters/hooks/use-tools-filters";
-import { FieldCreateDTO } from "./fields";
+import { convertFieldCreateDTO, FieldCreateDTO } from "./fields";
+import { ToolCreate } from "@/sections/tools/form/new/schemas/tool-create-schema";
 
 export interface Tool {
   id: number;
@@ -14,6 +15,19 @@ export interface ToolCreateDTO {
     version: string;
   };
 }
+
+export const convertToolCreateDTO = (
+  toolCreate: ToolCreate,
+  configVersion: string
+): ToolCreateDTO => {
+  return {
+    ...toolCreate,
+    config: { version: configVersion },
+    campos: toolCreate.campos.map((field) =>
+      convertFieldCreateDTO(field, configVersion)
+    ),
+  };
+};
 
 export interface ToolsFiltersDTO {
   nombre?: string;
