@@ -4,6 +4,7 @@ import { auth } from "@/auth";
 import {
   DeteriorationType,
   DeteriorationTypeCreateDTO,
+  DeteriorationTypeEditDTO,
 } from "../types/deterioration-type";
 import { apiRoutes } from "@/routes/api-routes/api-routes";
 import { buildApiResponse } from "../api";
@@ -21,6 +22,26 @@ export async function createDeteriorationType(
     },
     body: JSON.stringify(deteriorationTypeCreateDTO),
   });
+
+  return await buildApiResponse<DeteriorationType>(res);
+}
+
+export async function editDeteriorationType(
+  id: string,
+  deteriorationTypeEditDTO: DeteriorationTypeEditDTO
+) {
+  const session = await auth();
+  const res = await fetch(
+    apiRoutes.deteriorationTypes.edit.replace(":id", id),
+    {
+      method: "PATCH",
+      headers: {
+        Authorization: "Bearer " + session?.accessToken,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(deteriorationTypeEditDTO),
+    }
+  );
 
   return await buildApiResponse<DeteriorationType>(res);
 }
