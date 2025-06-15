@@ -94,10 +94,11 @@ export default function InspectionsStructureSection({
     {
       icon: <PlusIcon className="h-3 w-3" />,
       label: "Añadir tipo de deterioro",
-      onClick: (id) => {
+      onClick: (id, toolId) => {
         handleOpenModal({
           name: modalTypes.newDeteriorationTypeModal.name,
           entity: id,
+          secondaryEntity: toolId,
         });
       },
       variant: "ghost",
@@ -160,6 +161,7 @@ export default function InspectionsStructureSection({
             return {
               id: "M" + material.id.toString(),
               dataId: material.id.toString(),
+              metaData: system.herramienta.id.toString(),
               content: <MaterialTreeItem key={index} material={restMaterial} />,
               actions: materialsActions,
               children: tiposDeteriorosConfig.map(
@@ -167,6 +169,7 @@ export default function InspectionsStructureSection({
                   return {
                     id: "T" + deteriorationType.id.toString(),
                     dataId: deteriorationType.id.toString(),
+                    metaData: system.herramienta.id.toString(),
                     content: (
                       <DeteriororationTypeTreeItem
                         key={index}
