@@ -47,7 +47,7 @@ export async function editDeteriorationType(
   return await buildApiResponse<DeteriorationType>(res);
 }
 
-export async function getMaterialById(id: string) {
+export async function getDeteriorationTypeById(id: string) {
   const session = await auth();
   const res = await fetch(
     apiRoutes.deteriorationTypes.getById.replace(":id", id),
