@@ -35,7 +35,7 @@ export default function ConfigManagementSectionsContainer({ version }: Props) {
             title="Herramientas"
             description="Administre las herramientas de esta configuración"
           >
-            <ToolsSection />
+            <ToolsSection configVersion={version} />
           </SectionContainer>
         ),
       },
