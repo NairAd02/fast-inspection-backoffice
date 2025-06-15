@@ -55,6 +55,12 @@ export interface ModalTypes {
   };
   newDeteriorationTypeModal: SectionModal;
   editDeteriorationTypeModal: SectionModal;
+  deleteDeteriorationTypeModal: SectionModal & {
+    message: string;
+    warningMessage: string;
+    cancelButtonText: string;
+    confirmButtonText: string;
+  };
 }
 
 export const modalTypes: ModalTypes = {
@@ -146,5 +152,14 @@ export const modalTypes: ModalTypes = {
   editDeteriorationTypeModal: {
     name: "editDeteriorationTypeModal",
     title: "Formulario de edición de Tipo de Deterioro",
+  },
+  deleteDeteriorationTypeModal: {
+    name: "deleteDeteriorationTypeModal",
+    title: "Eliminación de Tipo de Deterioro",
+    message: "¿Está seguro de que desea eliminar el tipo de deterioro?",
+    warningMessage:
+      "Esta acción provocará la eliminación permanente del tipo de deterioro.",
+    cancelButtonText: "Cancelar",
+    confirmButtonText: "Confirmar",
   },
 };
