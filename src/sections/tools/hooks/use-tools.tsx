@@ -40,7 +40,7 @@ export default function useTools({ defaultsFilters }: Props) {
             page: clientPagination.page,
             perPage: clientPagination.pageSize,
           },
-          search: filters.search,
+          versionConfig: filters.versionConfig,
         });
 
         if (!res.response || res.error)
