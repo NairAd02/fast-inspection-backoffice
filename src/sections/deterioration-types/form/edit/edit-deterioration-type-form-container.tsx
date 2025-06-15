@@ -94,7 +94,7 @@ export default function EditDeteriorationFormContainer({
             Cancelar
           </Button>
           <Button variant={"default"} type="submit" disabled={submitLoading}>
-            Crear Tipo de Deterioro
+            Editar Tipo de Deterioro
           </Button>
         </div>
       </form>
