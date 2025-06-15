@@ -35,7 +35,7 @@ export function RHFListField<T>({
   return (
     <Card>
       <CardHeader className="pb-4">
-        <CardTitle className="text-lg flex items-center justify-between">
+        <CardTitle className="text-lg flex flex-col gap-2 md:flex-row items-center justify-between">
           {label}
           <Button
             size="sm"
