@@ -31,6 +31,8 @@ export default function useFields({ defaultsFilters }: Props) {
 
   const debouncedFetchRef = useRef(
     debounce(async (filters, clientPagination) => {
+        console.log("Filtros")
+      console.log(filters)
       setLoadingData(true);
       setError(null);
       try {
@@ -39,7 +41,7 @@ export default function useFields({ defaultsFilters }: Props) {
             page: clientPagination.page,
             perPage: clientPagination.pageSize,
           },
-          search: filters.search,
+          idHerramienta: filters.idHerramienta,
         });
 
         if (!res.response || res.error)
