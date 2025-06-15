@@ -7,15 +7,20 @@ import { Dispatch, SetStateAction, useState } from "react";
 
 export interface FieldsFilters {
   nombre?: string;
+  idHerramienta?: string;
 }
 
 interface Props {
   setPagination?: Dispatch<SetStateAction<Pagination>>;
+  defaultsFilters?: FieldsFilters;
 }
 
-export default function useFieldsFilters({ setPagination }: Props) {
+export default function useFieldsFilters({
+  setPagination,
+  defaultsFilters = {},
+}: Props) {
   const { updateFiltersInUrl } = useUrlFilters();
-  const [filters, setFilters] = useState<FieldsFilters>({});
+  const [filters, setFilters] = useState<FieldsFilters>(defaultsFilters);
 
   async function handleChangeFilters(updatedFilters: Partial<FieldsFilters>) {
     const newFilters = {
