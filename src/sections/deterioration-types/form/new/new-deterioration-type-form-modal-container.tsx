@@ -16,9 +16,13 @@ import DeteriorationTypeForm from "../deterioration-type-form";
 
 interface Props {
   materialId: string;
+  toolId: string;
 }
 
-export default function NewDeteriorationFormContainer({ materialId }: Props) {
+export default function NewDeteriorationFormContainer({
+  materialId,
+  toolId,
+}: Props) {
   const { handleCloseModal } = useContext(ModalContext);
   const { revalidateConfigInformation } = useContext(
     RevalidateConfigInformationContext
@@ -58,7 +62,7 @@ export default function NewDeteriorationFormContainer({ materialId }: Props) {
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
-        <DeteriorationTypeForm />
+        <DeteriorationTypeForm toolId={toolId} />
         <div className="flex gap-2 justify-end">
           <Button type="button" variant={"destructive"} onClick={handleClose}>
             Cancelar

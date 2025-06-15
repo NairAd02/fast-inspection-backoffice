@@ -8,6 +8,12 @@ export default function NewDeteriorationTypeModalContainer() {
   const { getInfoModal } = useContext(ModalContext);
   const infoModal = getInfoModal(modalTypes.newDeteriorationTypeModal.name);
   const id = infoModal && infoModal.entity ? infoModal.entity : null;
-
-  return <NewDeteriorationFormContainer materialId={id as string} />;
+  const toolId =
+    infoModal && infoModal.secondaryEntity ? infoModal.secondaryEntity : null;
+  return (
+    <NewDeteriorationFormContainer
+      materialId={id as string}
+      toolId={toolId as string}
+    />
+  );
 }
