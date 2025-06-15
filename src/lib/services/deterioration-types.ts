@@ -11,6 +11,7 @@ import { buildApiResponse } from "../api";
 export async function createDeteriorationType(
   deteriorationTypeCreateDTO: DeteriorationTypeCreateDTO
 ) {
+  console.log(deteriorationTypeCreateDTO);
   const session = await auth();
   const res = await fetch(apiRoutes.deteriorationTypes.create, {
     method: "POST",
