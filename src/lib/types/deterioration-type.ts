@@ -55,7 +55,7 @@ export const convertDeteriorationTypeCreateDTO = (
   } = deteriorationTypeCreate;
   return {
     ...rest,
-    camposAfectados: deteriorationTypeCreate.camposAfectados.map(
+    camposAfectados: rest.camposAfectados.map(
       (affectedField) => ({ id: affectedField })
     ),
     camposDefinidos: [
