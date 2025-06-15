@@ -131,7 +131,13 @@ export default function InspectionsStructureSection({
     {
       icon: <EditIcon className="h-3 w-3" />,
       label: "Editar tipo de deterioro",
-      onClick: (id) => console.log("Editar tipo de deterioro:", id),
+      onClick: (id, toolId) => {
+        handleOpenModal({
+          name: modalTypes.editDeteriorationTypeModal.name,
+          entity: id,
+          secondaryEntity: toolId,
+        });
+      },
       variant: "ghost",
     },
     {
