@@ -31,6 +31,7 @@ export const apiRoutes = {
     delete: `${process.env.NEXT_PUBLIC_API_URL}materiales-config/deleteMaterialConfig/:id`,
   },
   deteriorationTypes: {
+    getById: `${process.env.NEXT_PUBLIC_API_URL}tipo-deterioro-analisis-criticidad-config/getTipoDeterioroAnalisisCriticidad/:id`,
     create: `${process.env.NEXT_PUBLIC_API_URL}tipo-deterioro-analisis-criticidad-config/createTipoDeterioroAnalisisCriticidadConfig`,
     edit: `${process.env.NEXT_PUBLIC_API_URL}tipo-deterioro-analisis-criticidad-config/updateTipoDeterioroAnalisisCriticidad/:id`,
   },
