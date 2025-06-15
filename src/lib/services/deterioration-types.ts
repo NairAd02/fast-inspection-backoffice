@@ -4,9 +4,10 @@ import { auth } from "@/auth";
 import {
   DeteriorationType,
   DeteriorationTypeCreateDTO,
+  DeteriorationTypeDetails,
   DeteriorationTypeEditDTO,
 } from "../types/deterioration-type";
-import { apiRoutes } from "@/routes/api-routes/api-routes";
+import { apiRoutes, tagsCacheByRoutes } from "@/routes/api-routes/api-routes";
 import { buildApiResponse } from "../api";
 
 export async function createDeteriorationType(
@@ -44,4 +45,22 @@ export async function editDeteriorationType(
   );
 
   return await buildApiResponse<DeteriorationType>(res);
+}
+
+export async function getMaterialById(id: string) {
+  const session = await auth();
+  const res = await fetch(
+    apiRoutes.deteriorationTypes.getById.replace(":id", id),
+    {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + session?.accessToken,
+      },
+      next: {
+        tags: [tagsCacheByRoutes.deteriorationTypes.singleTag + ": " + id],
+      },
+    }
+  );
+
+  return await buildApiResponse<DeteriorationTypeDetails>(res);
 }
