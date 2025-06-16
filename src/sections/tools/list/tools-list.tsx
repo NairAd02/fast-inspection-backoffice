@@ -34,7 +34,7 @@ export default function ToolsList({ configVersion }: Props) {
       entity: configVersion,
       actionExecute: fetchTools,
     });
-  }, [handleOpenModal]);
+  }, [handleOpenModal, configVersion, fetchTools]);
 
   const handleEdit = useCallback(
     (id: string) => {
