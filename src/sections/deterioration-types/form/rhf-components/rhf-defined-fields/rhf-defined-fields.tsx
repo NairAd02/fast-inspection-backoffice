@@ -85,19 +85,19 @@ export default function RHFDefinedFields() {
   console.log(selectionDefinedFields);
   const handleAddTextDefinedField = useCallback(() => {
     appendTextDefinedField(newTextDefinedField);
-  }, [appendTextDefinedField]);
+  }, [appendTextDefinedField, newTextDefinedField]);
 
   const handleAddImageDefinedField = useCallback(() => {
     appendImageDefinedField(newImageDefinedField);
-  }, [appendImageDefinedField]);
+  }, [appendImageDefinedField, newImageDefinedField]);
 
   const handleAddSelectionDefinedField = useCallback(() => {
     appendSelectionDefinedField(newSelectionDefinedField);
-  }, [appendSelectionDefinedField]);
+  }, [appendSelectionDefinedField, newSelectionDefinedField]);
 
   const handleAddNumericDefinedField = useCallback(() => {
     appendNumericDefinedField(newNumericDefinedField);
-  }, [appendNumericDefinedField]);
+  }, [appendNumericDefinedField, newNumericDefinedField]);
 
   return (
     <Card>
