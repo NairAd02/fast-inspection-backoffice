@@ -12,6 +12,7 @@ interface Props<T> {
   StackComponent: React.ComponentType<{ index: number }>;
   newItem: T;
   addButtonLabel?: string;
+  className?: string
 }
 
 export function RHFListField<T>({
@@ -21,6 +22,7 @@ export function RHFListField<T>({
   StackComponent,
   newItem,
   addButtonLabel = "Agregar",
+  className
 }: Props<T>) {
   const { control } = useFormContext();
   const { fields, append, remove } = useFieldArray({
@@ -49,7 +51,7 @@ export function RHFListField<T>({
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="space-y-3 max-h-[23vh] overflow-auto">
+        <div className={"space-y-3 overflow-auto " + className}>
           {fields.length > 0 ? (
             fields.map((field, index) => (
               <div
