@@ -22,30 +22,6 @@ import {
 import { DeleteMask } from "@/components/delete-mask/delete-mask";
 
 export default function RHFDefinedFields() {
-  const newTextDefinedField: TextDefinedFieldCreate = {
-    nombre: "",
-    tipo: DefinedFieldTypes.TEXT,
-  };
-
-  const newNumericDefinedField: NumericDefinedFieldCreate = {
-    nombre: "",
-    inicioIntervalo: 1,
-    finalIntervalo: 1000,
-    unidadMedida: "",
-    tipo: DefinedFieldTypes.NUMERIC,
-  };
-
-  const newImageDefinedField: ImageDefinedFieldCreate = {
-    nombre: "",
-    tipo: DefinedFieldTypes.IMAGE,
-  };
-
-  const newSelectionDefinedField: SelectionDefinedFieldCreate = {
-    nombre: "",
-    tipo: DefinedFieldTypes.SELECTION,
-    opciones: [],
-  };
-
   const { control } = useFormContext();
   const {
     fields: textDefinedFields,
@@ -84,20 +60,40 @@ export default function RHFDefinedFields() {
   });
   console.log(selectionDefinedFields);
   const handleAddTextDefinedField = useCallback(() => {
+    const newTextDefinedField: TextDefinedFieldCreate = {
+      nombre: "",
+      tipo: DefinedFieldTypes.TEXT,
+    };
     appendTextDefinedField(newTextDefinedField);
-  }, [appendTextDefinedField, newTextDefinedField]);
+  }, [appendTextDefinedField]);
 
   const handleAddImageDefinedField = useCallback(() => {
+    const newImageDefinedField: ImageDefinedFieldCreate = {
+      nombre: "",
+      tipo: DefinedFieldTypes.IMAGE,
+    };
     appendImageDefinedField(newImageDefinedField);
-  }, [appendImageDefinedField, newImageDefinedField]);
+  }, [appendImageDefinedField]);
 
   const handleAddSelectionDefinedField = useCallback(() => {
+    const newSelectionDefinedField: SelectionDefinedFieldCreate = {
+      nombre: "",
+      tipo: DefinedFieldTypes.SELECTION,
+      opciones: [],
+    };
     appendSelectionDefinedField(newSelectionDefinedField);
-  }, [appendSelectionDefinedField, newSelectionDefinedField]);
+  }, [appendSelectionDefinedField]);
 
   const handleAddNumericDefinedField = useCallback(() => {
+    const newNumericDefinedField: NumericDefinedFieldCreate = {
+      nombre: "",
+      inicioIntervalo: 1,
+      finalIntervalo: 1000,
+      unidadMedida: "",
+      tipo: DefinedFieldTypes.NUMERIC,
+    };
     appendNumericDefinedField(newNumericDefinedField);
-  }, [appendNumericDefinedField, newNumericDefinedField]);
+  }, [appendNumericDefinedField]);
 
   return (
     <Card>
