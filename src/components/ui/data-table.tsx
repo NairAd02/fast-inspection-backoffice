@@ -26,8 +26,9 @@ import {
 import { DataTablePagination } from "./data-table-pagination";
 import React, { ReactNode } from "react";
 import { Button } from "./button";
-import { Loader2 } from "lucide-react";
+import { Loader2, PlusIcon } from "lucide-react";
 import { LoadingSpinner } from "./loading-spinner";
+import AddButtonSectionsHeader from "../sections-header/add-button-sections-header/add-button-sections-header";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -36,6 +37,10 @@ interface DataTableProps<TData, TValue> {
   initialVisibilityState?: VisibilityState;
   filters?: ReactNode;
   isLoading?: boolean;
+  addButton?: {
+    buttonText?: string;
+    action: () => void;
+  };
 }
 
 export function DataTable<TData, TValue>({
@@ -45,6 +50,7 @@ export function DataTable<TData, TValue>({
   initialVisibilityState = {},
   filters,
   isLoading = false,
+  addButton,
 }: DataTableProps<TData, TValue>) {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>(initialVisibilityState);
@@ -61,34 +67,46 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex gap-4 items-center py-4">
+      <div className="flex gap-4 justify-between items-center py-4">
         {filters && filters}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
-              Columns
+        <div className="flex gap-4">
+          {addButton && (
+            <Button
+              className="flex gap-2"
+              onClick={() => {
+                addButton.action();
+              }}
+            >
+              <PlusIcon /> {addButton.buttonText || "Crear Entidad"}
             </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
-                return (
-                  <DropdownMenuCheckboxItem
-                    key={column.id}
-                    className="capitalize"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) =>
-                      column.toggleVisibility(!!value)
-                    }
-                  >
-                    {column.id}
-                  </DropdownMenuCheckboxItem>
-                );
-              })}
-          </DropdownMenuContent>
-        </DropdownMenu>
+          )}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" className="ml-auto">
+                Columns
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {table
+                .getAllColumns()
+                .filter((column) => column.getCanHide())
+                .map((column) => {
+                  return (
+                    <DropdownMenuCheckboxItem
+                      key={column.id}
+                      className="capitalize"
+                      checked={column.getIsVisible()}
+                      onCheckedChange={(value) =>
+                        column.toggleVisibility(!!value)
+                      }
+                    >
+                      {column.id}
+                    </DropdownMenuCheckboxItem>
+                  );
+                })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
       <div className="rounded-md border relative">
         <Table>
