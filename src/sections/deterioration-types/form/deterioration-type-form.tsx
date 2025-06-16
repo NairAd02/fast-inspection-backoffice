@@ -38,6 +38,7 @@ export default function DeteriorationTypeForm({ toolId }: Props) {
           emptyText="No se han introducido causas"
           newItem={{ nombre: "" }}
           StackComponent={RHFStackCause}
+          className="max-h-[24vh] p-2"
         />
       </div>
 
