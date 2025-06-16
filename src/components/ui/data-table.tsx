@@ -26,9 +26,9 @@ import {
 import { DataTablePagination } from "./data-table-pagination";
 import React, { ReactNode } from "react";
 import { Button } from "./button";
-import { Loader2, PlusIcon } from "lucide-react";
+import { PlusIcon } from "lucide-react";
 import { LoadingSpinner } from "./loading-spinner";
-import AddButtonSectionsHeader from "../sections-header/add-button-sections-header/add-button-sections-header";
+
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
