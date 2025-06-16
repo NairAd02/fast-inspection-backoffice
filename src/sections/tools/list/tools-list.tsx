@@ -9,6 +9,7 @@ import { EditIcon, Trash2Icon } from "lucide-react";
 import React, { useCallback, useContext } from "react";
 import useTools from "../hooks/use-tools";
 import ToolsFiltersContainer from "../filters/tools-filters-container";
+import { modalTypes } from "@/components/modal/types/modalTypes";
 
 interface Props {
   configVersion: string;
@@ -19,12 +20,21 @@ export default function ToolsList({ configVersion }: Props) {
     tools,
     loadingData: loadingDataTools,
     filters,
+    fetchTools,
   } = useTools({
     defaultsFilters: {
       versionConfig: configVersion,
     },
   });
   const { handleOpenModal } = useContext(ModalContext);
+
+  const handleCreate = useCallback(() => {
+    handleOpenModal({
+      name: modalTypes.newToolModal.name,
+      entity: configVersion,
+      actionExecute: fetchTools,
+    });
+  }, [handleOpenModal]);
 
   const handleEdit = useCallback(
     (id: string) => {
@@ -108,6 +118,10 @@ export default function ToolsList({ configVersion }: Props) {
             handleResetFilters={filters.handleResetFilters}
           />
         }
+        addButton={{
+          buttonText: "Crear Herramienta",
+          action: handleCreate,
+        }}
       />
     </div>
   );

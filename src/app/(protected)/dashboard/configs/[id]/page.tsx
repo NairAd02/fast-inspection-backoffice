@@ -15,6 +15,7 @@ import NewSubsystemModalContainer from "@/sections/subsystems/form/new/new-subsy
 import DeleteSystemModalContainer from "@/sections/systems/delete/delete-system-modal-container";
 import EditSystemModalContainer from "@/sections/systems/form/edit/edit-system-form-modal-containter";
 import NewSystemModalContainer from "@/sections/systems/form/new/new-system-form-modal-container";
+import NewToolFormModalContainer from "@/sections/tools/form/new/new-tool-form-modal-container";
 import React from "react";
 
 type Props = {
@@ -124,6 +125,14 @@ export default async function ConfigManagementPage({ params }: Props) {
           className="min-h-[70vh] max-h-[90vh]"
         >
           <DeteriorationTypeDetailsModalContainer />
+        </Modal>
+
+        {/* Modals Tools */}
+        <Modal
+          formPath={modalTypes.newToolModal.name}
+          title={modalTypes.newToolModal.title}
+        >
+          <NewToolFormModalContainer />
         </Modal>
       </RevalidateConfigInformationProvider>
     </>
