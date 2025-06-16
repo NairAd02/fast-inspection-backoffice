@@ -7,7 +7,7 @@ export interface Field {
 }
 
 export interface FieldCreateDTO {
-  nombre: String;
+  nombre: string;
   nivelImportancia: number;
   configVersion: string;
 }
