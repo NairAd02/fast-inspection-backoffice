@@ -1,8 +1,6 @@
 import {
   averageImportance,
-  criticalFields,
   highImportanceFields,
-  lowImportanceFields,
   mediumImportanceFields,
   ToolDetails,
 } from "@/lib/types/tools";
