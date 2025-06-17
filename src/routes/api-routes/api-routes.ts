@@ -49,6 +49,9 @@ export const apiRoutes = {
   calculableIntervalIndices: {
     get: `${process.env.NEXT_PUBLIC_API_URL}indice-calculable-intervalo/getAllIndicesCalculablesIntervalos`,
   },
+  calculableNoIntervalIndices: {
+    get: `${process.env.NEXT_PUBLIC_API_URL}indice-calculable-sin-intervalo/getAllIndicesCalculablesSinIntervalos`,
+  },
 } as const;
 
 export const tagsCacheByRoutes = {
@@ -84,5 +87,9 @@ export const tagsCacheByRoutes = {
   calculableIntervalIndices: {
     singleTag: "calculableIntervalIndice",
     multipleTag: "calculableIntervalIndices",
+  },
+  calculableNoIntervalIndices: {
+    singleTag: "calculableNoIntervalIndice",
+    multipleTag: "calculableNoIntervalIndices",
   },
 } as const;
