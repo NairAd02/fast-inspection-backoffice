@@ -48,7 +48,7 @@ export default function ConfigManagementSectionsContainer({ version }: Props) {
             title="Índices Calculables"
             description="Administre los índices calculables de esta configuración"
           >
-            <IndicesSection />
+            <IndicesSection configVersion={version} />
           </SectionContainer>
         ),
       },
