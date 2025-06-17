@@ -41,6 +41,7 @@ export const apiRoutes = {
     getById: `${process.env.NEXT_PUBLIC_API_URL}herramienta-analisis-criticidad/getHerramientaAnalisisCriticidad/:id`,
     create: `${process.env.NEXT_PUBLIC_API_URL}herramienta-analisis-criticidad/createHerramientaAnalisisCriticidad`,
     edit: `${process.env.NEXT_PUBLIC_API_URL}herramienta-analisis-criticidad/updateHerramientaAnalisisCriticidad/:id`,
+    delete: `${process.env.NEXT_PUBLIC_API_URL}herramientas/deleteHerramienta/:id`,
   },
   fields: {
     get: `${process.env.NEXT_PUBLIC_API_URL}campo/getAllCampos`,
