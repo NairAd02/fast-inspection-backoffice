@@ -88,3 +88,18 @@ export const toolsTypeMap: Map<
     { name: "Análisis de Criticidad", color: "primary" },
   ],
 ]);
+
+export const averageImportance = (tool: ToolDetails) =>
+  tool.campos.length > 0
+    ? Math.round(
+        (tool.campos.reduce((sum, field) => sum + field.nivelImportancia, 0) /
+          tool.campos.length) *
+          10
+      ) / 10
+    : 0;
+
+export const highImportanceFields = (tool: ToolDetails) =>
+  tool.campos.filter((field) => field.nivelImportancia >= 7).length;
+
+export const criticalFields = (tool: ToolDetails) =>
+  tool.campos.filter((field) => field.nivelImportancia >= 9).length;
