@@ -6,7 +6,7 @@ import { QueryParamsURLFactory } from "../request";
 import { apiRoutes, tagsCacheByRoutes } from "@/routes/api-routes/api-routes";
 import { buildApiResponse } from "../api";
 import { PaginationResponse } from "../types/pagination";
-import { Tool, ToolCreateDTO } from "../types/tools";
+import { Tool, ToolCreateDTO, ToolDetails } from "../types/tools";
 import { ToolEdit } from "@/sections/tools/form/edit/schemas/tool-edit-schema";
 
 export async function getToolsList(params: IQueryable) {
@@ -23,6 +23,19 @@ export async function getToolsList(params: IQueryable) {
   });
 
   return await buildApiResponse<PaginationResponse<Tool>>(res);
+}
+
+export async function getToolById(id: string) {
+  const session = await auth();
+  const res = await fetch(apiRoutes.tools.getById.replace(":id", id), {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + session?.accessToken,
+    },
+    next: { tags: [tagsCacheByRoutes.systems.singleTag + ": " + id] },
+  });
+
+  return await buildApiResponse<ToolDetails>(res);
 }
 
 export async function createTool(toolCreateDTO: ToolCreateDTO) {
