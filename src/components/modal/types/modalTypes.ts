@@ -63,6 +63,7 @@ export interface ModalTypes {
   };
   detailsDeteriorationTypeModal: SectionModal;
   newToolModal: SectionModal;
+  editToolModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
@@ -171,5 +172,9 @@ export const modalTypes: ModalTypes = {
   newToolModal: {
     name: "newToolModal",
     title: "Formulario de creación de Herramienta",
+  },
+  editToolModal: {
+    name: "editToolModal",
+    title: "Formulario de edición de Herramienta",
   },
 };
