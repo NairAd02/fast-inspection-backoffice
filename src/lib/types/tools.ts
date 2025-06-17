@@ -104,6 +104,9 @@ export const highImportanceFields = (tool: ToolDetails) =>
 export const mediumImportanceFields = (tool: ToolDetails) =>
   tool.campos.filter((field) => field.nivelImportancia === 2).length;
 
+export const lowImportanceFields = (tool: ToolDetails) =>
+  tool.campos.filter((field) => field.nivelImportancia === 1).length;
+
 export const getImportanceInfo = (level: number) => {
   if (level === 3)
     return {
