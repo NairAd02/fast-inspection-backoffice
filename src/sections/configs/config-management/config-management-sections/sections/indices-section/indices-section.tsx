@@ -1,5 +1,5 @@
 import CalculableIntervalIndicesList from "@/sections/calculable-indices/calculable-interval-indices/list/calculable-interval-indices-list";
-import CalculableNoIntervalIndicesList from "@/sections/calculable-indices/calculable-no-interval-indices/list/calculable-no-interval-indices";
+import CalculableNoIntervalIndicesList from "@/sections/calculable-indices/calculable-no-interval-indices/list/calculable-no-interval-indices-list";
 import React from "react";
 
 interface Props {
