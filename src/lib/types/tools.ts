@@ -103,3 +103,35 @@ export const highImportanceFields = (tool: ToolDetails) =>
 
 export const criticalFields = (tool: ToolDetails) =>
   tool.campos.filter((field) => field.nivelImportancia >= 9).length;
+
+export const getImportanceInfo = (level: number) => {
+  if (level >= 9)
+    return {
+      variant: "destructive" as const,
+      text: "Crítico",
+      color: "text-red-600",
+    };
+  if (level >= 7)
+    return {
+      variant: "secondary" as const,
+      text: "Alto",
+      color: "text-orange-600",
+    };
+  if (level >= 5)
+    return {
+      variant: "outline" as const,
+      text: "Medio",
+      color: "text-yellow-600",
+    };
+  if (level >= 3)
+    return {
+      variant: "success" as const,
+      text: "Bajo",
+      color: "text-green-600",
+    };
+  return {
+    variant: "success" as const,
+    text: "Muy Bajo",
+    color: "text-green-600",
+  };
+};
