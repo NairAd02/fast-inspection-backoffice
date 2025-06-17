@@ -50,8 +50,9 @@ export default function ToolsList({ configVersion }: Props) {
   const handleDelete = useCallback(
     (id: string) => {
       handleOpenModal({
-        name: "modalTypes.deleteBrandModal.name",
+        name: modalTypes.deleteToolModal.name,
         entity: id,
+        actionExecute: fetchTools,
       });
     },
     [handleOpenModal]
