@@ -65,3 +65,16 @@ export async function editTool(id: string, toolEditDTO: ToolEdit) {
 
   return await buildApiResponse<Tool>(res);
 }
+
+export async function deleteTool(id: string) {
+  const session = await auth();
+  const res = await fetch(apiRoutes.tools.delete.replace(":id", id), {
+    method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + session?.accessToken,
+      "content-type": "application/json",
+    },
+  });
+
+  return await buildApiResponse<Tool>(res);
+}
