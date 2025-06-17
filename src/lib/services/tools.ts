@@ -7,6 +7,7 @@ import { apiRoutes, tagsCacheByRoutes } from "@/routes/api-routes/api-routes";
 import { buildApiResponse } from "../api";
 import { PaginationResponse } from "../types/pagination";
 import { Tool, ToolCreateDTO } from "../types/tools";
+import { ToolEdit } from "@/sections/tools/form/edit/schemas/tool-edit-schema";
 
 export async function getToolsList(params: IQueryable) {
   const session = await auth();
@@ -33,6 +34,20 @@ export async function createTool(toolCreateDTO: ToolCreateDTO) {
       "content-type": "application/json",
     },
     body: JSON.stringify(toolCreateDTO),
+  });
+
+  return await buildApiResponse<Tool>(res);
+}
+
+export async function editTool(id: string, toolEditDTO: ToolEdit) {
+  const session = await auth();
+  const res = await fetch(apiRoutes.tools.edit.replace(":id", id), {
+    method: "PATCH",
+    headers: {
+      Authorization: "Bearer " + session?.accessToken,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(toolEditDTO),
   });
 
   return await buildApiResponse<Tool>(res);
