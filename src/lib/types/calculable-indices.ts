@@ -3,7 +3,7 @@ export enum TipoIndiceCalculable {
   IndiceCalcuableSinIntervalo = "indiceCalculableSinIntervalo",
 }
 
-export const tiposIndiceCalculableTypeMap: Map<
+export const tiposIndiceCalculableMap: Map<
   TipoIndiceCalculable,
   {
     name: string;
@@ -33,3 +33,23 @@ export enum Calculos {
   Frecuencia = "Frecuencia",
   Criticidad = "Criticidad",
 }
+
+export const calculosMap: Map<
+  Calculos,
+  {
+    name: string;
+    color:
+      | "default"
+      | "primary"
+      | "secondary"
+      | "error"
+      | "info"
+      | "success"
+      | "warning";
+  }
+> = new Map([
+  [Calculos.Criticidad, { name: "Criticidad", color: "primary" }],
+  [Calculos.Detectabilidad, { name: "Detectabilidad", color: "primary" }],
+  [Calculos.Frecuencia, { name: "Frecuencia", color: "primary" }],
+  [Calculos.Impacto, { name: "Impacto", color: "primary" }],
+]);
