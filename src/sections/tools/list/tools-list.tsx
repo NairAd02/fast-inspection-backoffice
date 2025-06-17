@@ -38,7 +38,11 @@ export default function ToolsList({ configVersion }: Props) {
 
   const handleEdit = useCallback(
     (id: string) => {
-      handleOpenModal({ name: "modalTypes.editBrandModal.name", entity: id });
+      handleOpenModal({
+        name: modalTypes.editToolModal.name,
+        entity: id,
+        actionExecute: fetchTools,
+      });
     },
     [handleOpenModal]
   );
