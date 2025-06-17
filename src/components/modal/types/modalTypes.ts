@@ -64,6 +64,12 @@ export interface ModalTypes {
   detailsDeteriorationTypeModal: SectionModal;
   newToolModal: SectionModal;
   editToolModal: SectionModal;
+  deleteToolModal: SectionModal & {
+    message: string;
+    warningMessage: string;
+    cancelButtonText: string;
+    confirmButtonText: string;
+  };
 }
 
 export const modalTypes: ModalTypes = {
@@ -176,5 +182,14 @@ export const modalTypes: ModalTypes = {
   editToolModal: {
     name: "editToolModal",
     title: "Formulario de edición de Herramienta",
+  },
+  deleteToolModal: {
+    name: "deleteToolModal",
+    title: "Eliminación de Herramienta",
+    message: "¿Está seguro de que desea eliminar la herramienta?",
+    warningMessage:
+      "Esta acción provocará la eliminación permanente de la herramienta.",
+    cancelButtonText: "Cancelar",
+    confirmButtonText: "Confirmar",
   },
 };
