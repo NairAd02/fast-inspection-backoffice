@@ -5,7 +5,7 @@ import { DataTable } from "@/components/ui/data-table";
 import TableMenu from "@/components/ui/table-menu";
 import { Tool, toolsTypeMap } from "@/lib/types/tools";
 import { ColumnDef } from "@tanstack/react-table";
-import { EditIcon, Trash2Icon } from "lucide-react";
+import { EditIcon, EyeIcon, Trash2Icon } from "lucide-react";
 import React, { useCallback, useContext } from "react";
 import useTools from "../hooks/use-tools";
 import ToolsFiltersContainer from "../filters/tools-filters-container";
@@ -42,6 +42,16 @@ export default function ToolsList({ configVersion }: Props) {
         name: modalTypes.editToolModal.name,
         entity: id,
         actionExecute: fetchTools,
+      });
+    },
+    [handleOpenModal]
+  );
+
+  const handleViewDetails = useCallback(
+    (id: string) => {
+      handleOpenModal({
+        name: modalTypes.detailsToolModal.name,
+        entity: id,
       });
     },
     [handleOpenModal]
@@ -86,6 +96,13 @@ export default function ToolsList({ configVersion }: Props) {
             <TableMenu
               titleTableMenu="Acciones"
               actions={[
+                {
+                  label: "Ver Detalles",
+                  icon: <EyeIcon />,
+                  action: () => {
+                    handleViewDetails(row.getValue("id"));
+                  },
+                },
                 {
                   label: "Editar",
                   icon: <EditIcon />,

@@ -16,6 +16,7 @@ import DeleteSystemModalContainer from "@/sections/systems/delete/delete-system-
 import EditSystemModalContainer from "@/sections/systems/form/edit/edit-system-form-modal-containter";
 import NewSystemModalContainer from "@/sections/systems/form/new/new-system-form-modal-container";
 import DeleteToolModalContainer from "@/sections/tools/delete/delete-tool-modal-container";
+import ToolDetailsModalContainer from "@/sections/tools/details/tool-details-modal-container";
 import EditToolModalContainer from "@/sections/tools/form/edit/edit-tool-form-modal-container";
 import NewToolFormModalContainer from "@/sections/tools/form/new/new-tool-form-modal-container";
 import React from "react";
@@ -151,6 +152,15 @@ export default async function ConfigManagementPage({ params }: Props) {
           title={modalTypes.deleteToolModal.title}
         >
           <DeleteToolModalContainer />
+        </Modal>
+
+        <Modal
+          formPath={modalTypes.detailsToolModal.name}
+          title={modalTypes.detailsToolModal.title}
+          maxWidth="max-w-2xl"
+          className="min-h-[70vh] max-h-[90vh]"
+        >
+          <ToolDetailsModalContainer />
         </Modal>
       </RevalidateConfigInformationProvider>
     </>
