@@ -70,6 +70,7 @@ export interface ModalTypes {
     cancelButtonText: string;
     confirmButtonText: string;
   };
+  detailsToolModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
@@ -191,5 +192,9 @@ export const modalTypes: ModalTypes = {
       "Esta acción provocará la eliminación permanente de la herramienta.",
     cancelButtonText: "Cancelar",
     confirmButtonText: "Confirmar",
+  },
+  detailsToolModal: {
+    name: "detailsToolModal",
+    title: "Detalles de la Herramienta",
   },
 };
