@@ -44,7 +44,7 @@ export default function ToolsList({ configVersion }: Props) {
         actionExecute: fetchTools,
       });
     },
-    [handleOpenModal]
+    [handleOpenModal, fetchTools]
   );
 
   const handleViewDetails = useCallback(
@@ -65,7 +65,7 @@ export default function ToolsList({ configVersion }: Props) {
         actionExecute: fetchTools,
       });
     },
-    [handleOpenModal]
+    [handleOpenModal, fetchTools]
   );
 
   const columns: ColumnDef<Tool>[] = [
