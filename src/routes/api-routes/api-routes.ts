@@ -38,6 +38,7 @@ export const apiRoutes = {
   },
   tools: {
     get: `${process.env.NEXT_PUBLIC_API_URL}herramienta-analisis-criticidad/getAllHerramientasAnalisisCriticidad`,
+    getById: `${process.env.NEXT_PUBLIC_API_URL}herramienta-analisis-criticidad/getHerramientaAnalisisCriticidad/:id`,
     create: `${process.env.NEXT_PUBLIC_API_URL}herramienta-analisis-criticidad/createHerramientaAnalisisCriticidad`,
     edit: `${process.env.NEXT_PUBLIC_API_URL}herramienta-analisis-criticidad/updateHerramientaAnalisisCriticidad/:id`,
   },
