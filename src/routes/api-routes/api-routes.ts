@@ -46,6 +46,9 @@ export const apiRoutes = {
   fields: {
     get: `${process.env.NEXT_PUBLIC_API_URL}campo/getAllCampos`,
   },
+  calculableIntervalIndices: {
+    get: `${process.env.NEXT_PUBLIC_API_URL}indice-calculable-intervalo/getAllIndicesCalculablesIntervalos`,
+  },
 } as const;
 
 export const tagsCacheByRoutes = {
@@ -77,5 +80,9 @@ export const tagsCacheByRoutes = {
   fields: {
     singleTag: "field",
     multipleTag: "fields",
+  },
+  calculableIntervalIndices: {
+    singleTag: "calculableIntervalIndice",
+    multipleTag: "calculableIntervalIndices",
   },
 } as const;
