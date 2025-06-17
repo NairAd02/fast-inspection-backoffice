@@ -1,3 +1,4 @@
+import { FieldEdit } from "@/sections/tools/form/edit/schemas/field-edit-schema";
 import { FieldCreate } from "@/sections/tools/form/new/schemas/field-create-schema";
 
 export interface Field {
@@ -12,6 +13,11 @@ export interface FieldCreateDTO {
   configVersion: string;
 }
 
+export interface FieldEditDTO {
+  nombre: string;
+  nivelImportancia: number;
+}
+
 export const convertFieldCreateDTO = (
   fieldCreate: FieldCreate,
   configVersion: string
@@ -19,6 +25,12 @@ export const convertFieldCreateDTO = (
   return {
     ...fieldCreate,
     configVersion,
+  };
+};
+
+export const convertFieldEditDTO = (fieldEdit: FieldEdit): FieldEditDTO => {
+  return {
+    ...fieldEdit,
   };
 };
 
