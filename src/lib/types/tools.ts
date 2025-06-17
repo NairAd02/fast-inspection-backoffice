@@ -1,5 +1,10 @@
 import { ToolsFilters } from "@/sections/tools/filters/hooks/use-tools-filters";
-import { convertFieldCreateDTO, FieldCreateDTO, FieldEditDTO } from "./fields";
+import {
+  convertFieldCreateDTO,
+  Field,
+  FieldCreateDTO,
+  FieldEditDTO,
+} from "./fields";
 import { ToolCreate } from "@/sections/tools/form/new/schemas/tool-create-schema";
 import { ToolEdit } from "@/sections/tools/form/edit/schemas/tool-edit-schema";
 
@@ -7,6 +12,13 @@ export interface Tool {
   id: number;
   nombre: string;
   tipo: TipoHerramienta;
+}
+
+export interface ToolDetails {
+  id: number;
+  nombre: string;
+  tipo: TipoHerramienta;
+  campos: Field[];
 }
 
 export interface ToolCreateDTO {
