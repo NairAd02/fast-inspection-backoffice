@@ -1,7 +1,11 @@
 import { CalculableNoIntervalIndicesFilters } from "@/sections/calculable-indices/calculable-no-interval-indices/filters/hooks/use-calculable-no-interval-indices-filters";
 import { Calculos, TipoIndiceCalculable } from "./calculable-indices";
-import { IndicatorNoIntervalCreateDTO } from "./indicator-no-interval";
+import {
+  IndicatorNoIntervalCreateDTO,
+  IndicatorNoIntervalEditDTO,
+} from "./indicator-no-interval";
 import { CalculableNoIntervalIndiceCreate } from "@/sections/calculable-indices/calculable-no-interval-indices/form/new/schemas/calculable-no-interval-indice-create-schema";
+import { CalculableNoIntervalIndiceEdit } from "@/sections/calculable-indices/calculable-no-interval-indices/form/edit/schemas/calculable-no-interval-edit-schema";
 
 export interface CalculableNoIntervalIndice {
   id: number;
@@ -20,6 +24,12 @@ export interface CalculableNoIntervalIndiceCreateDTO {
   };
 }
 
+export interface CalculableNoIntervalIndiceEditDTO {
+  nombre: string;
+  indicadoresSinIntervalos: IndicatorNoIntervalEditDTO[];
+  calculo: Calculos;
+}
+
 export interface CalculableNoIntervalIndiceFiltersDTO {
   nombre?: string;
   versionConfig?: string;
@@ -34,6 +44,14 @@ export const convertCalculableNoIntervalIndiceCreateDTO = (
     config: {
       version: configVersion,
     },
+  };
+};
+
+export const convertCalculableNoIntervalIndiceEditDTO = (
+  calculableNoIntervalIndiceEdit: CalculableNoIntervalIndiceEdit
+): CalculableNoIntervalIndiceEditDTO => {
+  return {
+    ...calculableNoIntervalIndiceEdit,
   };
 };
 
