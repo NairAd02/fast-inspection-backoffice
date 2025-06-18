@@ -2,5 +2,5 @@ export interface IndicatorIntervalCreateDTO {
   nombre: string;
   valor: number;
   limiteInferior: number;
-  limiteSuperior: number;
+  limiteSuperior?: number;
 }
