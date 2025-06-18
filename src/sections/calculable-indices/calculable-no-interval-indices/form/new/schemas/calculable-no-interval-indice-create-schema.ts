@@ -2,7 +2,7 @@ import { Calculos } from "@/lib/types/calculable-indices";
 import { z } from "zod";
 import {
   IndicatorNoIntervalCreate,
-  indicatorNoIntervalCreateCreateSchema,
+  indicatorNoIntervalCreateSchema,
 } from "./indicator-no-interval-create-schema";
 
 export interface CalculableNoIntervalIndiceCreate {
@@ -21,5 +21,5 @@ export const calculableNoIntervalIndiceCreateSchema = z.object({
     Calculos.Frecuencia,
     Calculos.Impacto,
   ]),
-  indicadoresSinIntervalos: z.array(indicatorNoIntervalCreateCreateSchema),
+  indicadoresSinIntervalos: z.array(indicatorNoIntervalCreateSchema),
 });
