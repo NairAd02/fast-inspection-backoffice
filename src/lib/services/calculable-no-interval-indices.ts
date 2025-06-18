@@ -6,7 +6,10 @@ import { QueryParamsURLFactory } from "../request";
 import { apiRoutes, tagsCacheByRoutes } from "@/routes/api-routes/api-routes";
 import { PaginationResponse } from "../types/pagination";
 import { buildApiResponse } from "../api";
-import { CalculableNoIntervalIndice } from "../types/calculable-no-interval-indices";
+import {
+  CalculableNoIntervalIndice,
+  CalculableNoIntervalIndiceCreateDTO,
+} from "../types/calculable-no-interval-indices";
 
 export async function getCalculableNoIntervalIndicesList(params: IQueryable) {
   const session = await auth();
@@ -27,4 +30,20 @@ export async function getCalculableNoIntervalIndicesList(params: IQueryable) {
   return await buildApiResponse<PaginationResponse<CalculableNoIntervalIndice>>(
     res
   );
+}
+
+export async function createCalculableNoIntervalIndice(
+  calculableNoIntervalIndiceCreateDTO: CalculableNoIntervalIndiceCreateDTO
+) {
+  const session = await auth();
+  const res = await fetch(apiRoutes.calculableNoIntervalIndices.create, {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer " + session?.accessToken,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(calculableNoIntervalIndiceCreateDTO),
+  });
+
+  return await buildApiResponse<CalculableNoIntervalIndice>(res);
 }
