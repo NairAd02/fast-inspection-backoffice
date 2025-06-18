@@ -12,7 +12,7 @@ export default function RHFStackIndicatorNoInterval({ index }: Props) {
       <RHFTextField
         name={`indicadoresSinIntervalos.${index}.nombre`}
         label="Nombre"
-        placeholder="Introduzca el nombre de la causa"
+        placeholder="Introduzca el nombre del indicador"
         fullWidth
       />
       <RHFNumberField
