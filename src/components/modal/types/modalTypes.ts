@@ -71,6 +71,7 @@ export interface ModalTypes {
     confirmButtonText: string;
   };
   detailsToolModal: SectionModal;
+  newCalculableNoIntervalIndiceModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
@@ -196,5 +197,9 @@ export const modalTypes: ModalTypes = {
   detailsToolModal: {
     name: "detailsToolModal",
     title: "Detalles de la Herramienta",
+  },
+  newCalculableNoIntervalIndiceModal: {
+    name: "newCalculableNoIntervalIndiceModal",
+    title: "Formulario de creación de Índice Calculable",
   },
 };
