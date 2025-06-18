@@ -1,4 +1,4 @@
-export interface IndicadorNoIntervalCreateDTO {
+export interface IndicatorNoIntervalCreateDTO {
   nombre: string;
   valor: number;
 }
