@@ -6,7 +6,10 @@ import { QueryParamsURLFactory } from "../request";
 import { apiRoutes, tagsCacheByRoutes } from "@/routes/api-routes/api-routes";
 import { PaginationResponse } from "../types/pagination";
 import { buildApiResponse } from "../api";
-import { CalculableIntervalIndice } from "../types/calculable-interval-indices";
+import {
+  CalculableIntervalIndice,
+  CalculableIntervalIndiceCreateDTO,
+} from "../types/calculable-interval-indices";
 
 export async function getCalculableIntervalIndicesList(params: IQueryable) {
   const session = await auth();
@@ -27,4 +30,20 @@ export async function getCalculableIntervalIndicesList(params: IQueryable) {
   return await buildApiResponse<PaginationResponse<CalculableIntervalIndice>>(
     res
   );
+}
+
+export async function createCalculableIntervalIndice(
+  calculableIntervalIndiceCreateDTO: CalculableIntervalIndiceCreateDTO
+) {
+  const session = await auth();
+  const res = await fetch(apiRoutes.calculableIntervalIndices.create, {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer " + session?.accessToken,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(calculableIntervalIndiceCreateDTO),
+  });
+
+  return await buildApiResponse<CalculableIntervalIndice>(res);
 }
