@@ -51,6 +51,7 @@ export const apiRoutes = {
   },
   calculableIntervalIndices: {
     get: `${process.env.NEXT_PUBLIC_API_URL}indice-calculable-intervalo/getAllIndicesCalculablesIntervalos`,
+    create: `${process.env.NEXT_PUBLIC_API_URL}indice-calculable-intervalo/createIndiceCalculableIntervalo`,
   },
   calculableNoIntervalIndices: {
     getById: `${process.env.NEXT_PUBLIC_API_URL}indice-calculable-sin-intervalo/getIndiceCalculableSinIntervalo/:id`,
