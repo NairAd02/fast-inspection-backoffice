@@ -5,7 +5,7 @@ export interface IndicatorNoIntervalCreate {
   valor: number;
 }
 
-export const indicatorNoIntervalCreateCreateSchema = z.object({
+export const indicatorNoIntervalCreateSchema = z.object({
   nombre: z
     .string()
     .min(1, { message: "El nombre de la configuración es requerido" }),
