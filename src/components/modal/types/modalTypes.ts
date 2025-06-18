@@ -72,6 +72,7 @@ export interface ModalTypes {
   };
   detailsToolModal: SectionModal;
   newCalculableNoIntervalIndiceModal: SectionModal;
+  editCalculableNoIntervalIndiceModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
@@ -201,5 +202,9 @@ export const modalTypes: ModalTypes = {
   newCalculableNoIntervalIndiceModal: {
     name: "newCalculableNoIntervalIndiceModal",
     title: "Formulario de creación de Índice Calculable",
+  },
+  editCalculableNoIntervalIndiceModal: {
+    name: "editCalculableNoIntervalIndiceModal",
+    title: "Formulario de edición de Índice Calculable",
   },
 };
