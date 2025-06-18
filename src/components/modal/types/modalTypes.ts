@@ -73,6 +73,12 @@ export interface ModalTypes {
   detailsToolModal: SectionModal;
   newCalculableNoIntervalIndiceModal: SectionModal;
   editCalculableNoIntervalIndiceModal: SectionModal;
+  deleteCalculableNoIntervalIndiceModal: SectionModal & {
+    message: string;
+    warningMessage: string;
+    cancelButtonText: string;
+    confirmButtonText: string;
+  };
 }
 
 export const modalTypes: ModalTypes = {
@@ -206,5 +212,14 @@ export const modalTypes: ModalTypes = {
   editCalculableNoIntervalIndiceModal: {
     name: "editCalculableNoIntervalIndiceModal",
     title: "Formulario de edición de Índice Calculable",
+  },
+  deleteCalculableNoIntervalIndiceModal: {
+    name: "deleteCalculableNoIntervalIndiceModal",
+    title: "Eliminación del Índice Calculable",
+    message: "¿Está seguro de que desea eliminar el índice calculable?",
+    warningMessage:
+      "Esta acción provocará la eliminación permanente del índice calculable.",
+    cancelButtonText: "Cancelar",
+    confirmButtonText: "Confirmar",
   },
 };
