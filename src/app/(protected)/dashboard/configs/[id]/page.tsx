@@ -1,5 +1,6 @@
 import Modal from "@/components/modal/modal";
 import { modalTypes } from "@/components/modal/types/modalTypes";
+import NewCalculableNoIntervalIndiceModalContainer from "@/sections/calculable-indices/calculable-no-interval-indices/form/new/new-calculable-no-interval-indice-form-modal-container";
 import ConfigManagementContainer from "@/sections/configs/config-management/config-management-container";
 import { RevalidateConfigInformationProvider } from "@/sections/configs/context/revalidate-config-information-context/revalidate-config-information-context";
 import DeleteDeteriorationTypeModalContainer from "@/sections/deterioration-types/delete/delete-deterioration-type-modal-container";
@@ -161,6 +162,14 @@ export default async function ConfigManagementPage({ params }: Props) {
           className="min-h-[70vh] max-h-[90vh]"
         >
           <ToolDetailsModalContainer />
+        </Modal>
+
+        {/* Modals Calculable No Interval Indices */}
+        <Modal
+          formPath={modalTypes.newCalculableNoIntervalIndiceModal.name}
+          title={modalTypes.newCalculableNoIntervalIndiceModal.title}
+        >
+          <NewCalculableNoIntervalIndiceModalContainer />
         </Modal>
       </RevalidateConfigInformationProvider>
     </>
