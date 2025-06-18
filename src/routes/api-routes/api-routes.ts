@@ -46,6 +46,9 @@ export const apiRoutes = {
   fields: {
     get: `${process.env.NEXT_PUBLIC_API_URL}campo/getAllCampos`,
   },
+  calculableIndices: {
+    delete: `${process.env.NEXT_PUBLIC_API_URL}indice-calculable/deleteIndiceCalculable/:id`,
+  },
   calculableIntervalIndices: {
     get: `${process.env.NEXT_PUBLIC_API_URL}indice-calculable-intervalo/getAllIndicesCalculablesIntervalos`,
   },
