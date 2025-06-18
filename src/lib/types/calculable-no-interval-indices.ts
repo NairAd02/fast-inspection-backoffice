@@ -36,7 +36,7 @@ export interface CalculableNoIntervalIndiceCreateDTO {
 
 export interface CalculableNoIntervalIndiceEditDTO {
   nombre: string;
-  indicadoresSinIntervalos: IndicatorNoIntervalEditDTO[];
+  indicadoresSinIntervalo: IndicatorNoIntervalEditDTO[];
   calculo: Calculos;
 }
 
@@ -62,6 +62,8 @@ export const convertCalculableNoIntervalIndiceEditDTO = (
 ): CalculableNoIntervalIndiceEditDTO => {
   return {
     ...calculableNoIntervalIndiceEdit,
+    indicadoresSinIntervalo:
+      calculableNoIntervalIndiceEdit.indicadoresSinIntervalos,
   };
 };
 
