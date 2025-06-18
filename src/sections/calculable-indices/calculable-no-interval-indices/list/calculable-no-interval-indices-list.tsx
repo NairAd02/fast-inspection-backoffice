@@ -66,7 +66,7 @@ export default function CalculableNoIntervalIndicesList({
   const handleDelete = useCallback(
     (id: string) => {
       handleOpenModal({
-        name: modalTypes.deleteToolModal.name,
+        name: modalTypes.deleteCalculableNoIntervalIndiceModal.name,
         entity: id,
         actionExecute: fetchCalculableNoIntervalIndices,
       });
