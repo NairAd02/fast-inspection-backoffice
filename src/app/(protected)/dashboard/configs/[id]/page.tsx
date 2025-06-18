@@ -1,5 +1,6 @@
 import Modal from "@/components/modal/modal";
 import { modalTypes } from "@/components/modal/types/modalTypes";
+import EditCalculableNoIntervalIndiceModalContainer from "@/sections/calculable-indices/calculable-no-interval-indices/form/edit/edit-calculable-no-interval-indice-form-modal-container";
 import NewCalculableNoIntervalIndiceModalContainer from "@/sections/calculable-indices/calculable-no-interval-indices/form/new/new-calculable-no-interval-indice-form-modal-container";
 import ConfigManagementContainer from "@/sections/configs/config-management/config-management-container";
 import { RevalidateConfigInformationProvider } from "@/sections/configs/context/revalidate-config-information-context/revalidate-config-information-context";
@@ -170,6 +171,14 @@ export default async function ConfigManagementPage({ params }: Props) {
           title={modalTypes.newCalculableNoIntervalIndiceModal.title}
         >
           <NewCalculableNoIntervalIndiceModalContainer />
+        </Modal>
+        <Modal
+          formPath={modalTypes.editCalculableNoIntervalIndiceModal.name}
+          title={modalTypes.editCalculableNoIntervalIndiceModal.title}
+          maxWidth="max-w-2xl"
+          className="min-h-[40vh] max-h-[90vh]"
+        >
+          <EditCalculableNoIntervalIndiceModalContainer />
         </Modal>
       </RevalidateConfigInformationProvider>
     </>
