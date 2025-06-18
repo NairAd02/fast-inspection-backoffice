@@ -11,7 +11,7 @@ export interface CalculableIntervalIndiceCreate {
   indicadoresIntervalos: IndicatorIntervalCreate[];
 }
 
-export const calculableNoIntervalIndiceCreateSchema = z
+export const calculableIntervalIndiceCreateSchema = z
   .object({
     nombre: z
       .string()
