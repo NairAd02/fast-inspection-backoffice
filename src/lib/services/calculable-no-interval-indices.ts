@@ -9,6 +9,7 @@ import { buildApiResponse } from "../api";
 import {
   CalculableNoIntervalIndice,
   CalculableNoIntervalIndiceCreateDTO,
+  CalculableNoIntervalIndiceEditDTO,
 } from "../types/calculable-no-interval-indices";
 
 export async function getCalculableNoIntervalIndicesList(params: IQueryable) {
@@ -44,6 +45,26 @@ export async function createCalculableNoIntervalIndice(
     },
     body: JSON.stringify(calculableNoIntervalIndiceCreateDTO),
   });
+
+  return await buildApiResponse<CalculableNoIntervalIndice>(res);
+}
+
+export async function editCalculableNoIntervalIndice(
+  id: string,
+  calculableNoIntervalIndiceEditDTO: CalculableNoIntervalIndiceEditDTO
+) {
+  const session = await auth();
+  const res = await fetch(
+    apiRoutes.calculableNoIntervalIndices.edit.replace(":id", id),
+    {
+      method: "PATCH",
+      headers: {
+        Authorization: "Bearer " + session?.accessToken,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(calculableNoIntervalIndiceEditDTO),
+    }
+  );
 
   return await buildApiResponse<CalculableNoIntervalIndice>(res);
 }
