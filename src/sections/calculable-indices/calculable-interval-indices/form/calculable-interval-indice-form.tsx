@@ -6,9 +6,15 @@ import { RHFSelectField } from "@/components/form/rhf-components/rhf-select-fiel
 import { Calculos, calculosMap } from "@/lib/types/calculable-indices";
 import { IndicatorIntervalCreate } from "./new/schemas/indicator-interval-create-schema";
 import RHFStackIndicatorInterval from "./components/rhf-stack-indicator-interval/rhf-stack-indicator-interval";
-
+import { useFormContext } from "react-hook-form";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { AlertCircle } from "lucide-react";
 
 export default function CalculableIntervalIndiceForm() {
+  const {
+    formState: { errors },
+  } = useFormContext();
+  console.log(errors);
   return (
     <div className="flex flex-col gap-4 p-2">
       <RHFTextField
@@ -39,6 +45,17 @@ export default function CalculableIntervalIndiceForm() {
           },
         ]}
       />
+
+      {/* Mostrar error de indicadoresIntervalos si existe */}
+      {errors.indicadoresIntervalos && (
+        <Alert variant="destructive" className="border-red-200 bg-red-50">
+          <AlertCircle className="h-4 w-4" />
+          <AlertDescription className="text-red-800">
+            {errors.indicadoresIntervalos.root?.message as string}
+          </AlertDescription>
+        </Alert>
+      )}
+
       <RHFListField<IndicatorIntervalCreate>
         name="indicadoresIntervalos"
         newItem={{ nombre: "", valor: 1, limiteInferior: 1, limiteSuperior: 1 }}
