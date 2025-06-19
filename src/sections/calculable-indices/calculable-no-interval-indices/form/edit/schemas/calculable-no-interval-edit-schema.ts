@@ -21,5 +21,7 @@ export const calculableNoIntervalIndiceEditSchema = z.object({
     Calculos.Frecuencia,
     Calculos.Impacto,
   ]),
-  indicadoresSinIntervalos: z.array(indicatorNoIntervalEditSchema),
+  indicadoresSinIntervalos: z.array(indicatorNoIntervalEditSchema).min(1, {
+    message: "Se debe crear al menos un intervalo",
+  }),
 });
