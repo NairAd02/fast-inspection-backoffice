@@ -22,7 +22,9 @@ export const calculableIntervalIndiceCreateSchema = z
       Calculos.Frecuencia,
       Calculos.Impacto,
     ]),
-    indicadoresIntervalos: z.array(indicatorIntervalCreateSchema),
+    indicadoresIntervalos: z.array(indicatorIntervalCreateSchema).min(1, {
+      message: "Se debe crear al menos un intervalo",
+    }),
   })
   .refine(
     (data) => {
