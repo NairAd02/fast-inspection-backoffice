@@ -14,7 +14,7 @@ export default function CalculableIntervalIndiceForm() {
   const {
     formState: { errors },
   } = useFormContext();
-  console.log(errors);
+
   return (
     <div className="flex flex-col gap-4 p-2">
       <RHFTextField
