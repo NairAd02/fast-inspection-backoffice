@@ -36,7 +36,7 @@ export default function CalculableIntervalIndicesList({
 
   const handleCreate = useCallback(() => {
     handleOpenModal({
-      name: modalTypes.newCalculableNoIntervalIndiceModal.name,
+      name: modalTypes.newCalculableIntervalIndiceModal.name,
       entity: configVersion,
       actionExecute: fetchCalculableIntervalIndices,
     });
