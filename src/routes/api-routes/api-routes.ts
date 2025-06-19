@@ -50,6 +50,7 @@ export const apiRoutes = {
     delete: `${process.env.NEXT_PUBLIC_API_URL}indice-calculable/deleteIndiceCalculable/:id`,
   },
   calculableIntervalIndices: {
+    getById: `${process.env.NEXT_PUBLIC_API_URL}indice-calculable-intervalo/getIndiceCalculableIntervalo/:id`,
     get: `${process.env.NEXT_PUBLIC_API_URL}indice-calculable-intervalo/getAllIndicesCalculablesIntervalos`,
     create: `${process.env.NEXT_PUBLIC_API_URL}indice-calculable-intervalo/createIndiceCalculableIntervalo`,
     edit: `${process.env.NEXT_PUBLIC_API_URL}indice-calculable-intervalo/updateIndiceCalculableIntervalo/:id`,
