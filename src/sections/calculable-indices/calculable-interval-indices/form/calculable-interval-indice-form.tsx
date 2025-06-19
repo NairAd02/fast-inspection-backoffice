@@ -47,11 +47,11 @@ export default function CalculableIntervalIndiceForm() {
       />
 
       {/* Mostrar error de indicadoresIntervalos si existe */}
-      {errors.indicadoresIntervalos && (
+      {errors.indicadoresIntervalos?.root && (
         <Alert variant="destructive" className="border-red-200 bg-red-50">
           <AlertCircle className="h-4 w-4" />
           <AlertDescription className="text-red-800">
-            {errors.indicadoresIntervalos.root?.message as string}
+            {errors.indicadoresIntervalos.root.message as string}
           </AlertDescription>
         </Alert>
       )}
