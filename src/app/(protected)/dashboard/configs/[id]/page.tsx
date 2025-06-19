@@ -194,6 +194,7 @@ export default async function ConfigManagementPage({ params }: Props) {
         <Modal
           formPath={modalTypes.newCalculableIntervalIndiceModal.name}
           title={modalTypes.newCalculableIntervalIndiceModal.title}
+          maxWidth="max-w-2xl"
         >
           <NewCalculableIntervalIndiceModalContainer />
         </Modal>
