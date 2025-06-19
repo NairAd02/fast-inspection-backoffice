@@ -80,6 +80,7 @@ export interface ModalTypes {
     confirmButtonText: string;
   };
   newCalculableIntervalIndiceModal: SectionModal;
+  editCalculableIntervalIndiceModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
@@ -226,5 +227,9 @@ export const modalTypes: ModalTypes = {
   newCalculableIntervalIndiceModal: {
     name: "newCalculableIntervalIndiceModal",
     title: "Formulario de creación de Índice Calculable con Intervalo",
+  },
+  editCalculableIntervalIndiceModal: {
+    name: "editCalculableIntervalIndiceModal",
+    title: "Formulario de edición de ïndice Calculable con Intervalo",
   },
 };
