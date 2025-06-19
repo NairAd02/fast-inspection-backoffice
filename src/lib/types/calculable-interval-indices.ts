@@ -1,6 +1,7 @@
 import { CalculableIntervalIndicesFilters } from "@/sections/calculable-indices/calculable-interval-indices/filters/hooks/use-calculable-interval-indices-filters";
 import { Calculos, TipoIndiceCalculable } from "./calculable-indices";
 import {
+  IndicatorInterval,
   IndicatorIntervalCreateDTO,
   IndicatorIntervalEditDTO,
 } from "./indicator-interval";
@@ -13,6 +14,15 @@ export interface CalculableIntervalIndice {
   tipo: TipoIndiceCalculable;
   calculo: Calculos;
   configVersion: number;
+}
+
+export interface CalculableIntervalIndiceDetails {
+  id: number;
+  nombre: string;
+  tipo: TipoIndiceCalculable;
+  calculo: Calculos;
+  configVersion: number;
+  indicadoresIntervalos: IndicatorInterval[];
 }
 
 export interface CalculableIntervalIndiceCreateDTO {
