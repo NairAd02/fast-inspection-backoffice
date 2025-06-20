@@ -62,6 +62,7 @@ export const apiRoutes = {
     edit: `${process.env.NEXT_PUBLIC_API_URL}indice-calculable-sin-intervalo/updateIndiceCalculableSinIntervalo/:id`,
   },
   edifications: {
+    getById: `${process.env.NEXT_PUBLIC_API_URL}edifications-controller/findOneEdificacion/:id`,
     get: `${process.env.NEXT_PUBLIC_API_URL}edifications-controller/findAllEdificaciones`,
   },
 } as const;
