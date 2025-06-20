@@ -14,6 +14,17 @@ export interface Inspection {
   cantDeterioros: number;
 }
 
+export interface InspectionFiltersDTO {
+  nombre?: string;
+  edificacionId?: string;
+}
+
+export const convertInspectionsFiltersDTO = (
+  filters: InspectionFiltersDTO
+): InspectionFiltersDTO => {
+  return { ...filters };
+};
+
 export const getCriticalityLevel = (indice: number) => {
   if (indice >= 80)
     return {
