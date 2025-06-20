@@ -61,6 +61,9 @@ export const apiRoutes = {
     create: `${process.env.NEXT_PUBLIC_API_URL}indice-calculable-sin-intervalo/createIndiceCalculableSinIntervalo`,
     edit: `${process.env.NEXT_PUBLIC_API_URL}indice-calculable-sin-intervalo/updateIndiceCalculableSinIntervalo/:id`,
   },
+  edifications: {
+    get: `${process.env.NEXT_PUBLIC_API_URL}edifications-controller/findAllEdificaciones`,
+  },
 } as const;
 
 export const tagsCacheByRoutes = {
@@ -100,5 +103,9 @@ export const tagsCacheByRoutes = {
   calculableNoIntervalIndices: {
     singleTag: "calculableNoIntervalIndice",
     multipleTag: "calculableNoIntervalIndices",
+  },
+  edifications: {
+    singleTag: "edification",
+    multipleTag: "edifications",
   },
 } as const;
