@@ -15,15 +15,23 @@ export default function HeaderNavBar() {
     <nav className="flex flex-row md:flex-row-reverse items-center gap-2 md:gap-6">
       <div className="flex items-center gap-2 md:gap-6">
         {!session && (
-        <NavigationComponent href={paths.sign_in.root}>
-          <Button className="text-[11px] md:text-base" variant="outline" size="sm">
-            Iniciar Sesión
+          <NavigationComponent href={paths.sign_in.root}>
+            <Button
+              className="text-[11px] md:text-base"
+              variant="outline"
+              size="sm"
+            >
+              Iniciar Sesión
+            </Button>
+          </NavigationComponent>
+        )}
+        <NavigationComponent href={paths.configs.root}>
+          <Button className="text-[11px] md:text-base" size="sm">
+            Comenzar
           </Button>
         </NavigationComponent>
-      )}
-     
-      <Button className="text-[11px] md:text-base" size="sm">Comenzar</Button>
-       {session && <UserMenu />}
+
+        {session && <UserMenu />}
       </div>
       <div>
         <OptionsLinksContainer />
