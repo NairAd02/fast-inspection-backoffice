@@ -1,6 +1,7 @@
 import Modal from "@/components/modal/modal";
 import { modalTypes } from "@/components/modal/types/modalTypes";
 import DeleteCalculableIntervalIndiceModalContainer from "@/sections/calculable-indices/calculable-interval-indices/delete/delete-calculable-interval-indice-modal-container";
+import CalculableIntervalIndiceDetailsModalContainer from "@/sections/calculable-indices/calculable-interval-indices/details/calculable-interval-indice-details-modal-container";
 import EditCalculableIntervalIndiceModalContainer from "@/sections/calculable-indices/calculable-interval-indices/form/edit/edit-calculable-interval-indice-form-modal-containter";
 import NewCalculableIntervalIndiceModalContainer from "@/sections/calculable-indices/calculable-interval-indices/form/new/new-calculable-interval-indice-form-modal-container";
 import DeleteCalculableNoIntervalIndiceModalContainer from "@/sections/calculable-indices/calculable-no-interval-indices/delete/delete-calculable-no-interval-indice-modal-container";
@@ -225,6 +226,15 @@ export default async function ConfigManagementPage({ params }: Props) {
           title={modalTypes.deleteCalculableIntervalIndiceModal.title}
         >
           <DeleteCalculableIntervalIndiceModalContainer />
+        </Modal>
+
+        <Modal
+          formPath={modalTypes.detailsCalculableIntervalIndiceModal.name}
+          title={modalTypes.detailsCalculableIntervalIndiceModal.title}
+          maxWidth="max-w-2xl"
+          className="min-h-[70vh] max-h-[90vh]"
+        >
+          <CalculableIntervalIndiceDetailsModalContainer />
         </Modal>
       </RevalidateConfigInformationProvider>
     </>
