@@ -16,7 +16,7 @@ interface Props {
   urlPagination?: boolean;
 }
 
-export default function useToolsFilters({
+export default function useInspectionsFilters({
   setPagination,
   defaultsFilters = {},
   urlPagination = false,
