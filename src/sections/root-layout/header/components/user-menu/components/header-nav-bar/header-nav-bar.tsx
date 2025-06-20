@@ -6,9 +6,11 @@ import UserMenu from "../../user-menu";
 import NavigationComponent from "@/components/navigation-component/navigation-component";
 import { paths } from "@/routes/path";
 import OptionsLinksContainer from "./options-links/options-links-container";
+import { usePathname } from "next/navigation";
 
 export default function HeaderNavBar() {
   const { data: session, status } = useSession();
+  const pathname = usePathname();
   return status === "loading" ? (
     <></>
   ) : (
@@ -25,17 +27,21 @@ export default function HeaderNavBar() {
             </Button>
           </NavigationComponent>
         )}
-        <NavigationComponent href={paths.configs.root}>
-          <Button className="text-[11px] md:text-base" size="sm">
-            Comenzar
-          </Button>
-        </NavigationComponent>
+        {!pathname.includes("dashboard") && (
+          <NavigationComponent href={paths.configs.root}>
+            <Button className="text-[11px] md:text-base" size="sm">
+              Comenzar
+            </Button>
+          </NavigationComponent>
+        )}
 
         {session && <UserMenu />}
       </div>
-      <div>
-        <OptionsLinksContainer />
-      </div>
+      {!pathname.includes("dashboard") && (
+        <div>
+          <OptionsLinksContainer />
+        </div>
+      )}
     </nav>
   );
 }
