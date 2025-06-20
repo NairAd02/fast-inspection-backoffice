@@ -20,7 +20,7 @@ type Edificacion = {
     coordY: number;
 };
 
-type Point = {
+export type Point = {
     lat: number;
     lng: number;
     info: string;
