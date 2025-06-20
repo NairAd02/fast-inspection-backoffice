@@ -10,7 +10,7 @@ export default function SignOutButton() {
   const router = useRouter();
   const { signOut } = useSignOut({
     onSignOutAction: () => {
-      router.push(paths.sign_in.root);
+      router.push(paths.landing.root);
     },
   });
 
