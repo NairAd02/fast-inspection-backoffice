@@ -5,6 +5,7 @@ interface Path {
 
 interface ApplicationPath {
   home: Path;
+  landing: Path;
   sign_in: Path;
   profile: Path;
   configs: Path;
@@ -32,6 +33,10 @@ function replaceParamsInPath(
 export const paths: ApplicationPath = {
   home: {
     root: "/",
+    isProtected: false,
+  },
+  landing: {
+    root: "/landing",
     isProtected: false,
   },
   sign_in: {
