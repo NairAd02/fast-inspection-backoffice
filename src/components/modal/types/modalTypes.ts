@@ -88,6 +88,7 @@ export interface ModalTypes {
     confirmButtonText: string;
   };
   detailsCalculableNoIntervalIndiceModal: SectionModal;
+  detailsCalculableIntervalIndiceModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
@@ -251,5 +252,9 @@ export const modalTypes: ModalTypes = {
   detailsCalculableNoIntervalIndiceModal: {
     name: "detailsCalculableNoIntervalIndiceModal",
     title: "Detalles de Índice Calculable sin Intervalo",
+  },
+  detailsCalculableIntervalIndiceModal: {
+    name: "detailsCalculableIntervalIndiceModal",
+    title: "Detalles de Índice Calculable con Intervalo",
   },
 };
