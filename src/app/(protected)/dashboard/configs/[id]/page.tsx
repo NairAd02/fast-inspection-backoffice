@@ -4,6 +4,7 @@ import DeleteCalculableIntervalIndiceModalContainer from "@/sections/calculable-
 import EditCalculableIntervalIndiceModalContainer from "@/sections/calculable-indices/calculable-interval-indices/form/edit/edit-calculable-interval-indice-form-modal-containter";
 import NewCalculableIntervalIndiceModalContainer from "@/sections/calculable-indices/calculable-interval-indices/form/new/new-calculable-interval-indice-form-modal-container";
 import DeleteCalculableNoIntervalIndiceModalContainer from "@/sections/calculable-indices/calculable-no-interval-indices/delete/delete-calculable-no-interval-indice-modal-container";
+import CalculableNoIntervalIndiceDetailsModalContainer from "@/sections/calculable-indices/calculable-no-interval-indices/details/calculable-no-interval-indice-details-modal-container";
 import EditCalculableNoIntervalIndiceModalContainer from "@/sections/calculable-indices/calculable-no-interval-indices/form/edit/edit-calculable-no-interval-indice-form-modal-container";
 import NewCalculableNoIntervalIndiceModalContainer from "@/sections/calculable-indices/calculable-no-interval-indices/form/new/new-calculable-no-interval-indice-form-modal-container";
 import ConfigManagementContainer from "@/sections/configs/config-management/config-management-container";
@@ -190,6 +191,15 @@ export default async function ConfigManagementPage({ params }: Props) {
           title={modalTypes.deleteCalculableNoIntervalIndiceModal.title}
         >
           <DeleteCalculableNoIntervalIndiceModalContainer />
+        </Modal>
+
+        <Modal
+          formPath={modalTypes.detailsCalculableNoIntervalIndiceModal.name}
+          title={modalTypes.detailsCalculableNoIntervalIndiceModal.title}
+          maxWidth="max-w-2xl"
+          className="min-h-[70vh] max-h-[90vh]"
+        >
+          <CalculableNoIntervalIndiceDetailsModalContainer />
         </Modal>
 
         {/* Modals Calculable Interval Indices */}
