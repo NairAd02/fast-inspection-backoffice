@@ -65,6 +65,9 @@ export const apiRoutes = {
     getById: `${process.env.NEXT_PUBLIC_API_URL}edifications-controller/findOneEdificacion/:id`,
     get: `${process.env.NEXT_PUBLIC_API_URL}edifications-controller/findAllEdificaciones`,
   },
+  inspections: {
+    get: `${process.env.NEXT_PUBLIC_API_URL}inspections`,
+  },
 } as const;
 
 export const tagsCacheByRoutes = {
@@ -108,5 +111,9 @@ export const tagsCacheByRoutes = {
   edifications: {
     singleTag: "edification",
     multipleTag: "edifications",
+  },
+  inspections: {
+    singleTag: "inspection",
+    multipleTag: "inspections",
   },
 } as const;
