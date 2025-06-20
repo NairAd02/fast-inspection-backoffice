@@ -87,6 +87,7 @@ export interface ModalTypes {
     cancelButtonText: string;
     confirmButtonText: string;
   };
+  detailsCalculableNoIntervalIndiceModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
@@ -246,5 +247,9 @@ export const modalTypes: ModalTypes = {
       "Esta acción provocará la eliminación permanente del índice calculable.",
     cancelButtonText: "Cancelar",
     confirmButtonText: "Confirmar",
+  },
+  detailsCalculableNoIntervalIndiceModal: {
+    name: "detailsCalculableNoIntervalIndiceModal",
+    title: "Detalles de Índice Calculable sin Intervalo",
   },
 };
