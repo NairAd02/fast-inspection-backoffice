@@ -17,6 +17,14 @@ export default function EdificationsList({ edifications }: Props) {
       <h1 className="text-2xl font-bold text-gray-800 text-center">
         Mapa de Edificaciones
       </h1>
+      <EdificationTable
+        edifications={edifications}
+        centeredMap={(id: number) => {
+          if (customMapWrapperRef.current) {
+            customMapWrapperRef.current.centrarEnEdificio(id);
+          }
+        }}
+      />
       <CustomMapWrapper
         ref={customMapWrapperRef}
         points={edifications.map((e) => ({
@@ -25,14 +33,6 @@ export default function EdificationsList({ edifications }: Props) {
           info: `${e.nombre} ${e.direccion}`,
           edificacion: e,
         }))}
-      />
-      <EdificationTable
-        edifications={edifications}
-        centeredMap={(id: number) => {
-          if (customMapWrapperRef.current) {
-            customMapWrapperRef.current.centrarEnEdificio(id);
-          }
-        }}
       />
     </div>
   );
