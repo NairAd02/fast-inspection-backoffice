@@ -1,6 +1,7 @@
 import { EdificationsFilters } from "@/sections/edifications/filters/hooks/use-edifications-filters";
 import { Inspection } from "./inspections";
 import { EdificationCreate } from "@/sections/edifications/form/new/schemas/edification-create-schema";
+import { EdificationEdit } from "@/sections/edifications/form/edit/schemas/edification-edit-schema";
 
 export interface Edification {
   id: number;
@@ -28,6 +29,13 @@ export interface EdificationCreateDTO {
   coordY: number;
 }
 
+export interface EdificationEditDTO {
+  nombre: string;
+  direccion: string;
+  coordX: number;
+  coordY: number;
+}
+
 export interface EdificationsFiltersDTO {
   nombre?: string;
   direccion?: string;
@@ -36,6 +44,17 @@ export interface EdificationsFiltersDTO {
 export const convertEdificationCreateDTO = (
   edification: EdificationCreate
 ): EdificationCreateDTO => {
+  const { position, ...rest } = edification;
+  return {
+    ...rest,
+    coordX: position.coordY,
+    coordY: position.coordX,
+  };
+};
+
+export const convertEdificationEditDTO = (
+  edification: EdificationEdit
+): EdificationEditDTO => {
   const { position, ...rest } = edification;
   return {
     ...rest,
