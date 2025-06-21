@@ -91,6 +91,12 @@ export interface ModalTypes {
   detailsCalculableIntervalIndiceModal: SectionModal;
   detailsEdificationModal: SectionModal;
   newEdificationModal: SectionModal;
+  deleteEdificationModal: SectionModal & {
+    message: string;
+    warningMessage: string;
+    cancelButtonText: string;
+    confirmButtonText: string;
+  };
 }
 
 export const modalTypes: ModalTypes = {
@@ -266,5 +272,14 @@ export const modalTypes: ModalTypes = {
   newEdificationModal: {
     name: "newEdificationModal",
     title: "Formulario de creación de Edificación",
+  },
+  deleteEdificationModal: {
+    name: "deleteEdificationModal",
+    title: "Eliminación de Edificación",
+    message: "¿Está seguro de que desea eliminar la edificación?",
+    warningMessage:
+      "Esta acción provocará la eliminación permanente de la edificación.",
+    cancelButtonText: "Cancelar",
+    confirmButtonText: "Confirmar",
   },
 };
