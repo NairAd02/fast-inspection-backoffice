@@ -16,7 +16,7 @@ export default async function EdificationsPage({ searchParams }: Props) {
       <Modal
         formPath={modalTypes.detailsEdificationModal.name}
         title={modalTypes.detailsEdificationModal.title}
-        maxWidth="max-w-2xl"
+        maxWidth="max-w-4xl"
         className="min-h-[70vh] max-h-[90vh]"
       >
         <EdificationDetailsModalContainer />
