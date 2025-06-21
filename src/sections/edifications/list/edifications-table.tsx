@@ -20,7 +20,10 @@ export default function EdificationTable({ edifications, centeredMap }: Props) {
 
   const handleEdit = useCallback(
     (id: string) => {
-      handleOpenModal({ name: modalTypes.editConfigModal.name, entity: id });
+      handleOpenModal({
+        name: modalTypes.editEdificationModal.name,
+        entity: id,
+      });
     },
     [handleOpenModal]
   );
