@@ -59,3 +59,16 @@ export async function createEdification(
 
   return await buildApiResponse<Edification>(res);
 }
+
+export async function deleteEdification(id: string) {
+  const session = await auth();
+  const res = await fetch(apiRoutes.edifications.delete.replace(":id", id), {
+    method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + session?.accessToken,
+      "content-type": "application/json",
+    },
+  });
+
+  return await buildApiResponse<Edification>(res);
+}
