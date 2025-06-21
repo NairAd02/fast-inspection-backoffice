@@ -8,6 +8,7 @@ import { DataTable } from "@/components/ui/data-table";
 import TableMenu from "@/components/ui/table-menu";
 import { EditIcon, EyeIcon, MapPinIcon, Trash2Icon } from "lucide-react";
 import { ColumnDef } from "@tanstack/react-table";
+import EdificationsFiltersContainer from "../filters/edifications-filters-container";
 
 interface Props {
   edifications: Edification[];
@@ -104,6 +105,7 @@ export default function EdificationTable({ edifications, centeredMap }: Props) {
         columns={columns}
         data={edifications}
         initialVisibilityState={{ id: false }}
+        filters={<EdificationsFiltersContainer />}
       />
     </div>
   );
