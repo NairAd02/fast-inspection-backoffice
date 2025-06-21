@@ -1,3 +1,5 @@
+import NavigationComponent from "@/components/navigation-component/navigation-component";
+import { Button } from "@/components/ui/button";
 import { formatDate } from "@/lib/format-date";
 import {
   getCriticalityLevel,
@@ -27,15 +29,20 @@ export default function InspectionCard({ inspection, isLatest }: Props) {
     >
       <div className="flex items-start justify-between mb-4">
         <div className="flex-1">
-          <div className="flex items-center gap-2 mb-2">
-            <h3 className="font-medium text-gray-900">
-              Inspección #{inspection.id}
-            </h3>
-            {isLatest && (
-              <span className="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs font-medium rounded-full">
-                Más reciente
-              </span>
-            )}
+          <div className="flex sm:flex-row flex-col items-center justify-between gap-2 mb-2">
+            <div className="flex items-center gap-2">
+              <h3 className="font-medium text-gray-900">
+                Inspección #{inspection.id}
+              </h3>
+              {isLatest && (
+                <span className="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs font-medium rounded-full">
+                  Más reciente
+                </span>
+              )}
+            </div>
+            <NavigationComponent href={`/`}>
+              <Button>Ver Detalles</Button>
+            </NavigationComponent>
           </div>
           <div className="flex items-center gap-4 text-sm text-gray-500">
             <div className="flex items-center gap-1">
