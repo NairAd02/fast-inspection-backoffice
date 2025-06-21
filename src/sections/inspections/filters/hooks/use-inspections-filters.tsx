@@ -6,8 +6,8 @@ import { Pagination } from "@/lib/types/pagination";
 import { Dispatch, SetStateAction, useState } from "react";
 
 export interface InspectionsFilters {
-  nombre?: string;
   edificacionId?: string;
+  configId?: string
 }
 
 interface Props {
@@ -53,7 +53,7 @@ export default function useInspectionsFilters({
 
   const getActiveFiltersCount = () => {
     let count = 0;
-    if (filters.nombre) count++;
+    if (filters.configId) count++;
 
     return count;
   };
