@@ -46,7 +46,7 @@ export default function useInspections({ defaultsFilters }: Props) {
             perPage: clientPagination.pageSize,
           },
           edificacionId: filters.edificacionId,
-          nombre: filters.nombre,
+          configId: filters.configId,
         });
 
         if (!res.response || res.error)
