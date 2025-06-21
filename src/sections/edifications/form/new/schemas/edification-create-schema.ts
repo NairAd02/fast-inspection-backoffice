@@ -17,7 +17,7 @@ export const edificationCreateSchema = z.object({
     .string()
     .min(1, { message: "La dirección de la edificación es requerida" }),
   position: z.object({
-    coordX: z.number().min(1, { message: "La coordenada X es requerida" }),
-    coordY: z.number().min(1, { message: "La coordenada Y es requerida" }),
+    coordX: z.number(),
+    coordY: z.number(),
   }),
 });
