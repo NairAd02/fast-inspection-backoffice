@@ -1,3 +1,4 @@
+import { InspectionsFilters } from "@/sections/inspections/filters/hooks/use-inspections-filters";
 import {
   AlertTriangle,
   CheckCircle,
@@ -15,12 +16,12 @@ export interface Inspection {
 }
 
 export interface InspectionFiltersDTO {
-  nombre?: string;
   edificacionId?: string;
+  configId?: string;
 }
 
 export const convertInspectionsFiltersDTO = (
-  filters: InspectionFiltersDTO
+  filters: InspectionsFilters
 ): InspectionFiltersDTO => {
   return { ...filters };
 };
