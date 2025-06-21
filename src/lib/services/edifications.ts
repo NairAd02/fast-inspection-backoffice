@@ -10,6 +10,7 @@ import {
   Edification,
   EdificationCreateDTO,
   EdificationDetails,
+  EdificationEditDTO,
 } from "../types/edifications";
 
 export async function getEdificationsList(params: IQueryable) {
@@ -55,6 +56,23 @@ export async function createEdification(
       "content-type": "application/json",
     },
     body: JSON.stringify(edificationCreateDTO),
+  });
+
+  return await buildApiResponse<Edification>(res);
+}
+
+export async function editEdification(
+  id: string,
+  edificationEditDTO: EdificationEditDTO
+) {
+  const session = await auth();
+  const res = await fetch(apiRoutes.edifications.edit.replace(":id", id), {
+    method: "PATCH",
+    headers: {
+      Authorization: "Bearer " + session?.accessToken,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(edificationEditDTO),
   });
 
   return await buildApiResponse<Edification>(res);
