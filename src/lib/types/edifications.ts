@@ -39,8 +39,8 @@ export const convertEdificationCreateDTO = (
   const { position, ...rest } = edification;
   return {
     ...rest,
-    coordX: position.coordX,
-    coordY: position.coordY,
+    coordX: position.coordY,
+    coordY: position.coordX,
   };
 };
 
