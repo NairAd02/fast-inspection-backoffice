@@ -97,6 +97,7 @@ export interface ModalTypes {
     cancelButtonText: string;
     confirmButtonText: string;
   };
+  editEdificationModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
@@ -281,5 +282,9 @@ export const modalTypes: ModalTypes = {
       "Esta acción provocará la eliminación permanente de la edificación.",
     cancelButtonText: "Cancelar",
     confirmButtonText: "Confirmar",
+  },
+  editEdificationModal: {
+    name: "editEdificationModal",
+    title: "Formulario de edición de Edificación",
   },
 };
