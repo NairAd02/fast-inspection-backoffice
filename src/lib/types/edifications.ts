@@ -36,10 +36,11 @@ export interface EdificationsFiltersDTO {
 export const convertEdificationCreateDTO = (
   edification: EdificationCreate
 ): EdificationCreateDTO => {
+  const { position, ...rest } = edification;
   return {
-    ...edification,
-    coordX: edification.position.coordX,
-    coordY: edification.position.coordY,
+    ...rest,
+    coordX: position.coordX,
+    coordY: position.coordY,
   };
 };
 
