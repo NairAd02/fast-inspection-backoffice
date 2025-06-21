@@ -12,7 +12,7 @@ type Props = {
 export default async function EdificationsPage({ searchParams }: Props) {
   return (
     <>
-      <EdificationsContainer searchParams={await searchParams} />;
+      <EdificationsContainer searchParams={await searchParams} />
       <Modal
         formPath={modalTypes.detailsEdificationModal.name}
         title={modalTypes.detailsEdificationModal.title}
