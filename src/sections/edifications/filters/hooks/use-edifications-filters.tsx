@@ -3,7 +3,6 @@
 import useUrlFilters from "@/hooks/use-url-filters";
 import { convertEdificationsFiltersDTO } from "@/lib/types/edifications";
 import { Pagination } from "@/lib/types/pagination";
-import { convertToolsFiltersDTO } from "@/lib/types/tools";
 import { Dispatch, SetStateAction, useState } from "react";
 
 export interface EdificationsFilters {
