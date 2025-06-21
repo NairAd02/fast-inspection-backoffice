@@ -90,6 +90,7 @@ export interface ModalTypes {
   detailsCalculableNoIntervalIndiceModal: SectionModal;
   detailsCalculableIntervalIndiceModal: SectionModal;
   detailsEdificationModal: SectionModal;
+  newEdificationModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
@@ -261,5 +262,9 @@ export const modalTypes: ModalTypes = {
   detailsEdificationModal: {
     name: "detailsEdificationModal",
     title: "Detalles de la Edificación",
+  },
+  newEdificationModal: {
+    name: "newEdificationModal",
+    title: "Formulario de creación de Edificación",
   },
 };
