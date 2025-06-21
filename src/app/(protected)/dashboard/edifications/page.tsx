@@ -5,6 +5,7 @@ import Modal from "@/components/modal/modal";
 import { modalTypes } from "@/components/modal/types/modalTypes";
 import EdificationDetailsModalContainer from "@/sections/edifications/details/edification-details-modal-container";
 import NewEdificationFormContainer from "@/sections/edifications/form/new/new-edification-form-container";
+import DeleteEdificationModalContainer from "@/sections/edifications/delete/delete-edification-modal-container";
 
 type Props = {
   searchParams: Promise<SearchParamsPagination>;
@@ -21,6 +22,7 @@ export default async function EdificationsPage({ searchParams }: Props) {
       >
         <NewEdificationFormContainer />
       </Modal>
+
       <Modal
         formPath={modalTypes.detailsEdificationModal.name}
         title={modalTypes.detailsEdificationModal.title}
@@ -28,6 +30,13 @@ export default async function EdificationsPage({ searchParams }: Props) {
         className="min-h-[70vh] max-h-[90vh]"
       >
         <EdificationDetailsModalContainer />
+      </Modal>
+
+      <Modal
+        formPath={modalTypes.deleteEdificationModal.name}
+        title={modalTypes.deleteEdificationModal.title}
+      >
+        <DeleteEdificationModalContainer />
       </Modal>
     </>
   );

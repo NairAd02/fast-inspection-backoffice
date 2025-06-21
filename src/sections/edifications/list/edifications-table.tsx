@@ -37,7 +37,10 @@ export default function EdificationTable({ edifications, centeredMap }: Props) {
 
   const handleDelete = useCallback(
     (id: string) => {
-      handleOpenModal({ name: modalTypes.deleteConfigModal.name, entity: id });
+      handleOpenModal({
+        name: modalTypes.deleteEdificationModal.name,
+        entity: id,
+      });
     },
     [handleOpenModal]
   );
