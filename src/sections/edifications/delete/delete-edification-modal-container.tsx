@@ -4,14 +4,12 @@ import { modalTypes } from "@/components/modal/types/modalTypes";
 import React, { useCallback, useContext } from "react";
 import ConfirmationPanel from "@/components/confirmation-panel/confirmation-panel";
 import { toast } from "react-toastify";
-import { RevalidateConfigInformationContext } from "@/sections/configs/context/revalidate-config-information-context/revalidate-config-information-context";
 import useDeleteEdification from "../hooks/use-delete-edification";
+import { revalidateServerTags } from "@/lib/cache";
+import { tagsCacheByRoutes } from "@/routes/api-routes/api-routes";
 
 export default function DeleteEdificationModalContainer() {
   const { getInfoModal, handleCloseModal } = useContext(ModalContext);
-  const { revalidateConfigInformation } = useContext(
-    RevalidateConfigInformationContext
-  );
   const infoModal = getInfoModal(modalTypes.deleteEdificationModal.name);
   const id = infoModal && infoModal.entity ? infoModal.entity : null;
 
@@ -20,7 +18,7 @@ export default function DeleteEdificationModalContainer() {
     onDeleteAction: () => {
       toast.success("Edificación eliminada con éxito");
       onCloseModal();
-      revalidateConfigInformation();
+      revalidateServerTags(tagsCacheByRoutes.edifications.multipleTag);
     },
   });
   const onCloseModal = useCallback(() => {
