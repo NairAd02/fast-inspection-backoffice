@@ -6,7 +6,11 @@ import { QueryParamsURLFactory } from "../request";
 import { apiRoutes, tagsCacheByRoutes } from "@/routes/api-routes/api-routes";
 import { buildApiResponse } from "../api";
 import { PaginationResponse } from "../types/pagination";
-import { Edification, EdificationDetails } from "../types/edifications";
+import {
+  Edification,
+  EdificationCreateDTO,
+  EdificationDetails,
+} from "../types/edifications";
 
 export async function getEdificationsList(params: IQueryable) {
   const session = await auth();
@@ -38,4 +42,20 @@ export async function getEdificationById(id: string) {
   });
 
   return await buildApiResponse<EdificationDetails>(res);
+}
+
+export async function createEdification(
+  edificationCreateDTO: EdificationCreateDTO
+) {
+  const session = await auth();
+  const res = await fetch(apiRoutes.edifications.create, {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer " + session?.accessToken,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(edificationCreateDTO),
+  });
+
+  return await buildApiResponse<Edification>(res);
 }
