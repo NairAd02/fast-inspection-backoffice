@@ -2,10 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Download, FileText, RefreshCw, Search } from "lucide-react";
+import { ArrowLeft, Download, FileText, RefreshCw, Search } from "lucide-react";
 import { InspectionHeader } from "./components/inspection-header";
 import { InspectionDetails } from "@/lib/types/inspections";
 import { SystemsAccordion } from "./components/systems-accordion";
+import NavigationComponent from "@/components/navigation-component/navigation-component";
+import { paths } from "@/routes/path";
 
 interface Props {
   inspection: InspectionDetails;
@@ -35,7 +37,23 @@ export default function InspectionDetailsContainer({ inspection }: Props) {
   }, 0);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen ">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+        <NavigationComponent href={paths.edifications.root}>
+          <Button variant="ghost" size="sm" className="gap-2">
+            <ArrowLeft className="w-4 h-4" />
+            Volver
+          </Button>
+        </NavigationComponent>
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900">
+            Detalles de la Inspección
+          </h1>
+          <p className="text-gray-600">
+            Visualice los Detalles de la Inspección
+          </p>
+        </div>
+      </div>
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
         <div className="mb-8">
