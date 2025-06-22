@@ -69,6 +69,7 @@ export const apiRoutes = {
     delete: `${process.env.NEXT_PUBLIC_API_URL}edifications-controller/removeEdificacion/:id`,
   },
   inspections: {
+    getById: `${process.env.NEXT_PUBLIC_API_URL}inspections/:id`,
     get: `${process.env.NEXT_PUBLIC_API_URL}inspections`,
   },
 } as const;
