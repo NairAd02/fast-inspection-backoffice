@@ -143,6 +143,8 @@ export default function InspectionDetailsContainer({ inspection }: Props) {
           <SystemsAccordion systems={inspection.sistemas} />
         </div>
 
+        <InspectionAnalysisSection inspection={inspection} />
+
         {/* Footer */}
         <div className="text-center py-8">
           <div className="flex items-center justify-center gap-4 text-sm text-gray-500">
@@ -155,8 +157,6 @@ export default function InspectionDetailsContainer({ inspection }: Props) {
           </div>
         </div>
       </div>
-
-      <InspectionAnalysisSection inspection={inspection} />
     </div>
   );
 }

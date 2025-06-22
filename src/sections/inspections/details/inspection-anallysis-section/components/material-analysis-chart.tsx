@@ -36,11 +36,11 @@ export function MaterialAnalysisChart({ inspection }: MaterialAnalysisChartProps
   const chartConfig = {
     deterioros: {
       label: "Deterioros",
-      color: "hsl(var(--chart-4))",
+      color: "oklch(0.888 0.222 41.116)",
     },
     criticidad: {
       label: "Criticidad",
-      color: "hsl(var(--chart-5))",
+      color: "oklch(0.888 0.222 41.116)",
     },
   }
 

@@ -19,7 +19,7 @@ export function SystemDeteriorationChart({ inspection }: SystemDeteriorationChar
   const chartConfig = {
     deterioros: {
       label: "Deterioros",
-      color: "hsl(var(--chart-1))",
+      color: "oklch(0.888 0.222 41.116)",
     },
   }
 

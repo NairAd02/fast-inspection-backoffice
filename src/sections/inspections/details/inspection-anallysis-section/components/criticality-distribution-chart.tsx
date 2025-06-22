@@ -18,17 +18,17 @@ interface CriticalityDistributionChartProps {
 export function CriticalityDistributionChart({ inspection }: CriticalityDistributionChartProps) {
   const totalCriticidad = inspection.sistemas.reduce((sum, sistema) => sum + sistema.indiceCriticidad, 0)
 
-  const chartData = inspection.sistemas.map((sistema, index) => ({
+  const chartData = inspection.sistemas.map((sistema) => ({
     sistema: sistema.nombre,
     criticidad: sistema.indiceCriticidad,
     porcentaje: ((sistema.indiceCriticidad / totalCriticidad) * 100).toFixed(1),
-    fill: `hsl(var(--chart-${(index % 5) + 1}))`,
+    fill: `oklch(0.888 0.222 41.116)`,
   }))
 
-  const chartConfig = inspection.sistemas.reduce((config, sistema, index) => {
+  const chartConfig = inspection.sistemas.reduce((config, sistema) => {
     config[sistema.nombre] = {
       label: sistema.nombre,
-      color: `hsl(var(--chart-${(index % 5) + 1}))`,
+      color: `oklch(0.888 0.222 41.116)`,
     }
     return config
   }, {} as any)
