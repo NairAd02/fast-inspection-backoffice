@@ -6,6 +6,7 @@ import {
   TrendingDown,
   TrendingUp,
 } from "lucide-react";
+import { InspectionSystem } from "./inspection-systems";
 
 export interface Inspection {
   id: number;
@@ -13,6 +14,15 @@ export interface Inspection {
   configVersion: number;
   indiceCriticidad: number;
   cantDeterioros: number;
+}
+
+export interface InspectionDetails {
+  id: number;
+  fechaInicio: string;
+  configVersion: number;
+  indiceCriticidad: number;
+  cantDeterioros: number;
+  sistemas: InspectionSystem[];
 }
 
 export interface InspectionFiltersDTO {
