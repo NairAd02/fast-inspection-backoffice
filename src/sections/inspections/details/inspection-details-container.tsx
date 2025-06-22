@@ -8,6 +8,7 @@ import { InspectionDetails } from "@/lib/types/inspections";
 import { SystemsAccordion } from "./components/systems-accordion";
 import NavigationComponent from "@/components/navigation-component/navigation-component";
 import { paths } from "@/routes/path";
+import { InspectionAnalysisSection } from "./inspection-anallysis-section/inspection-analysis-section";
 
 interface Props {
   inspection: InspectionDetails;
@@ -154,6 +155,8 @@ export default function InspectionDetailsContainer({ inspection }: Props) {
           </div>
         </div>
       </div>
+
+      <InspectionAnalysisSection inspection={inspection} />
     </div>
   );
 }
