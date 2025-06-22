@@ -2,23 +2,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, Settings, AlertCircle, TrendingUp } from "lucide-react";
 import { CriticalityBadge } from "./criticality-badge";
 import { InspectionDetails } from "@/lib/types/inspections";
+import { formatDate } from "@/lib/format-date";
 
 interface InspectionHeaderProps {
   inspection: InspectionDetails;
 }
 
 export function InspectionHeader({ inspection }: InspectionHeaderProps) {
-  const formattedDate = new Date(inspection.fechaInicio).toLocaleDateString(
-    "es-ES",
-    {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    }
-  );
-
   return (
     <Card className="bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200">
       <CardHeader>
@@ -40,7 +30,7 @@ export function InspectionHeader({ inspection }: InspectionHeaderProps) {
               <p className="text-xs text-gray-500 uppercase tracking-wide">
                 Fecha de Inicio
               </p>
-              <p className="font-semibold text-gray-900">{formattedDate}</p>
+              <p className="font-semibold text-gray-900">{formatDate(inspection.fechaInicio)}</p>
             </div>
           </div>
 
