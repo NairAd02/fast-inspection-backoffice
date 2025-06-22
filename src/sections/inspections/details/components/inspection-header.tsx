@@ -24,7 +24,7 @@ export function InspectionHeader({ inspection }: InspectionHeaderProps) {
       <CardHeader>
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <CardTitle className="text-2xl font-bold text-gray-900">
-            Inspección #{inspection.id}
+            Inspección #{inspection._id}
           </CardTitle>
           <CriticalityBadge
             value={inspection.indiceCriticidad}

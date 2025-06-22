@@ -17,7 +17,7 @@ export interface Inspection {
 }
 
 export interface InspectionDetails {
-  id: number;
+  _id: string;
   fechaInicio: string;
   configVersion: number;
   indiceCriticidad: number;
