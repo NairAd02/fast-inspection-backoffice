@@ -2,13 +2,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { ArrowLeft, Download, FileText, Search } from "lucide-react";
+import { ArrowLeft, FileText, Search } from "lucide-react";
 import { InspectionHeader } from "./components/inspection-header";
 import { InspectionDetails } from "@/lib/types/inspections";
 import { SystemsAccordion } from "./components/systems-accordion";
 import NavigationComponent from "@/components/navigation-component/navigation-component";
 import { paths } from "@/routes/path";
 import { InspectionAnalysisSection } from "./inspection-anallysis-section/inspection-analysis-section";
+import ReportGenerationSection from "./components/report-generation-section";
 
 interface Props {
   inspection: InspectionDetails;
@@ -72,10 +73,7 @@ export default function InspectionDetailsContainer({ inspection }: Props) {
             </CardHeader>
             <CardContent>
               <div className="flex flex-wrap gap-3">
-                <Button variant="outline" className="flex items-center gap-2">
-                  <Download className="h-4 w-4" />
-                  Exportar Reporte
-                </Button>
+               <ReportGenerationSection inspection={inspection} />
                 <Button variant="outline" className="flex items-center gap-2">
                   <Search className="h-4 w-4" />
                   Buscar Deterioros
