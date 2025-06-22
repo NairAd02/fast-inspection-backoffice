@@ -2,6 +2,7 @@ import React from "react";
 import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
 import { InspectionDetails } from "@/lib/types/inspections";
 import { DefinedFieldTypes } from "@/lib/types/defined-fields";
+import Image from "next/image";
 
 // Estilos para el PDF
 const pdfStyles = StyleSheet.create({
@@ -367,10 +368,12 @@ const InspectionReportPreview = ({ inspection }: Props) => {
                                             {campo.tipo ===
                                             DefinedFieldTypes.IMAGE ? (
                                               <div className="mt-1">
-                                                <img
+                                                <Image
                                                   src={campo.valor}
                                                   alt={campo.nombre}
                                                   className="h-20 object-contain border rounded"
+                                                  width={800}
+                                                  height={800}
                                                 />
                                               </div>
                                             ) : (
