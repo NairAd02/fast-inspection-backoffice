@@ -6,6 +6,7 @@ import {
   getDeteriorationLevel,
   Inspection,
 } from "@/lib/types/inspections";
+import { paths } from "@/routes/path";
 import { Calendar, CheckCircle, Settings, XCircle } from "lucide-react";
 import React from "react";
 
@@ -40,7 +41,9 @@ export default function InspectionCard({ inspection, isLatest }: Props) {
                 </span>
               )}
             </div>
-            <NavigationComponent href={`/`}>
+            <NavigationComponent
+              href={paths.inspection({ id: inspection.id.toString() }).root}
+            >
               <Button>Ver Detalles</Button>
             </NavigationComponent>
           </div>
