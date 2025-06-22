@@ -13,6 +13,10 @@ interface ApplicationPath {
     params?: Record<string, string>,
     query?: Record<string, string>
   ) => Path;
+  inspection: (
+    params?: Record<string, string>,
+    query?: Record<string, string>
+  ) => Path;
   edifications: Path;
 }
 
@@ -53,6 +57,15 @@ export const paths: ApplicationPath = {
   },
   config_management: (params = {}, query = {}) => {
     const basePath = "/dashboard/configs/[id]";
+    const pathWithParams = replaceParamsInPath(basePath, params);
+    const queryString = buildQueryString(query);
+    return {
+      root: queryString ? `${pathWithParams}?${queryString}` : pathWithParams,
+      isProtected: false,
+    };
+  },
+  inspection: (params = {}, query = {}) => {
+    const basePath = "/dashboard/inspections/[id]";
     const pathWithParams = replaceParamsInPath(basePath, params);
     const queryString = buildQueryString(query);
     return {
