@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { FileText, Hash, ImageIcon, List } from "lucide-react";
 import { InspectionDefinedField } from "@/lib/types/inspection-defined-fields";
 import { DefinedFieldTypes } from "@/lib/types/defined-fields";
+import Image from "next/image";
 
 interface DefinedFieldDisplayProps {
   field: InspectionDefinedField;
@@ -43,10 +44,12 @@ export function DefinedFieldDisplay({ field }: DefinedFieldDisplayProps) {
     if (field.tipo === DefinedFieldTypes.IMAGE) {
       return (
         <div className="mt-2">
-          <img
+          <Image
             src={field.valor}
             alt={field.nombre}
             className="max-w-full h-auto rounded-lg shadow-sm max-h-48 object-cover"
+            width={800}
+            height={800}
           />
         </div>
       );
