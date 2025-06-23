@@ -28,16 +28,19 @@ export default function EditCalculableNoIntervalIndiceFormContainer({
   const { revalidateConfigInformation } = useContext(
     RevalidateConfigInformationContext
   );
-  const { loading: submitLoading, editCalculableNoIntervalIndice } =
-    useEditCalculableNoIntervalIndice({
-      id: calculableNoIntervalIndice.id.toString(),
-      onEditAction: () => {
-        toast.success("Índice Calculable editado con éxito");
-        handleClose();
-        fetchCalculableNoIntervalIndices();
-        revalidateConfigInformation();
-      },
-    });
+  const {
+    loading: submitLoading,
+    editCalculableNoIntervalIndice,
+    error,
+  } = useEditCalculableNoIntervalIndice({
+    id: calculableNoIntervalIndice.id.toString(),
+    onEditAction: () => {
+      toast.success("Índice Calculable editado con éxito");
+      handleClose();
+      fetchCalculableNoIntervalIndices();
+      revalidateConfigInformation();
+    },
+  });
   const form = useForm<CalculableNoIntervalIndiceEdit>({
     resolver: zodResolver(calculableNoIntervalIndiceEditSchema),
     defaultValues: {
@@ -63,7 +66,7 @@ export default function EditCalculableNoIntervalIndiceFormContainer({
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
-        <CalculableNoIntervalIndiceForm />
+        <CalculableNoIntervalIndiceForm error={error} />
         <FormActionButtons
           submitButtonText="Editar Índice Calculable"
           submitLoading={submitLoading}

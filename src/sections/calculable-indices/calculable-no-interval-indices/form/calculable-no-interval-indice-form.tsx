@@ -6,10 +6,16 @@ import { RHFSelectField } from "@/components/form/rhf-components/rhf-select-fiel
 import { Calculos, calculosMap } from "@/lib/types/calculable-indices";
 import { IndicatorNoIntervalCreate } from "./new/schemas/indicator-no-interval-create-schema";
 import RHFStackIndicatorNoInterval from "./components/rhf-stack-indicator-no-interval/rhf-stack-indicator-no-interval";
+import { AlertDestructive } from "@/components/ui/alert-destructive";
 
-export default function CalculableNoIntervalIndiceForm() {
+interface Props {
+  error?: string | null;
+}
+
+export default function CalculableNoIntervalIndiceForm({ error }: Props) {
   return (
     <div className="flex flex-col gap-4 p-2">
+      {error && <AlertDestructive title={error} />}
       <RHFTextField
         name="nombre"
         label="Nombre"
