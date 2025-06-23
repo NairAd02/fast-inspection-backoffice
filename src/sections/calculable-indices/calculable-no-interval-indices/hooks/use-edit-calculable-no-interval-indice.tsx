@@ -26,7 +26,9 @@ export default function useEditCalculableNoIntervalIndice({
           convertCalculableNoIntervalIndiceEditDTO(calculableNoIntervalIndice)
         );
         if (!res.response || res.error)
-          setError("Error en la edición de la índice calculable");
+          setError(
+            res.error?.reason || "Error en la edición de la índice calculable"
+          );
         else {
           onEditAction();
         }
