@@ -98,9 +98,10 @@ export interface ModalTypes {
     confirmButtonText: string;
   };
   editEdificationModal: SectionModal;
-  newUserModal: SectionModal,
-  editUserModal: SectionModal
-  detailsUserModal: SectionModal
+  newUserModal: SectionModal;
+  editUserModal: SectionModal;
+  detailsUserModal: SectionModal;
+  profileUserModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
@@ -301,5 +302,9 @@ export const modalTypes: ModalTypes = {
   detailsUserModal: {
     name: "detailsUserModal",
     title: "Detalles de un Usuario",
+  },
+  profileUserModal: {
+    name: "profileUserModal",
+    title: "Pérfil de Usuario",
   },
 };
