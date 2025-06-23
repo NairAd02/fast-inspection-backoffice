@@ -23,7 +23,7 @@ export default function useEditSubsystem({ id, onEditAction }: Props) {
           convertSubsystemEditDTO(subsystem)
         );
         if (!res.response || res.error)
-          setError("Error en la edición del subsistema");
+          setError(res.error?.reason || "Error en la edición del subsistema");
         else {
           onEditAction();
         }
