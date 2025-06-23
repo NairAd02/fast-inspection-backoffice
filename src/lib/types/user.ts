@@ -33,16 +33,19 @@ export interface UserEditDTO {
 }
 
 export interface ChangePasswordUserDTO {
+  idUsuario: string;
   newContrasena: string;
   contrasenaAnterior: string;
 }
 
 export const convertChangePasswordUserDTO = (
-  changePassword: ChangePassword
+  changePassword: ChangePassword,
+  userId: string
 ): ChangePasswordUserDTO => {
   return {
     newContrasena: changePassword.newPassword,
     contrasenaAnterior: changePassword.oldPassword,
+    idUsuario: userId,
   };
 };
 
