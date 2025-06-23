@@ -1,7 +1,7 @@
 "use client";
-import { editEdification } from "@/lib/services/edifications";
 import { useCallback, useState } from "react";
 import { EditUserSchema } from "../form/edit/edit-user-schema";
+import { editUser } from "@/lib/services/user";
 
 interface Props {
   id: string;
@@ -17,7 +17,7 @@ export default function useEditUser({ id, onEditAction }: Props) {
       try {
         setLoading(true);
         setError(null);
-        const res = await editEdification(id, user);
+        const res = await editUser(id, user);
         if (!res.response || res.error)
           setError(res.error?.reason || "Error en la edición de la usuario");
         else {
