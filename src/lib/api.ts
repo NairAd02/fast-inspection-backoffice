@@ -1,6 +1,5 @@
 import { ApiError, ApiResponse } from "./types/api";
 
-
 export function formatErrorMessage(err: ApiError): string {
   return JSON.stringify(err, Object.getOwnPropertyNames(err));
 }
@@ -19,7 +18,12 @@ export const fetcher = (url: string) => fetch(url).then((r) => r.json());
 export const buildApiResponse = async <T>(
   response: Response
 ): Promise<ApiResponse<T>> => {
-  console.log("buildApiResponse called with response:", response.status, response.statusText, response.url)
+  console.log(
+    "buildApiResponse called with response:",
+    response.status,
+    response.statusText,
+    response.url
+  );
   if (response.ok) {
     return {
       response: (await response.json()) as T,
@@ -35,6 +39,17 @@ export const buildApiResponse = async <T>(
         },
         status: 401,
       };
+    else if (response.status === 400) {
+      const error = await response.json();
+      return {
+        error: {
+          name: "bad request",
+          reason: error.message,
+          code: "400",
+        },
+        status: 400,
+      };
+    }
   }
 
   return {
