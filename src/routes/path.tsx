@@ -18,6 +18,7 @@ interface ApplicationPath {
     query?: Record<string, string>
   ) => Path;
   edifications: Path;
+  users: Path
 }
 
 function buildQueryString(query: Record<string, string> = {}): string {
@@ -35,6 +36,10 @@ function replaceParamsInPath(
 }
 
 export const paths: ApplicationPath = {
+  users: {
+    root: "/dashboard/user",
+    isProtected: true
+  },
   home: {
     root: "/",
     isProtected: false,
