@@ -19,7 +19,7 @@ interface Props {
 
 export default function EditConfigFormContainer({ config }: Props) {
   const { handleCloseModal } = useContext(ModalContext);
-  const { loading: submitLoading, editConfig } = useEditConfig({
+  const { loading: submitLoading, editConfig, error } = useEditConfig({
     id: config.version.toString(),
     onEditAction: () => {
       toast.success("Configuración editada con éxito");
@@ -51,7 +51,7 @@ export default function EditConfigFormContainer({ config }: Props) {
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
-        <ConfigForm editMode />
+        <ConfigForm editMode error={error} />
         <FormActionButtons
           submitButtonText="Editar Configuración"
           submitLoading={submitLoading}

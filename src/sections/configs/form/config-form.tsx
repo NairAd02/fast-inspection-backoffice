@@ -6,20 +6,24 @@ import React from "react";
 import useConfigs from "../hooks/use-configs";
 import { ConfigDetails } from "@/lib/types/configs";
 import ReplicateConfigSectionForm from "./replicate/replicate-config-section-form/replicate-config-section-form";
+import { AlertDestructive } from "@/components/ui/alert-destructive";
 
 interface Props {
   editMode?: boolean;
   replicateConfig?: ConfigDetails;
+  error?: string | null;
 }
 
 export default function ConfigForm({
   editMode = false,
   replicateConfig,
+  error,
 }: Props) {
   const { configs, loadingData: loadingDataConfigs } = useConfigs();
 
   return (
     <div className="flex flex-col gap-4 p-2">
+      {error && <AlertDestructive title={error} />}
       <RHFTextField
         name="nombre"
         label="Nombre"

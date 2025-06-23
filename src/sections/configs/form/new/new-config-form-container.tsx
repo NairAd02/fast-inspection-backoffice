@@ -26,7 +26,7 @@ export default function NewConfigFormContainer({
   actionExecute,
 }: Props) {
   const { handleCloseModal } = useContext(ModalContext);
-  const { loading: submitLoading, createConfig } = useCreateConfig({
+  const { loading: submitLoading, createConfig, error } = useCreateConfig({
     onCreateAction: () => {
       toast.success("Configuración creada con éxito");
       handleClose();
@@ -62,7 +62,7 @@ export default function NewConfigFormContainer({
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
-        <ConfigForm replicateConfig={replicateConfig} />
+        <ConfigForm replicateConfig={replicateConfig} error={error} />
         <FormActionButtons
           submitButtonText="Crear Configuración"
           submitLoading={submitLoading}
