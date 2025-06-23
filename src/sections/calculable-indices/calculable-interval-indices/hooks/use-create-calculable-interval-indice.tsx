@@ -31,7 +31,10 @@ export default function useCreateCalculableIntervalIndice({
         );
         if (!res.response || res.error) {
           console.log(res.error);
-          setError("Error en la creación del índice calculable con intervalo");
+          setError(
+            res.error?.reason ||
+              "Error en la creación del índice calculable con intervalo"
+          );
         } else {
           onCreateAction();
         }
