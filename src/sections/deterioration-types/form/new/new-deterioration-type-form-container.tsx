@@ -27,14 +27,17 @@ export default function NewDeteriorationFormContainer({
   const { revalidateConfigInformation } = useContext(
     RevalidateConfigInformationContext
   );
-  const { loading: submitLoading, createDeteriorationType } =
-    useCreateDeteriorationType({
-      onCreateAction: () => {
-        toast.success("Tipo de Deterioro creado con éxito");
-        handleClose();
-        revalidateConfigInformation();
-      },
-    });
+  const {
+    loading: submitLoading,
+    createDeteriorationType,
+    error,
+  } = useCreateDeteriorationType({
+    onCreateAction: () => {
+      toast.success("Tipo de Deterioro creado con éxito");
+      handleClose();
+      revalidateConfigInformation();
+    },
+  });
   const form = useForm<DeteriorationTypeCreate>({
     resolver: zodResolver(deteriorationTypeCreateSchema),
     defaultValues: {
@@ -62,7 +65,7 @@ export default function NewDeteriorationFormContainer({
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
-        <DeteriorationTypeForm toolId={toolId} />
+        <DeteriorationTypeForm toolId={toolId} error={error} />
         <FormActionButtons
           submitButtonText="Crear Tipo de Deterioro"
           submitLoading={submitLoading}

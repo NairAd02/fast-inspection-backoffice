@@ -6,18 +6,21 @@ import { CauseCreateDTO } from "@/lib/types/causes";
 import RHFStackCause from "./rhf-components/rhf-stack-cause/rhf-stack-cause";
 import RHFDefinedFields from "./rhf-components/rhf-defined-fields/rhf-defined-fields";
 import useFields from "@/sections/fields/hooks/use-fields";
+import { AlertDestructive } from "@/components/ui/alert-destructive";
 
 interface Props {
   toolId: string;
+  error?: string | null;
 }
 
-export default function DeteriorationTypeForm({ toolId }: Props) {
+export default function DeteriorationTypeForm({ toolId, error }: Props) {
   console.log(toolId);
   const { fields, loadingData: loadingDataFields } = useFields({
     defaultsFilters: { idHerramienta: toolId },
   });
   return (
     <div className="mx-auto w-full p-6 max-h-[70vh] space-y-6 overflow-auto">
+      {error && <AlertDestructive title={error} />}
       <DeteriorationTypeFormBasicInformation />
 
       <div className="grid grid-cols-2 gap-6">

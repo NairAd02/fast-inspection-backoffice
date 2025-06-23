@@ -32,15 +32,18 @@ export default function EditDeteriorationFormContainer({
   const { revalidateConfigInformation } = useContext(
     RevalidateConfigInformationContext
   );
-  const { loading: submitLoading, editDeteriorationType } =
-    useEditDeteriorationType({
-      id: deteriorationType.id.toString(),
-      onEditAction: () => {
-        toast.success("Tipo de Deterioro editado con éxito");
-        handleClose();
-        revalidateConfigInformation();
-      },
-    });
+  const {
+    loading: submitLoading,
+    editDeteriorationType,
+    error,
+  } = useEditDeteriorationType({
+    id: deteriorationType.id.toString(),
+    onEditAction: () => {
+      toast.success("Tipo de Deterioro editado con éxito");
+      handleClose();
+      revalidateConfigInformation();
+    },
+  });
   const form = useForm<DeteriorationTypeEdit>({
     resolver: zodResolver(deteriorationTypeEditSchema),
     defaultValues: {
@@ -88,7 +91,7 @@ export default function EditDeteriorationFormContainer({
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
-        <DeteriorationTypeForm toolId={toolId} />
+        <DeteriorationTypeForm toolId={toolId} error={error} />
         <FormActionButtons
           submitButtonText="Editar Tipo de Deterioro"
           submitLoading={submitLoading}
