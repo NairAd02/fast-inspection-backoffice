@@ -23,7 +23,9 @@ export default function useCreateDeteriorationType({ onCreateAction }: Props) {
         );
         if (!res.response || res.error) {
           console.log(res.error);
-          setError("Error en la creación del tipo de deterioro");
+          setError(
+            res.error?.reason || "Error en la creación del tipo de deterioro"
+          );
         } else {
           onCreateAction();
         }

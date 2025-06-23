@@ -23,7 +23,9 @@ export default function useEditDeteriorationType({ id, onEditAction }: Props) {
           convertDeteriorationTypeEditDTO(deteriorationType)
         );
         if (!res.response || res.error)
-          setError("Error en la edición del tipo de deterioro");
+          setError(
+            res.error?.reason || "Error en la edición del tipo de deterioro"
+          );
         else {
           onEditAction();
         }
