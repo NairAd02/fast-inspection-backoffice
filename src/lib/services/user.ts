@@ -6,7 +6,12 @@ import { QueryParamsURLFactory } from "../request";
 import { apiRoutes, tagsCacheByRoutes } from "@/routes/api-routes/api-routes";
 import { buildApiResponse } from "../api";
 import { PaginationResponse } from "../types/pagination";
-import { User, UserDetails, UserEditDTO } from "../types/user";
+import {
+  ChangePasswordUserDTO,
+  User,
+  UserDetails,
+  UserEditDTO,
+} from "../types/user";
 import { NewUserSchema } from "@/sections/user/form/new/new-user-schema";
 
 export async function getUserList(params: IQueryable) {
@@ -65,6 +70,22 @@ export async function editUser(id: string, userEditDTO: UserEditDTO) {
       "content-type": "application/json",
     },
     body: JSON.stringify(userEditDTO),
+  });
+
+  return await buildApiResponse<User>(res);
+}
+
+export async function changePasswordUser(
+  changePasswordUserDTO: ChangePasswordUserDTO
+) {
+  const session = await auth();
+  const res = await fetch(apiRoutes.user.changePassword, {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer " + session?.accessToken,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(changePasswordUserDTO),
   });
 
   return await buildApiResponse<User>(res);
