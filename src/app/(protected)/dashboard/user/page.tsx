@@ -34,8 +34,8 @@ export default async function UserPage({ searchParams }: Props) {
         <Modal
             formPath={modalTypes.detailsUserModal.name}
             title={modalTypes.detailsUserModal.title}
-            maxWidth="max-w-4xl"
-            className="min-h-[70vh] max-h-[90vh]"
+            maxWidth="max-w-2xl"
+            className="min-h-[37vh] max-h-[90vh]"
         >
             <UserDetailsModalContainer />
         </Modal>
