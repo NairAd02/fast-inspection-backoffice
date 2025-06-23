@@ -23,7 +23,11 @@ export default function NewMaterialFormContainer({ subsystemId }: Props) {
   const { revalidateConfigInformation } = useContext(
     RevalidateConfigInformationContext
   );
-  const { loading: submitLoading, createMaterial } = useCreateMaterial({
+  const {
+    loading: submitLoading,
+    createMaterial,
+    error,
+  } = useCreateMaterial({
     onCreateAction: () => {
       toast.success("Material creado con éxito");
       handleClose();
@@ -50,7 +54,7 @@ export default function NewMaterialFormContainer({ subsystemId }: Props) {
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
-        <MaterialForm />
+        <MaterialForm error={error} />
         <FormActionButtons
           submitButtonText="Crear Material"
           submitLoading={submitLoading}

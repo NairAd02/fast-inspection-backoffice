@@ -24,7 +24,11 @@ export default function EditMaterialFormContainer({ material }: Props) {
   const { revalidateConfigInformation } = useContext(
     RevalidateConfigInformationContext
   );
-  const { loading: submitLoading, editMaterial } = useEditMaterial({
+  const {
+    loading: submitLoading,
+    editMaterial,
+    error,
+  } = useEditMaterial({
     id: material.id.toString(),
     onEditAction: () => {
       toast.success("Material edición con éxito");
@@ -52,7 +56,7 @@ export default function EditMaterialFormContainer({ material }: Props) {
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
-        <MaterialForm />
+        <MaterialForm error={error} />
         <FormActionButtons
           submitButtonText="Editar Material"
           submitLoading={submitLoading}
