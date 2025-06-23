@@ -20,7 +20,7 @@ export default function useEditSystem({ id, onEditAction }: Props) {
         setError(null);
         const res = await editSystemService(id, convertSystemEditDTO(system));
         if (!res.response || res.error)
-          setError("Error en la edición del sistema");
+          setError(res.error?.reason || "Error en la edición del sistema");
         else {
           onEditAction();
         }
