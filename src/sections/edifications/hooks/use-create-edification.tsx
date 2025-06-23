@@ -23,7 +23,9 @@ export default function useCreateEdification({ onCreateAction }: Props) {
         );
         if (!res.response || res.error) {
           console.log(res.error);
-          setError("Error en la creación de la edificación");
+          setError(
+            res.error?.reason || "Error en la creación de la edificación"
+          );
         } else {
           onCreateAction();
         }

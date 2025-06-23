@@ -23,7 +23,9 @@ export default function useEditEdification({ id, onEditAction }: Props) {
           convertEdificationEditDTO(edification)
         );
         if (!res.response || res.error)
-          setError("Error en la edición de la edificación");
+          setError(
+            res.error?.reason || "Error en la edición de la edificación"
+          );
         else {
           onEditAction();
         }
