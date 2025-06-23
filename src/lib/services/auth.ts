@@ -3,7 +3,7 @@
 import { signIn as signInAuth } from "@/auth";
 import { buildApiResponse } from "@/lib/api";
 import { apiRoutes } from "@/routes/api-routes/api-routes";
-import { User } from "next-auth";
+import { Session } from "next-auth";
 import { CredentialsDTO } from "../types/auth";
 
 export async function login(credentials: CredentialsDTO) {
@@ -15,7 +15,7 @@ export async function login(credentials: CredentialsDTO) {
     body: JSON.stringify(credentials),
   });
 
-  return buildApiResponse<User>(res);
+  return buildApiResponse<Session>(res);
 }
 
 export async function signIn(credentials: CredentialsDTO) {

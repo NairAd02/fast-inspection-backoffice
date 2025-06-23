@@ -30,8 +30,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }
         const user = res.response;
         return {
-          id: user.id,
-          rol: user.rol,
+          id: user.payload.id,
+          rol: user.payload.rol,
           accessToken: user.accessToken,
         };
       },
