@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { motion, Variants } from "framer-motion"; // Importa Variants
 import { SearchX } from "lucide-react";
 
