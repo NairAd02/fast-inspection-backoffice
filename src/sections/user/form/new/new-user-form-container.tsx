@@ -39,13 +39,19 @@ export default function NewUserFormContainer() {
     handleCloseModal(modalTypes.newUserModal.name);
   };
 
-  const onSubmit = useCallback((data: NewUserSchema) => {
-    action(data);
-  }, [action]);
+  const onSubmit = useCallback(
+    (data: NewUserSchema) => {
+      action(data);
+    },
+    [action]
+  );
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
+      >
         <UserForm />
         <FormActionButtons
           submitButtonText="Crear Usuario"
