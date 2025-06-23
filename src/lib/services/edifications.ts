@@ -12,7 +12,7 @@ import {
   EdificationDetails,
   EdificationEditDTO,
 } from "../types/edifications";
-import { EditUserSchema } from "@/sections/user/form/edit/edit-user-schema";
+
 
 export async function getEdificationsList(params: IQueryable) {
   const session = await auth();
@@ -64,7 +64,7 @@ export async function createEdification(
 
 export async function editEdification(
   id: string,
-  edificationEditDTO: EditUserSchema
+  edificationEditDTO: EdificationEditDTO
 ) {
   const session = await auth();
   const res = await fetch(apiRoutes.edifications.edit.replace(":id", id), {
