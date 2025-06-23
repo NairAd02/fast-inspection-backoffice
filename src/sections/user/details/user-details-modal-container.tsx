@@ -9,7 +9,7 @@ import UserDetailsContainer from "./user-details-container";
 
 export default function UserDetailsModalContainer() {
     const { getInfoModal } = useContext(ModalContext);
-    const infoModal = getInfoModal(modalTypes.detailsEdificationModal.name);
+    const infoModal = getInfoModal(modalTypes.detailsUserModal.name);
     const id = infoModal && infoModal.entity ? infoModal.entity : null;
     const { user, loading, error, fetchUser } = useUser({
         id,
