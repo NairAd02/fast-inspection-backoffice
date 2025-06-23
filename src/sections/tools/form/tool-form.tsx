@@ -4,10 +4,16 @@ import { RHFTextField } from "@/components/form/rhf-components/rhf-text-field/rh
 import React from "react";
 import { FieldCreate } from "./new/schemas/field-create-schema";
 import RHFStackField from "./components/rhf-stack-field/rhf-stack-field";
+import { AlertDestructive } from "@/components/ui/alert-destructive";
 
-export default function ToolForm() {
+interface Props {
+  error?: string | null;
+}
+
+export default function ToolForm({ error }: Props) {
   return (
     <div className="flex flex-col gap-4 p-2">
+      {error && <AlertDestructive title={error} />}
       <RHFTextField
         name="nombre"
         label="Nombre"

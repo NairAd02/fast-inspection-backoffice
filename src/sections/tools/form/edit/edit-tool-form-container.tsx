@@ -22,7 +22,11 @@ export default function EditToolFormContainer({ tool, fetchTools }: Props) {
   const { revalidateConfigInformation } = useContext(
     RevalidateConfigInformationContext
   );
-  const { loading: submitLoading, editTool } = useEditTool({
+  const {
+    loading: submitLoading,
+    editTool,
+    error,
+  } = useEditTool({
     id: tool.id.toString(),
     onEditAction: () => {
       toast.success("Herramienta editada con éxito");
@@ -52,7 +56,7 @@ export default function EditToolFormContainer({ tool, fetchTools }: Props) {
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
-        <ToolForm />
+        <ToolForm error={error} />
         <FormActionButtons
           submitButtonText="Editar Herramienta"
           submitLoading={submitLoading}

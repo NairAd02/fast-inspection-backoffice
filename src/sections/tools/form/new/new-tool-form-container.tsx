@@ -24,7 +24,11 @@ export default function NewToolFormContainer({
   const { revalidateConfigInformation } = useContext(
     RevalidateConfigInformationContext
   );
-  const { loading: submitLoading, createTool } = useCreateTool({
+  const {
+    loading: submitLoading,
+    createTool,
+    error,
+  } = useCreateTool({
     onCreateAction: () => {
       toast.success("Herramienta creada con éxito");
       handleClose();
@@ -53,7 +57,7 @@ export default function NewToolFormContainer({
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
-        <ToolForm />
+        <ToolForm error={error} />
         <FormActionButtons
           submitButtonText="Crear Herramienta"
           submitLoading={submitLoading}
