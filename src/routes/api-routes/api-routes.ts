@@ -77,7 +77,8 @@ export const apiRoutes = {
     get: `${process.env.NEXT_PUBLIC_API_URL}users-auth/getAllUsers/:id`,
     create: `${process.env.NEXT_PUBLIC_API_URL}users-auth/createUsuario`,
     edit: `${process.env.NEXT_PUBLIC_API_URL}users-auth/updateUser/:id`,
-  }
+    changePassword: `${process.env.NEXT_PUBLIC_API_URL}users-auth/cambiarContrasena`,
+  },
 } as const;
 
 export const tagsCacheByRoutes = {
