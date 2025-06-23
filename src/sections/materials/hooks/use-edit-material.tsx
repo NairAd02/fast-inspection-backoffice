@@ -23,7 +23,7 @@ export default function useEditMaterial({ id, onEditAction }: Props) {
           convertMaterialEditDTO(material)
         );
         if (!res.response || res.error)
-          setError("Error en la edición del material");
+          setError(res.error?.reason || "Error en la edición del material");
         else {
           onEditAction();
         }

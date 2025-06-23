@@ -23,7 +23,7 @@ export default function useCreateMaterial({ onCreateAction }: Props) {
         );
         if (!res.response || res.error) {
           console.log(res.error);
-          setError("Error en la creación del material");
+          setError(res.error?.reason || "Error en la creación del material");
         } else {
           onCreateAction();
         }
