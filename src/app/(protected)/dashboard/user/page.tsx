@@ -2,7 +2,7 @@ import Modal from "@/components/modal/modal";
 import { modalTypes } from "@/components/modal/types/modalTypes";
 import { SearchParamsPagination } from "@/lib/types/pagination";
 import UserDetailsModalContainer from "@/sections/user/details/user-details-modal-container";
-import EditUserModalContainer from "@/sections/user/form/edit/edit-edification-form-modal-container";
+import EditUserModalContainer from "@/sections/user/form/edit/edit-user-form-modal-container";
 import NewUserFormContainer from "@/sections/user/form/new/new-user-form-container";
 import UserContainer from "@/sections/user/user-container";
 
