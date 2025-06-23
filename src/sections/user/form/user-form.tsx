@@ -3,10 +3,12 @@ import { RHFTextField } from "@/components/form/rhf-components/rhf-text-field/rh
 import { AlertDestructive } from "@/components/ui/alert-destructive";
 import { Role } from "@/lib/types/user";
 
-const options = Role.map((role) => ({
-  label: role,
-  value: role,
-}));
+const options = Role.filter((role) => role !== "Súper Administrador").map(
+  (role) => ({
+    label: role,
+    value: role,
+  })
+);
 
 interface Props {
   isEdit?: boolean;
