@@ -1,8 +1,6 @@
 "use client";
 
-import { getEdificationById } from "@/lib/services/edifications";
 import { getUserById } from "@/lib/services/user";
-import { EdificationDetails } from "@/lib/types/edifications";
 import { UserDetails } from "@/lib/types/user";
 import { useCallback, useEffect, useState } from "react";
 
