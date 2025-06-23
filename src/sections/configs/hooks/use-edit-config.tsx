@@ -20,7 +20,7 @@ export default function useEditConfig({ id, onEditAction }: Props) {
         setError(null);
         const res = await editConfigService(id, convertConfigEditDTO(config));
         if (!res.response || res.error)
-          setError("Error en la edición de la configuración");
+          setError(res.error?.reason || "Error en la edición de la configuración");
         else {
           onEditAction();
         }
