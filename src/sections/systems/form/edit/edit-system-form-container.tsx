@@ -21,7 +21,11 @@ export default function EditSystemFormContainer({ system }: Props) {
   const { revalidateConfigInformation } = useContext(
     RevalidateConfigInformationContext
   );
-  const { loading: submitLoading, editSystem } = useEditSystem({
+  const {
+    loading: submitLoading,
+    editSystem,
+    error,
+  } = useEditSystem({
     id: system.id.toString(),
     onEditAction: () => {
       toast.success("Sistema editado con éxito");
@@ -49,7 +53,7 @@ export default function EditSystemFormContainer({ system }: Props) {
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
-        <SystemForm editMode />
+        <SystemForm editMode error={error} />
         <FormActionButtons
           submitButtonText="Editar Sistema"
           submitLoading={submitLoading}

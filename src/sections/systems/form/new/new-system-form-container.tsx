@@ -23,7 +23,11 @@ export default function NewSystemFormContainer({ configVersion }: Props) {
   const { revalidateConfigInformation } = useContext(
     RevalidateConfigInformationContext
   );
-  const { loading: submitLoading, createSystem } = useCreateSystem({
+  const {
+    loading: submitLoading,
+    createSystem,
+    error,
+  } = useCreateSystem({
     onCreateAction: () => {
       toast.success("Sistema creado con éxito");
       handleClose();
@@ -51,7 +55,7 @@ export default function NewSystemFormContainer({ configVersion }: Props) {
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
-        <SystemForm configVersion={configVersion} />
+        <SystemForm configVersion={configVersion} error={error} />
         <FormActionButtons
           submitButtonText="Crear Sistema"
           submitLoading={submitLoading}
