@@ -26,7 +26,7 @@ export default async function UserPage({ searchParams }: Props) {
             formPath={modalTypes.editUserModal.name}
             title={modalTypes.editUserModal.title}
             maxWidth="max-w-2xl"
-            className="min-h-[70vh]"
+            className="min-h-[36vh]"
         >
             <EditUserModalContainer />
         </Modal>
