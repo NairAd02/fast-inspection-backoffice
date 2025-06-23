@@ -28,15 +28,18 @@ export default function NewCalculableIntervalIndiceFormContainer({
   const { revalidateConfigInformation } = useContext(
     RevalidateConfigInformationContext
   );
-  const { loading: submitLoading, createCalculableIntervalIndice } =
-    useCreateCalculableIntervalIndice({
-      onCreateAction: () => {
-        toast.success("Índice calculable con intervalo creado con éxito");
-        handleClose();
-        revalidateConfigInformation();
-        fetchCalculableIntervalIndices();
-      },
-    });
+  const {
+    loading: submitLoading,
+    createCalculableIntervalIndice,
+    error,
+  } = useCreateCalculableIntervalIndice({
+    onCreateAction: () => {
+      toast.success("Índice calculable con intervalo creado con éxito");
+      handleClose();
+      revalidateConfigInformation();
+      fetchCalculableIntervalIndices();
+    },
+  });
   const form = useForm<CalculableIntervalIndiceCreate>({
     resolver: zodResolver(calculableIntervalIndiceCreateSchema),
     defaultValues: {
@@ -59,7 +62,7 @@ export default function NewCalculableIntervalIndiceFormContainer({
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
-        <CalculableIntervalIndiceForm />
+        <CalculableIntervalIndiceForm error={error} />
         <FormActionButtons
           submitButtonText="Crear Índice Calculable"
           submitLoading={submitLoading}

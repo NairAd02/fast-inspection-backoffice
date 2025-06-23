@@ -28,16 +28,19 @@ export default function EditCalculableIntervalIndiceFormContainer({
   const { revalidateConfigInformation } = useContext(
     RevalidateConfigInformationContext
   );
-  const { loading: submitLoading, editCalculableIntervalIndice } =
-    useEditCalculableIntervalIndice({
-      id: calculableIntervalIndice.id.toString(),
-      onEditAction: () => {
-        toast.success("Índice Calculable editado con éxito");
-        handleClose();
-        fetchCalculableIntervalIndices();
-        revalidateConfigInformation();
-      },
-    });
+  const {
+    loading: submitLoading,
+    editCalculableIntervalIndice,
+    error,
+  } = useEditCalculableIntervalIndice({
+    id: calculableIntervalIndice.id.toString(),
+    onEditAction: () => {
+      toast.success("Índice Calculable editado con éxito");
+      handleClose();
+      fetchCalculableIntervalIndices();
+      revalidateConfigInformation();
+    },
+  });
   const form = useForm<CalculableIntervalIndiceEdit>({
     resolver: zodResolver(calculableIntervalIndiceEditSchema),
     defaultValues: {
@@ -62,7 +65,7 @@ export default function EditCalculableIntervalIndiceFormContainer({
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
-        <CalculableIntervalIndiceForm />
+        <CalculableIntervalIndiceForm error={error} />
         <FormActionButtons
           submitButtonText="Editar Índice Calculable"
           submitLoading={submitLoading}

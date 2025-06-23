@@ -9,14 +9,20 @@ import RHFStackIndicatorInterval from "./components/rhf-stack-indicator-interval
 import { useFormContext } from "react-hook-form";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
+import { AlertDestructive } from "@/components/ui/alert-destructive";
 
-export default function CalculableIntervalIndiceForm() {
+interface Props {
+  error?: string | null;
+}
+
+export default function CalculableIntervalIndiceForm({ error }: Props) {
   const {
     formState: { errors },
   } = useFormContext();
 
   return (
     <div className="flex flex-col gap-4 p-2">
+      {error && <AlertDestructive title={error} />}
       <RHFTextField
         name="nombre"
         label="Nombre"
