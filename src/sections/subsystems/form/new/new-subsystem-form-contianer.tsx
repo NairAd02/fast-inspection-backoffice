@@ -23,7 +23,11 @@ export default function NewSubsystemFormContainer({ systemId }: Props) {
   const { revalidateConfigInformation } = useContext(
     RevalidateConfigInformationContext
   );
-  const { loading: submitLoading, createSubsystem } = useCreateSubsystem({
+  const {
+    loading: submitLoading,
+    createSubsystem,
+    error,
+  } = useCreateSubsystem({
     onCreateAction: () => {
       toast.success("Subsistema creado con éxito");
       handleClose();
@@ -50,7 +54,7 @@ export default function NewSubsystemFormContainer({ systemId }: Props) {
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
-        <SubsystemForm />
+        <SubsystemForm error={error} />
         <FormActionButtons
           submitButtonText="Crear Subsistema"
           submitLoading={submitLoading}

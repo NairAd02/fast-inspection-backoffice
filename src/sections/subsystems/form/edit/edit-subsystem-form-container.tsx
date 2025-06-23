@@ -24,7 +24,11 @@ export default function EditSubsystemFormContainer({ subsystem }: Props) {
   const { revalidateConfigInformation } = useContext(
     RevalidateConfigInformationContext
   );
-  const { loading: submitLoading, editSubsystem } = useEditSubsystem({
+  const {
+    loading: submitLoading,
+    editSubsystem,
+    error,
+  } = useEditSubsystem({
     id: subsystem.id.toString(),
     onEditAction: () => {
       toast.success("Subsistema editado con éxito");
@@ -52,7 +56,7 @@ export default function EditSubsystemFormContainer({ subsystem }: Props) {
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
-        <SubsystemForm />
+        <SubsystemForm error={error} />
         <FormActionButtons
           submitButtonText="Editar Subsistema"
           submitLoading={submitLoading}
