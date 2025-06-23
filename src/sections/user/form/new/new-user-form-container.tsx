@@ -41,7 +41,7 @@ export default function NewUserFormContainer() {
 
   const onSubmit = useCallback((data: NewUserSchema) => {
     action(data);
-  }, []);
+  }, [action]);
 
   return (
     <Form {...form}>
