@@ -30,8 +30,7 @@ export default function useCreateConfig({ onCreateAction }: Props) {
                 convertConfigCreateDTO(restConfig)
               );
         if (!res.response || res.error) {
-          console.log(res.error);
-          setError("Error en la creación de la configuración");
+          setError(res.error?.reason || "Error en la creación de la configuración");
         } else {
           onCreateAction();
         }
