@@ -30,7 +30,7 @@ export default function NewUserFormContainer() {
       nombreUsuario: "",
       email: "",
       contrasena: "",
-      rol: "Súper Administrador",
+      rol: "Administrador",
     },
     mode: "onChange",
   });
