@@ -1,4 +1,5 @@
 import { EditUserSchema } from "@/sections/user/form/edit/edit-user-schema";
+import { ChangePassword } from "@/sections/user/form/profile/components/change-password-mode-form/schemas/change-password-schema";
 
 export type Role = (typeof Role)[number];
 export const Role = [
@@ -30,6 +31,20 @@ export interface UserEditDTO {
   rol: string;
   contrasena?: string;
 }
+
+export interface ChangePasswordUserDTO {
+  newContrasena: string;
+  contrasenaAnterior: string;
+}
+
+export const convertChangePasswordUserDTO = (
+  changePassword: ChangePassword
+): ChangePasswordUserDTO => {
+  return {
+    newContrasena: changePassword.newPassword,
+    contrasenaAnterior: changePassword.oldPassword,
+  };
+};
 
 export const convertUserEditDTO = (user: EditUserSchema): UserEditDTO => {
   return {
