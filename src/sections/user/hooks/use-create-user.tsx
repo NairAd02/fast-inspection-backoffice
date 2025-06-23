@@ -17,10 +17,10 @@ export default function useCreateUser({ onCreateAction }: Props) {
         setLoading(true);
         setError(null);
 
-        const res = await createUser(data)
+        const res = await createUser(data);
         if (!res.response || res.error) {
           console.log(res.error);
-          setError("Error en la creación del usuario");
+          setError(res.error?.reason || "Error en la creación del usuario");
         } else {
           onCreateAction();
         }

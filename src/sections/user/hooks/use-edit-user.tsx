@@ -19,7 +19,7 @@ export default function useEditUser({ id, onEditAction }: Props) {
         setError(null);
         const res = await editEdification(id, user);
         if (!res.response || res.error)
-          setError("Error en la edición de la usuario");
+          setError(res.error?.reason || "Error en la edición de la usuario");
         else {
           onEditAction();
         }
