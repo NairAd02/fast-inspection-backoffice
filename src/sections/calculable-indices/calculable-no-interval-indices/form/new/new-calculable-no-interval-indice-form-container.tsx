@@ -2,7 +2,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useContext } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
 import { ModalContext } from "@/components/modal/context/modalContext";
 import { modalTypes } from "@/components/modal/types/modalTypes";
 import { toast } from "react-toastify";
@@ -14,6 +13,7 @@ import {
 } from "./schemas/calculable-no-interval-indice-create-schema";
 import { Calculos } from "@/lib/types/calculable-indices";
 import CalculableNoIntervalIndiceForm from "../calculable-no-interval-indice-form";
+import FormActionButtons from "@/components/form/form-action-buttons/form-action-buttons";
 
 interface Props {
   configVersion: string;
@@ -62,14 +62,11 @@ export default function NewCalculableNoIntervalIndiceFormContainer({
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
         <CalculableNoIntervalIndiceForm />
-        <div className="flex gap-2 justify-end">
-          <Button type="button" variant={"destructive"} onClick={handleClose}>
-            Cancelar
-          </Button>
-          <Button variant={"default"} type="submit" disabled={submitLoading}>
-            Crear Índice Calculable
-          </Button>
-        </div>
+        <FormActionButtons
+          submitButtonText="Crear Índice Calculable"
+          submitLoading={submitLoading}
+          handleClose={handleClose}
+        />
       </form>
     </FormProvider>
   );

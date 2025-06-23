@@ -2,7 +2,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useContext } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
 import { ModalContext } from "@/components/modal/context/modalContext";
 import { modalTypes } from "@/components/modal/types/modalTypes";
 import { toast } from "react-toastify";
@@ -13,6 +12,7 @@ import {
 } from "./schemas/deterioration-type-create-schema";
 import useCreateDeteriorationType from "../../hooks/use-create-deterioration-type";
 import DeteriorationTypeForm from "../deterioration-type-form";
+import FormActionButtons from "@/components/form/form-action-buttons/form-action-buttons";
 
 interface Props {
   materialId: string;
@@ -63,14 +63,11 @@ export default function NewDeteriorationFormContainer({
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
         <DeteriorationTypeForm toolId={toolId} />
-        <div className="flex gap-2 justify-end">
-          <Button type="button" variant={"destructive"} onClick={handleClose}>
-            Cancelar
-          </Button>
-          <Button variant={"default"} type="submit" disabled={submitLoading}>
-            Crear Tipo de Deterioro
-          </Button>
-        </div>
+        <FormActionButtons
+          submitButtonText="Crear Tipo de Deterioro"
+          submitLoading={submitLoading}
+          handleClose={handleClose}
+        />
       </form>
     </FormProvider>
   );

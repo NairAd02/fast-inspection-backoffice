@@ -2,7 +2,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useContext } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
 import { ModalContext } from "@/components/modal/context/modalContext";
 import { modalTypes } from "@/components/modal/types/modalTypes";
 import { tagsCacheByRoutes } from "@/routes/api-routes/api-routes";
@@ -15,6 +14,7 @@ import useCreateConfig from "../../hooks/use-create-config";
 import { revalidateServerTags } from "@/lib/cache";
 import ConfigForm from "../config-form";
 import { ConfigDetails } from "@/lib/types/configs";
+import FormActionButtons from "@/components/form/form-action-buttons/form-action-buttons";
 
 interface Props {
   replicateConfig?: ConfigDetails;
@@ -63,14 +63,11 @@ export default function NewConfigFormContainer({
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
         <ConfigForm replicateConfig={replicateConfig} />
-        <div className="flex gap-2 justify-end">
-          <Button type="button" variant={"destructive"} onClick={handleClose}>
-            Cancelar
-          </Button>
-          <Button variant={"default"} type="submit" disabled={submitLoading}>
-            Crear Configuración
-          </Button>
-        </div>
+        <FormActionButtons
+          submitButtonText="Crear Configuración"
+          submitLoading={submitLoading}
+          handleClose={handleClose}
+        />
       </form>
     </FormProvider>
   );

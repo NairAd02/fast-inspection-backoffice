@@ -2,7 +2,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useContext } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
 import { ModalContext } from "@/components/modal/context/modalContext";
 import { modalTypes } from "@/components/modal/types/modalTypes";
 import { tagsCacheByRoutes } from "@/routes/api-routes/api-routes";
@@ -15,6 +14,7 @@ import {
   EdificationEdit,
   edificationEditSchema,
 } from "./schemas/edification-edit-schema";
+import FormActionButtons from "@/components/form/form-action-buttons/form-action-buttons";
 
 interface Props {
   edification: EdificationDetails;
@@ -53,14 +53,11 @@ export default function EditEdificationFormContainer({ edification }: Props) {
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
         <EdificationForm />
-        <div className="flex gap-2 justify-end">
-          <Button type="button" variant={"destructive"} onClick={handleClose}>
-            Cancelar
-          </Button>
-          <Button variant={"default"} type="submit" disabled={submitLoading}>
-            Editar Edificación
-          </Button>
-        </div>
+        <FormActionButtons
+          submitButtonText="Editar Edificación"
+          submitLoading={submitLoading}
+          handleClose={handleClose}
+        />
       </form>
     </FormProvider>
   );

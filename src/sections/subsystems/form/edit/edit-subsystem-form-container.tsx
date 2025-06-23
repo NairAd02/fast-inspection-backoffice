@@ -2,7 +2,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useContext } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
 import { ModalContext } from "@/components/modal/context/modalContext";
 import { modalTypes } from "@/components/modal/types/modalTypes";
 import { toast } from "react-toastify";
@@ -14,6 +13,7 @@ import {
   subsystemEditSchema,
 } from "./schemas/subsystem-edit-schema";
 import useEditSubsystem from "../../hooks/use-edit-subsystem";
+import FormActionButtons from "@/components/form/form-action-buttons/form-action-buttons";
 
 interface Props {
   subsystem: Subsystem;
@@ -53,14 +53,11 @@ export default function EditSubsystemFormContainer({ subsystem }: Props) {
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
         <SubsystemForm />
-        <div className="flex gap-2 justify-end">
-          <Button type="button" variant={"destructive"} onClick={handleClose}>
-            Cancelar
-          </Button>
-          <Button variant={"default"} type="submit" disabled={submitLoading}>
-            Editar Subsistema
-          </Button>
-        </div>
+        <FormActionButtons
+          submitButtonText="Editar Subsistema"
+          submitLoading={submitLoading}
+          handleClose={handleClose}
+        />
       </form>
     </FormProvider>
   );

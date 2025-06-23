@@ -2,7 +2,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useContext } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
 import { ModalContext } from "@/components/modal/context/modalContext";
 import { modalTypes } from "@/components/modal/types/modalTypes";
 import { toast } from "react-toastify";
@@ -11,6 +10,7 @@ import ToolForm from "../tool-form";
 import { ToolEdit, toolEditSchema } from "./schemas/tool-edit-schema";
 import { ToolDetails } from "@/lib/types/tools";
 import useEditTool from "../../hooks/use-edit-tool";
+import FormActionButtons from "@/components/form/form-action-buttons/form-action-buttons";
 
 interface Props {
   tool: ToolDetails;
@@ -53,14 +53,11 @@ export default function EditToolFormContainer({ tool, fetchTools }: Props) {
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
         <ToolForm />
-        <div className="flex gap-2 justify-end">
-          <Button type="button" variant={"destructive"} onClick={handleClose}>
-            Cancelar
-          </Button>
-          <Button variant={"default"} type="submit" disabled={submitLoading}>
-            Editar Herramienta
-          </Button>
-        </div>
+        <FormActionButtons
+          submitButtonText="Editar Herramienta"
+          submitLoading={submitLoading}
+          handleClose={handleClose}
+        />
       </form>
     </FormProvider>
   );

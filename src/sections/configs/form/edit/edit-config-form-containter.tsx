@@ -2,7 +2,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useContext } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
 import { ModalContext } from "@/components/modal/context/modalContext";
 import { modalTypes } from "@/components/modal/types/modalTypes";
 import { tagsCacheByRoutes } from "@/routes/api-routes/api-routes";
@@ -12,6 +11,7 @@ import ConfigForm from "../config-form";
 import { ConfigEdit, configEditSchema } from "./schemas/config-edit-schema";
 import { ConfigDetails } from "@/lib/types/configs";
 import useEditConfig from "../../hooks/use-edit-config";
+import FormActionButtons from "@/components/form/form-action-buttons/form-action-buttons";
 
 interface Props {
   config: ConfigDetails;
@@ -52,14 +52,11 @@ export default function EditConfigFormContainer({ config }: Props) {
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
         <ConfigForm editMode />
-        <div className="flex gap-2 justify-end">
-          <Button type="button" variant={"destructive"} onClick={handleClose}>
-            Cancelar
-          </Button>
-          <Button variant={"default"} type="submit" disabled={submitLoading}>
-            Editar Configuración
-          </Button>
-        </div>
+        <FormActionButtons
+          submitButtonText="Editar Configuración"
+          submitLoading={submitLoading}
+          handleClose={handleClose}
+        />
       </form>
     </FormProvider>
   );

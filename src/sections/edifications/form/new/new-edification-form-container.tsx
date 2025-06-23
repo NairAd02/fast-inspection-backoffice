@@ -2,7 +2,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useContext } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
 import { ModalContext } from "@/components/modal/context/modalContext";
 import { modalTypes } from "@/components/modal/types/modalTypes";
 import { tagsCacheByRoutes } from "@/routes/api-routes/api-routes";
@@ -14,6 +13,7 @@ import {
   edificationCreateSchema,
 } from "./schemas/edification-create-schema";
 import EdificationForm from "../edification-form";
+import FormActionButtons from "@/components/form/form-action-buttons/form-action-buttons";
 
 export default function NewEdificationFormContainer() {
   const { handleCloseModal } = useContext(ModalContext);
@@ -47,14 +47,11 @@ export default function NewEdificationFormContainer() {
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
         <EdificationForm />
-        <div className="flex gap-2 justify-end">
-          <Button type="button" variant={"destructive"} onClick={handleClose}>
-            Cancelar
-          </Button>
-          <Button variant={"default"} type="submit" disabled={submitLoading}>
-            Crear Edificación
-          </Button>
-        </div>
+        <FormActionButtons
+          submitButtonText="Crear Edificación"
+          submitLoading={submitLoading}
+          handleClose={handleClose}
+        />
       </form>
     </FormProvider>
   );
