@@ -22,7 +22,11 @@ interface Props {
 
 export default function EditEdificationFormContainer({ edification }: Props) {
   const { handleCloseModal } = useContext(ModalContext);
-  const { loading: submitLoading, editEdification } = useEditEdification({
+  const {
+    loading: submitLoading,
+    editEdification,
+    error,
+  } = useEditEdification({
     id: edification.id.toString(),
     onEditAction: () => {
       toast.success("Edificaión editada con éxito");
@@ -52,7 +56,7 @@ export default function EditEdificationFormContainer({ edification }: Props) {
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
-        <EdificationForm />
+        <EdificationForm error={error} />
         <FormActionButtons
           submitButtonText="Editar Edificación"
           submitLoading={submitLoading}
