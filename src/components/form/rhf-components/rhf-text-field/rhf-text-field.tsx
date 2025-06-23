@@ -16,6 +16,7 @@ interface Props {
   placeholder?: string;
   description?: string;
   type?: "text" | "email" | "password";
+  disabled?: boolean;
   fullWidth?: boolean;
 }
 
@@ -24,6 +25,7 @@ export function RHFTextField({
   label,
   placeholder,
   description,
+  disabled,
   type = "text",
   fullWidth = true,
 }: Props) {
@@ -40,6 +42,7 @@ export function RHFTextField({
             <Input
               type={type}
               className={`${fullWidth ? "w-full" : ""}`}
+              disabled={disabled}
               placeholder={placeholder}
               {...field}
             />

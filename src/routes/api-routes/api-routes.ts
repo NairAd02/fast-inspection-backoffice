@@ -72,6 +72,12 @@ export const apiRoutes = {
     getById: `${process.env.NEXT_PUBLIC_API_URL}inspections/:id`,
     get: `${process.env.NEXT_PUBLIC_API_URL}inspections`,
   },
+  user: {
+    getById: `${process.env.NEXT_PUBLIC_API_URL}users-auth/getUsuarioById/:id`,
+    get: `${process.env.NEXT_PUBLIC_API_URL}users-auth/getAllUsers/:id`,
+    create: `${process.env.NEXT_PUBLIC_API_URL}users-auth/createUsuario`,
+    edit: `${process.env.NEXT_PUBLIC_API_URL}users-auth/updateUser/:id`,
+  }
 } as const;
 
 export const tagsCacheByRoutes = {
@@ -119,5 +125,9 @@ export const tagsCacheByRoutes = {
   inspections: {
     singleTag: "inspection",
     multipleTag: "inspections",
+  },
+  users: {
+    singleTag: "user",
+    multipleTag: "users",
   },
 } as const;

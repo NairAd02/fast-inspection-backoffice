@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { paths } from "../path";
-import { Package } from "lucide-react";
+import { Package, User } from "lucide-react";
 
 export interface GroupRoute {
   title: string;
@@ -17,6 +17,16 @@ export interface NavigationRoute {
 
 export const groupRoutes: GroupRoute[] = [
   {
+    title: "Seguridad",
+    navigationRoutes: [
+      {
+        title: "Usuarios",
+        icon: <User />,
+        path: paths.users.root,
+      },
+    ],
+  },
+  {
     title: "Administración",
     navigationRoutes: [
       {
@@ -28,7 +38,7 @@ export const groupRoutes: GroupRoute[] = [
         title: "Edificaciones",
         icon: <Package />,
         path: paths.edifications.root,
-      },
+      }
     ],
   },
 ];
