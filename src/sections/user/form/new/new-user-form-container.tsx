@@ -16,7 +16,7 @@ import FormActionButtons from "@/components/form/form-action-buttons/form-action
 
 export default function NewUserFormContainer() {
   const { handleCloseModal } = use(ModalContext);
-  const { loading, action } = useCreateUser({
+  const { loading, action, error } = useCreateUser({
     onCreateAction: () => {
       toast.success("Usuario creado con éxito");
       handleClose();
@@ -52,7 +52,7 @@ export default function NewUserFormContainer() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
-        <UserForm />
+        <UserForm error={error} />
         <FormActionButtons
           submitButtonText="Crear Usuario"
           submitLoading={loading}

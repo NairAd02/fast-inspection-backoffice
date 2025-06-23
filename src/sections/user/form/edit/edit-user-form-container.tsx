@@ -21,7 +21,11 @@ interface Props {
 
 export default function EditUserFormContainer({ user }: Props) {
   const { handleCloseModal } = use(ModalContext);
-  const { loading: submitLoading, action } = useEditUser({
+  const {
+    loading: submitLoading,
+    action,
+    error,
+  } = useEditUser({
     id: user.id.toString(),
     onEditAction: () => {
       toast.success("Usuario editado con éxito");
@@ -52,7 +56,7 @@ export default function EditUserFormContainer({ user }: Props) {
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full flex flex-1 flex-col justify-between gap-8 h-full"
       >
-        <UserForm isEdit />
+        <UserForm isEdit error={error} />
         <FormActionButtons
           submitButtonText="Editar Usuario"
           submitLoading={submitLoading}
