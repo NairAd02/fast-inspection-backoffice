@@ -8,6 +8,7 @@ import { MaterialAnalysisChart } from "./components/material-analysis-chart";
 import SectionAnalysisContainer from "./components/section-analysis-container";
 import ChartTabs from "./components/chart-tabs";
 import { TabsType } from "@/components/ui/tabs-panel/tabs-panel";
+import { ChartBarIcon } from "lucide-react";
 
 interface Props {
   inspection: InspectionDetails;
@@ -18,6 +19,7 @@ export function InspectionAnalysisSection({ inspection }: Props) {
     {
       label: "Deterioros",
       value: "deterioration",
+      icon: <ChartBarIcon className="w-4 h-4" />,
       component: (
         <SectionAnalysisContainer
           title="Deterioros por Sistema"
@@ -30,6 +32,7 @@ export function InspectionAnalysisSection({ inspection }: Props) {
     {
       label: "Criticidad",
       value: "criticality",
+      icon: <ChartBarIcon className="w-4 h-4" />,
       component: (
         <SectionAnalysisContainer
           title="Índice de Criticidad por Sistema"
@@ -42,6 +45,7 @@ export function InspectionAnalysisSection({ inspection }: Props) {
     {
       label: "Distribución",
       value: "distribution",
+      icon: <ChartBarIcon className="w-4 h-4" />,
       component: (
         <SectionAnalysisContainer
           title="Distribución de Criticidad"
@@ -55,6 +59,7 @@ export function InspectionAnalysisSection({ inspection }: Props) {
     {
       label: "Detectabilidad",
       value: "detectability",
+      icon: <ChartBarIcon className="w-4 h-4" />,
       component: (
         <SectionAnalysisContainer
           title="Análisis de Detectabilidad"
@@ -67,6 +72,7 @@ export function InspectionAnalysisSection({ inspection }: Props) {
     {
       label: "Materiales",
       value: "materials",
+      icon: <ChartBarIcon className="w-4 h-4" />,
       component: (
         <SectionAnalysisContainer
           title="Análisis por Materiales"
