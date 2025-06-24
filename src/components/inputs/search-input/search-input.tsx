@@ -32,7 +32,7 @@ export default function SearchInput({
           placeholder={placeHolder}
           value={value || ""}
           onChange={onChange}
-          className="pl-10"
+          className="pl-10 bg-white"
         />
       </div>
     </div>
