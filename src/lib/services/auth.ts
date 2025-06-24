@@ -61,7 +61,7 @@ export async function changePasswordForgot(
   changePassowrdForgotDTO: ChangepasswordForgotDTO
 ) {
   const res = await fetch(apiRoutes.user.edit.replace(":id", userId), {
-    method: "POST",
+    method: "PATCH",
     headers: {
       "content-type": "application/json",
     },
