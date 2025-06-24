@@ -1,10 +1,10 @@
 import { z } from "zod";
 
-export interface sendVeriy {
+export interface VerifyCode {
   codigoActivacion: string;
 }
 
-export const sendVeriySchema = z.object({
+export const VerifyCodeSchema = z.object({
   codigoActivacion: z
     .string()
     .min(1, { message: "El código es requerido" })
