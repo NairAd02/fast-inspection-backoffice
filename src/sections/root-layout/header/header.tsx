@@ -10,7 +10,7 @@ export default function Header() {
       <div className="flex items-center justify-between p-4 md:px-12">
         <NavigationComponent href={paths.landing.root}>
           <div className="flex items-center space-x-1 md:space-x-2">
-            <Building2Icon className="h-6 w-6 md:h-8 md:w-8 text-blue-600" />
+            <Building2Icon className="h-6 w-6 md:h-8 md:w-8 text-primary" />
             <span className="text-md md:text-xl font-bold text-gray-900">
               InspectPro
             </span>
