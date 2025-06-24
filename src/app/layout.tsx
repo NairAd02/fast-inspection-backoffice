@@ -9,6 +9,7 @@ import Modal from "@/components/modal/modal";
 import { modalTypes } from "@/components/modal/types/modalTypes";
 import ProfileUserModalContainer from "@/sections/user/form/profile/profile-user-form-modal-container";
 import VerifyCodeFormModalContainer from "@/sections/auth/form/verify-code/verify-code-form-modal-container";
+import ChangePasswordForgotFormModalContainer from "@/sections/auth/form/change-password-forgot/change-password-forgot-form-modal-container";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -56,6 +57,14 @@ export default function RootLayout({
                 maxWidth="max-w-2xl"
               >
                 <VerifyCodeFormModalContainer />
+              </Modal>
+
+              <Modal
+                formPath={modalTypes.changePasswordForgotModal.name}
+                title={modalTypes.changePasswordForgotModal.title}
+                maxWidth="max-w-2xl"
+              >
+                <ChangePasswordForgotFormModalContainer />
               </Modal>
             </main>
           </ModalProvider>

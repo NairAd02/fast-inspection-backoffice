@@ -9,16 +9,13 @@ import FormActionButtons from "@/components/form/form-action-buttons/form-action
 import useVerifyCode from "../../hooks/use-verify-code";
 import { VerifyCode, verifyCodeSchema } from "./shcemas/verify-code-schema";
 import VerifyCodeForm from "./verify-code-form";
-import { useRouter } from "next/navigation";
-import { paths } from "@/routes/path";
 
 interface Props {
   userId: string;
 }
 
 export default function VerifyCodeFormContainer({ userId }: Props) {
-  const router = useRouter();
-  const { handleCloseModal } = useContext(ModalContext);
+  const { handleOpenModal, handleCloseModal } = useContext(ModalContext);
 
   const {
     loading: submitLoading,
@@ -27,7 +24,11 @@ export default function VerifyCodeFormContainer({ userId }: Props) {
   } = useVerifyCode({
     onVerifyCodeAction: () => {
       toast.success("Código verificado con éxito");
-      router.push(paths.change_password({ id: userId }).root);
+      handleOpenModal({
+        name: modalTypes.changePasswordForgotModal.name,
+        entity: userId,
+      });
+      handleClose();
     },
   });
   const form = useForm<VerifyCode>({
