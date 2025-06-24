@@ -110,7 +110,7 @@ export function DataTable<TData, TValue>({
       </div>
       <div className="rounded-md border relative">
         <Table>
-          <TableHeader>
+          <TableHeader className="bg-primary text-base">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
@@ -144,6 +144,7 @@ export function DataTable<TData, TValue>({
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
+                  className="text-base"
                   data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
