@@ -17,16 +17,6 @@ export interface NavigationRoute {
 
 export const groupRoutes: GroupRoute[] = [
   {
-    title: "Seguridad",
-    navigationRoutes: [
-      {
-        title: "Usuarios",
-        icon: <User />,
-        path: paths.users.root,
-      },
-    ],
-  },
-  {
     title: "Administración",
     navigationRoutes: [
       {
@@ -39,6 +29,16 @@ export const groupRoutes: GroupRoute[] = [
         icon: <Package />,
         path: paths.edifications.root,
       }
+    ],
+  },
+  {
+    title: "Seguridad",
+    navigationRoutes: [
+      {
+        title: "Usuarios",
+        icon: <User />,
+        path: paths.users.root,
+      },
     ],
   },
 ];
