@@ -102,7 +102,7 @@ export interface ModalTypes {
   editUserModal: SectionModal;
   detailsUserModal: SectionModal;
   profileUserModal: SectionModal;
-  sendVerificationCodeModal: SectionModal;
+  verifyCodeModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
@@ -308,8 +308,8 @@ export const modalTypes: ModalTypes = {
     name: "profileUserModal",
     title: "Pérfil de Usuario",
   },
-  sendVerificationCodeModal: {
-    name: "sendVerificationCodeModal",
-    title: "Envío de Código de Verificación",
+  verifyCodeModal: {
+    name: "verifyCodeModal",
+    title: "Verificación de Código",
   },
 };
