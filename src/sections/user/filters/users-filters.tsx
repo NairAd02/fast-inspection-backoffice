@@ -23,7 +23,6 @@ export default function UsersFilters({ filters, handleChangeFilters }: Props) {
       />
 
       <SelectInput
-        label="Rol"
         placeHolder="Seleccione un rol..."
         value={filters.rol}
         onValueChange={(value) => {
