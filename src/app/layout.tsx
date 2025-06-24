@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import Modal from "@/components/modal/modal";
 import { modalTypes } from "@/components/modal/types/modalTypes";
 import ProfileUserModalContainer from "@/sections/user/form/profile/profile-user-form-modal-container";
+import VerifyCodeFormModalContainer from "@/sections/auth/form/verify-code/verify-code-form-modal-container";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,6 +48,14 @@ export default function RootLayout({
                 className="min-h-[60vh]"
               >
                 <ProfileUserModalContainer />
+              </Modal>
+
+              <Modal
+                formPath={modalTypes.verifyCodeModal.name}
+                title={modalTypes.verifyCodeModal.title}
+                maxWidth="max-w-2xl"
+              >
+                <VerifyCodeFormModalContainer />
               </Modal>
             </main>
           </ModalProvider>
