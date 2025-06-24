@@ -45,7 +45,7 @@ export default function ChangePasswordModeResetSection({
 
       <div className="space-y-3">
         <p className="text-sm text-muted-foreground">
-          Se enviará un enlace de recuperación a: <br />
+          Se enviará un código de recuperación a: <br />
           <strong>{user.email}</strong>
         </p>
         <Button
