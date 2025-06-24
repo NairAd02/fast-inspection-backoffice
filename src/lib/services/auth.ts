@@ -25,3 +25,17 @@ export async function signIn(credentials: CredentialsDTO) {
     redirect: false,
   });
 }
+
+export async function sendVerificationCode(userId: string) {
+  const res = await fetch(
+    apiRoutes.auth.sendVerificationCode.replace(":idUsuario", userId),
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+    }
+  );
+
+  return await buildApiResponse<{ success: boolean }>(res);
+}
