@@ -20,9 +20,13 @@ import { Card } from "@/components/ui/card";
 
 interface Props {
   user: UserDetails;
+  refreshUserInfo: () => Promise<void>;
 }
 
-export default function ProfileUserFormContainer({ user }: Props) {
+export default function ProfileUserFormContainer({
+  user,
+  refreshUserInfo,
+}: Props) {
   const { handleCloseModal } = use(ModalContext);
   const {
     loading: submitLoading,
@@ -33,6 +37,7 @@ export default function ProfileUserFormContainer({ user }: Props) {
     onEditAction: () => {
       toast.success("Información de perfil actualizada con éxito");
       revalidateServerTags(tagsCacheByRoutes.users.multipleTag);
+      refreshUserInfo();
     },
   });
   const form = useForm<EditUserSchema>({

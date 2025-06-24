@@ -11,6 +11,8 @@ export default function ProfileUserModalContainer() {
   const { getInfoModal } = useContext(ModalContext);
   const infoModal = getInfoModal(modalTypes.profileUserModal.name);
   const id = infoModal && infoModal.entity ? infoModal.entity : null;
+  const refreshUserInfo =
+    infoModal && infoModal.actionExecute ? infoModal.actionExecute : null;
   const { user, loading, error, fetchUser } = useUser({
     id,
   });
@@ -19,7 +21,10 @@ export default function ProfileUserModalContainer() {
     <div className="flex flex-1 flex-col h-full w-full">
       {!loading ? (
         user && !error ? (
-          <ProfileUserFormContainer user={user} />
+          <ProfileUserFormContainer
+            user={user}
+            refreshUserInfo={refreshUserInfo as () => Promise<void>}
+          />
         ) : (
           <FetchingDataErrorPanel message={error as string} reset={fetchUser} />
         )
