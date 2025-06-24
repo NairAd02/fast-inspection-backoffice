@@ -27,7 +27,7 @@ export function DetectabilityAnalysisChart({ inspection }: DetectabilityAnalysis
   const chartConfig = {
     detectabilidad: {
       label: "Detectabilidad",
-      color: "oklch(0.888 0.222 41.116)",
+      color: "#6b9080",
     },
   }
 

@@ -19,7 +19,7 @@ export function SystemCriticalityChart({ inspection }: SystemCriticalityChartPro
   const chartConfig = {
     criticidad: {
       label: "Índice de Criticidad",
-      color: "oklch(0.888 0.222 41.116)",
+      color: "#6b9080",
     },
   }
 

@@ -22,13 +22,13 @@ export function CriticalityDistributionChart({ inspection }: CriticalityDistribu
     sistema: sistema.nombre,
     criticidad: sistema.indiceCriticidad,
     porcentaje: ((sistema.indiceCriticidad / totalCriticidad) * 100).toFixed(1),
-    fill: `oklch(0.888 0.222 41.116)`,
+    fill: `#6b9080`,
   }))
 
   const chartConfig = inspection.sistemas.reduce((config, sistema) => {
     config[sistema.nombre] = {
       label: sistema.nombre,
-      color: `oklch(0.888 0.222 41.116)`,
+      color: `#6b9080`,
     }
     return config
   }, {} as any)
