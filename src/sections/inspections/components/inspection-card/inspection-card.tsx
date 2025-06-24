@@ -56,6 +56,17 @@ export default function InspectionCard({ inspection, isLatest }: Props) {
               <Settings className="w-3 h-3" />
               <span>Config v{inspection.configVersion}</span>
             </div>
+            <NavigationComponent
+              href={
+                paths.config_management({
+                  id: inspection.configVersion.toString(),
+                }).root
+              }
+            >
+              <Button variant="default" size="sm">
+                Ver Configuración
+              </Button>
+            </NavigationComponent>
           </div>
         </div>
       </div>
