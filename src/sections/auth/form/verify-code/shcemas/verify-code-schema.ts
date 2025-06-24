@@ -4,7 +4,7 @@ export interface VerifyCode {
   codigoActivacion: string;
 }
 
-export const VerifyCodeSchema = z.object({
+export const verifyCodeSchema = z.object({
   codigoActivacion: z
     .string()
     .min(1, { message: "El código es requerido" })
