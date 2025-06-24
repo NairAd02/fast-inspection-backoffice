@@ -18,7 +18,8 @@ interface ApplicationPath {
     query?: Record<string, string>
   ) => Path;
   edifications: Path;
-  users: Path
+  users: Path;
+  change_password: (params?: Record<string, string>) => Path;
 }
 
 function buildQueryString(query: Record<string, string> = {}): string {
@@ -38,7 +39,7 @@ function replaceParamsInPath(
 export const paths: ApplicationPath = {
   users: {
     root: "/dashboard/user",
-    isProtected: true
+    isProtected: true,
   },
   home: {
     root: "/",
@@ -81,6 +82,14 @@ export const paths: ApplicationPath = {
   edifications: {
     root: "/dashboard/edifications",
     isProtected: true,
+  },
+  change_password: (params = {}) => {
+    const basePath = "/landing/change-password/[id]";
+    const pathWithParams = replaceParamsInPath(basePath, params);
+    return {
+      root: pathWithParams,
+      isProtected: false,
+    };
   },
 } as const;
 
