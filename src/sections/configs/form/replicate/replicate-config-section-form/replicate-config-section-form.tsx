@@ -10,8 +10,8 @@ export default function ReplicateConfigSectionForm({ replicateConfig }: Props) {
   return (
     <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
       <div className="flex items-center gap-2">
-        <div className="p-2 bg-blue-100 rounded-lg">
-          <SettingsIcon className="h-5 w-5 text-blue-600" />
+        <div className="p-2 bg-primary rounded-lg">
+          <SettingsIcon className="h-5 w-5 text-white" />
         </div>
         <h3 className="text-sm font-medium text-gray-700 mb-2">
           Configuración a replicar
