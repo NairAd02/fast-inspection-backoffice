@@ -40,8 +40,8 @@ export default function ConfigCard({
       <CardHeader className="pb-3 flex-shrink-0">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-blue-100 rounded-lg">
-              <Settings className="h-5 w-5 text-blue-600" />
+            <div className="p-2 bg-primary rounded-lg">
+              <Settings className="h-5 w-5 text-white" />
             </div>
             <div className="flex flex-col">
               <h3 className="font-semibold text-lg leading-tight">{nombre}</h3>
@@ -143,7 +143,7 @@ export default function ConfigCard({
             href={paths.config_management({ id: version.toString() }).root}
           >
             <Button
-              variant="outline"
+              variant="default"
               size="sm"
               className="size-10 px-3 sm:text-lg w-full"
             >
