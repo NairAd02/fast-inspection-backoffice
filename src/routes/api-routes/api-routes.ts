@@ -2,6 +2,7 @@ export const apiRoutes = {
   auth: {
     login: `${process.env.NEXT_PUBLIC_API_URL}users-auth/login`,
     sendVerificationCode: `${process.env.NEXT_PUBLIC_API_URL}users-auth/enviarCodigoVerificacionIdentidad/:idUsuario`,
+    verifyCode: `${process.env.NEXT_PUBLIC_API_URL}users-auth/verificarCodigoIdentidad`,
   },
   configs: {
     get: `${process.env.NEXT_PUBLIC_API_URL}configs/getAllConfigs`,
