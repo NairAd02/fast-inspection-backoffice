@@ -103,6 +103,7 @@ export interface ModalTypes {
   detailsUserModal: SectionModal;
   profileUserModal: SectionModal;
   verifyCodeModal: SectionModal;
+  changePasswordForgotModal: SectionModal;
 }
 
 export const modalTypes: ModalTypes = {
@@ -311,5 +312,9 @@ export const modalTypes: ModalTypes = {
   verifyCodeModal: {
     name: "verifyCodeModal",
     title: "Verificación de Código",
+  },
+  changePasswordForgotModal: {
+    name: "changePasswordForgotModal",
+    title: "Cambio de contraseña",
   },
 };
