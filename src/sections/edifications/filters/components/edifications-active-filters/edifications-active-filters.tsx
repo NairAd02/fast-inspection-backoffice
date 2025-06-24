@@ -25,7 +25,7 @@ export default function EdificationsActiveFilters({
         <div className="flex gap-2 items-center">
           <Label>Filtros Activos</Label>
           {getActiveFiltersCount() > 0 && (
-            <Badge variant="secondary" className="ml-2">
+            <Badge variant="default" className="ml-2">
               {getActiveFiltersCount()}
             </Badge>
           )}
