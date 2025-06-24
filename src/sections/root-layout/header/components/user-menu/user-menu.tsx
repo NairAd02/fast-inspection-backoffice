@@ -9,15 +9,26 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { User } from "lucide-react";
 import SignOutButton from "./components/sign-out-button/sign-out-button";
-import NavigationComponent from "@/components/navigation-component/navigation-component";
-import { paths } from "@/routes/path";
 import useUser from "@/sections/user/hooks/use-user";
 import { useSession } from "next-auth/react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useCallback, useContext } from "react";
+import { ModalContext } from "@/components/modal/context/modalContext";
+import { modalTypes } from "@/components/modal/types/modalTypes";
 
 export default function UserMenu() {
   const session = useSession();
-  const { user, loading } = useUser({ id: session.data?.user?.id as string });
+  const { handleOpenModal } = useContext(ModalContext);
+  const { user, loading, fetchUser } = useUser({ id: session.data?.user?.id as string });
+
+  const handleOpenProfileModal = useCallback(() => {
+    console.log("Entee");
+    handleOpenModal({
+      name: modalTypes.profileUserModal.name,
+      entity: user?.id,
+      actionExecute: fetchUser,
+    });
+  }, [handleOpenModal, user?.id, fetchUser]);
 
   if (loading) return <Skeleton className="h-10 w-10 rounded-full" />;
   return (
@@ -55,12 +66,14 @@ export default function UserMenu() {
         </div>
         <Separator />
         <div className="p-2">
-          <NavigationComponent href={paths.profile.root}>
-            <Button variant="ghost" className="w-full justify-start h-9 px-3">
-              <User className="mr-3 h-4 w-4" />
-              Ver perfil
-            </Button>
-          </NavigationComponent>
+          <Button
+            variant="ghost"
+            className="w-full justify-start h-9 px-3"
+            onClick={handleOpenProfileModal}
+          >
+            <User className="mr-3 h-4 w-4" />
+            Ver perfil
+          </Button>
         </div>
         <Separator />
         <div className="p-2">
