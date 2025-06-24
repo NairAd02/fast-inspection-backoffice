@@ -62,7 +62,7 @@ export default function RootLayout({
               <Modal
                 formPath={modalTypes.changePasswordForgotModal.name}
                 title={modalTypes.changePasswordForgotModal.title}
-                maxWidth="max-w-2xl"
+                maxWidth="max-w-lg"
               >
                 <ChangePasswordForgotFormModalContainer />
               </Modal>
