@@ -163,7 +163,7 @@ export function HierarchicalTree({
   };
 
   return (
-    <div className="w-full border rounded-lg bg-background">
+    <div className="w-full border rounded-lg bg-white">
       {data.map((item) => (
         <HierarchicalTreeItem
           key={item.id}
