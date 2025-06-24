@@ -2,14 +2,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { ArrowLeft, FileText, Search } from "lucide-react";
+import { FileText, Search } from "lucide-react";
 import { InspectionHeader } from "./components/inspection-header";
 import { InspectionDetails } from "@/lib/types/inspections";
 import { SystemsAccordion } from "./components/systems-accordion";
-import NavigationComponent from "@/components/navigation-component/navigation-component";
 import { paths } from "@/routes/path";
 import { InspectionAnalysisSection } from "./inspection-anallysis-section/inspection-analysis-section";
 import ReportGenerationSection from "./components/report-generation-section";
+import DetailsSectionHeader from "@/components/details-section-header/details-section-header";
 
 interface Props {
   inspection: InspectionDetails;
@@ -40,22 +40,11 @@ export default function InspectionDetailsContainer({ inspection }: Props) {
 
   return (
     <div className="min-h-screen ">
-      <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-        <NavigationComponent href={paths.edifications.root}>
-          <Button variant="outline" size="sm" className="gap-2">
-            <ArrowLeft className="w-4 h-4" />
-            Volver
-          </Button>
-        </NavigationComponent>
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900">
-            Detalles de la Inspección
-          </h1>
-          <p className="text-gray-600">
-            Visualice los Detalles de la Inspección
-          </p>
-        </div>
-      </div>
+      <DetailsSectionHeader
+        href={paths.edifications.root}
+        title="Detalles de la Inspección"
+        description="Visualice los Detalles de la Inspección"
+      />
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
         <div className="mb-8">
@@ -73,7 +62,7 @@ export default function InspectionDetailsContainer({ inspection }: Props) {
             </CardHeader>
             <CardContent>
               <div className="flex flex-wrap gap-3">
-               <ReportGenerationSection inspection={inspection} />
+                <ReportGenerationSection inspection={inspection} />
                 <Button variant="outline" className="flex items-center gap-2">
                   <Search className="h-4 w-4" />
                   Buscar Deterioros
