@@ -14,10 +14,10 @@ export function DashBoardLayoutAppSidebar({
 }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar variant="floating" collapsible="icon" {...props}>
-      <SidebarHeader className="flex items-center justify-center">
+      <SidebarHeader className="flex items-center justify-center bg-primary">
         <SidebarHeaderContent />
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="bg-primary">
         {groupRoutes.map((groupRoute, index) => (
           <SidebarGroupNavigation key={index} group={groupRoute} />
         ))}
