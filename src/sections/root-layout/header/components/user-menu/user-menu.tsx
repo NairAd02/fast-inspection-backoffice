@@ -19,7 +19,9 @@ import { modalTypes } from "@/components/modal/types/modalTypes";
 export default function UserMenu() {
   const session = useSession();
   const { handleOpenModal } = useContext(ModalContext);
-  const { user, loading, fetchUser } = useUser({ id: session.data?.user?.id as string });
+  const { user, loading, fetchUser } = useUser({
+    id: session.data?.user?.id as string,
+  });
 
   const handleOpenProfileModal = useCallback(() => {
     console.log("Entee");
@@ -40,7 +42,8 @@ export default function UserMenu() {
               {user?.nombreUsuario
                 .split(" ")
                 .map((n) => n[0])
-                .join("")}
+                .join("")
+                .toUpperCase()}
             </AvatarFallback>
           </Avatar>
         </Button>
@@ -53,7 +56,8 @@ export default function UserMenu() {
                 {user?.nombreUsuario
                   .split(" ")
                   .map((n) => n[0])
-                  .join("")}
+                  .join("")
+                  .toUpperCase()}
               </AvatarFallback>
             </Avatar>
             <div className="space-y-1">
