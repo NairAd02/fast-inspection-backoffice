@@ -16,7 +16,7 @@ export default function ConfigManagementContainer({ version }: Props) {
       <div className="space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center gap-4">
           <NavigationComponent href={paths.configs.root}>
-            <Button variant="ghost" size="sm" className="gap-2">
+            <Button variant="outline" size="sm" className="gap-2">
               <ArrowLeft className="w-4 h-4" />
               Volver
             </Button>

@@ -42,7 +42,7 @@ export default function InspectionDetailsContainer({ inspection }: Props) {
     <div className="min-h-screen ">
       <div className="flex flex-col sm:flex-row sm:items-center gap-4">
         <NavigationComponent href={paths.edifications.root}>
-          <Button variant="ghost" size="sm" className="gap-2">
+          <Button variant="outline" size="sm" className="gap-2">
             <ArrowLeft className="w-4 h-4" />
             Volver
           </Button>
