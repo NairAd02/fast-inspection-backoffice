@@ -5,6 +5,9 @@ import Header from "@/sections/root-layout/header/header";
 import { SessionProvider } from "next-auth/react";
 import { ModalProvider } from "@/components/modal/context/modalContext";
 import { ToastContainer } from "react-toastify";
+import Modal from "@/components/modal/modal";
+import { modalTypes } from "@/components/modal/types/modalTypes";
+import ProfileUserModalContainer from "@/sections/user/form/profile/profile-user-form-modal-container";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +40,14 @@ export default function RootLayout({
             <main className="flex min-h-screen flex-col">
               <Header />
               {children}
+              <Modal
+                formPath={modalTypes.profileUserModal.name}
+                title={modalTypes.profileUserModal.title}
+                maxWidth="max-w-3xl"
+                className="min-h-[60vh]"
+              >
+                <ProfileUserModalContainer />
+              </Modal>
             </main>
           </ModalProvider>
         </SessionProvider>
