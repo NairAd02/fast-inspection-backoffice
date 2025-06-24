@@ -14,7 +14,7 @@ export function DashBoardLayoutAppSidebar({
 }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar variant="floating" collapsible="icon" {...props}>
-      <SidebarHeader className="flex items-center rounded-xl justify-center bg-primary">
+      <SidebarHeader className="flex items-center p-4 rounded-xl justify-center bg-primary">
         <SidebarHeaderContent />
       </SidebarHeader>
       <SidebarContent className="bg-primary rounded-xl">
