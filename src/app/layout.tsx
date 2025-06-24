@@ -39,7 +39,7 @@ export default function RootLayout({
         <SessionProvider>
           <ModalProvider>
             <ToastContainer />
-            <main className="flex min-h-screen flex-col">
+            <main className="flex bg-background min-h-screen flex-col">
               <Header />
               {children}
               <Modal
