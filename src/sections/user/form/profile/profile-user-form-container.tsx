@@ -60,7 +60,7 @@ export default function ProfileUserFormContainer({
   return (
     <div className="w-full flex flex-1 flex-col justify-between gap-4 h-full">
       <div className="flex items-center gap-4 mb-6">
-        <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+        <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
           <User className="w-8 h-8 text-white" />
         </div>
         <div>
