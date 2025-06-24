@@ -16,7 +16,7 @@ interface Props {
 export default function SidebarGroupNavigation({ group }: Props) {
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>{group.title}</SidebarGroupLabel>
+      <SidebarGroupLabel className="text-base" >{group.title}</SidebarGroupLabel>
       <SidebarMenu>
         {group.navigationRoutes.map((navigationRoute, index) =>
           navigationRoute.children ? (

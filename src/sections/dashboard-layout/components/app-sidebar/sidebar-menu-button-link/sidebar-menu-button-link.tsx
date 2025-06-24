@@ -15,7 +15,7 @@ export default function SideBarMenuButtonLink({ title, icon, path }: Props) {
   const isActive = currentPath === path;
   return (
     <Link className="flex gap-2 w-full" href={path}>
-      <SidebarMenuButton tooltip={title} isActive={isActive}>
+      <SidebarMenuButton className="text-[15px]" tooltip={title} isActive={isActive}>
         {icon && icon}
         <span>{title}</span>
       </SidebarMenuButton>
