@@ -14,6 +14,7 @@ export default function SystemToolsField({ configVersion }: Props) {
   return (
     <RHFSelectField
       name="herramienta"
+      placeholder="Seleccione Herramienta"
       options={tools.map((tool) => ({
         value: tool.id.toString(),
         label: tool.nombre,
