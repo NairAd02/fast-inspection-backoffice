@@ -25,44 +25,41 @@ export default function HomeFeaturesSection() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <FeatureCard
-            icon={<ClipboardCheck className="h-6 w-6 text-blue-600" />}
+            icon={<ClipboardCheck className="h-6 w-6 text-white" />}
             title="Inspecciones Digitales"
-            desciption="Crea y gestiona inspecciones detalladas con formularios
+            desciption="Gestiona inspecciones detalladas con formularios
                   personalizables y captura de evidencias fotográficas."
           />
           <FeatureCard
-            icon={<BarChart3 className="h-6 w-6 text-green-600" />}
+            icon={<BarChart3 className="h-6 w-6 text-white" />}
             title="Reportes Avanzados"
             desciption="Genera reportes profesionales automáticamente con gráficos,
                   estadísticas y análisis detallados de cada inspección."
           />
 
           <FeatureCard
-            icon={<Users className="h-6 w-6 text-purple-600" />}
-            title="Gestión de Equipos"
-            desciption="Asigna inspecciones a tu equipo, controla permisos y mantén la
-                colaboración fluida entre todos los miembros."
+            icon={<Users className="h-6 w-6 text-white" />}
+            title="Control de Criticidad"
+            desciption="Evalúa de forma automática la criticidad de las edificaciones."
           />
 
           <FeatureCard
-            icon={<MapPin className="h-6 w-6 text-orange-600" />}
+            icon={<MapPin className="h-6 w-6 text-white" />}
             title="Geolocalización"
-            desciption="Registra la ubicación exacta de cada inspección con mapas
+            desciption="Registra la ubicación exacta de cada edififcación con mapas
                 interactivos y coordenadas GPS precisas."
           />
 
           <FeatureCard
-            icon={<Shield className="h-6 w-6 text-red-600" />}
-            title="Seguridad Total"
-            desciption="Protege tus datos con encriptación de nivel empresarial y cumple
-                con todas las normativas de seguridad."
+            icon={<Shield className="h-6 w-6 text-white" />}
+            title="Gestiona la Información de los Usuarios"
+            desciption="Protege y administra los datos de los usuarios que usan el sistema."
           />
 
           <FeatureCard
-            icon={<Calendar className="h-6 w-6 text-teal-600" />}
-            title="Programación"
-            desciption="Programa inspecciones automáticas, establece recordatorios y
-                mantén un calendario organizado de todas tus actividades."
+            icon={<Calendar className="h-6 w-6 text-white" />}
+            title="Gestión de Configuraciones"
+            desciption="Crear y administra configuraciones que serán usadas para realizar las inspecciones."
           />
         </div>
       </div>
