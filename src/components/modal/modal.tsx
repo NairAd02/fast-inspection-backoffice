@@ -8,11 +8,12 @@ import {
   DialogTitle,
 } from "../ui/dialog";
 import { ModalContext } from "./context/modalContext";
-import { XIcon } from "lucide-react";
+import { Box, XIcon } from "lucide-react";
 
 interface Props {
   formPath: string;
   title?: string;
+  icon?: ReactNode;
   titleCenter?: boolean;
   titleSize?: "small" | "medium" | "big";
   children: ReactNode;
@@ -24,6 +25,7 @@ interface Props {
 export default function Modal({
   formPath,
   title,
+  icon,
   titleSize = "medium",
   titleCenter = false,
   children,
@@ -60,6 +62,7 @@ export default function Modal({
                 : "text-sm"
             }`}
           >
+            {icon || <Box />}
             {title || ""}
           </DialogTitle>
           <DialogClose>
