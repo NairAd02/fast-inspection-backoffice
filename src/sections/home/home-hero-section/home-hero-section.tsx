@@ -2,6 +2,8 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, ArrowRight, Star } from "lucide-react";
+import NavigationComponent from "@/components/navigation-component/navigation-component";
+import { paths } from "@/routes/path";
 
 export default function HomeHeroSection() {
   return (
@@ -22,10 +24,12 @@ export default function HomeHeroSection() {
           control total de las edificaciones.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" className="text-lg px-8 py-3">
-            Comenzar
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+          <NavigationComponent href={paths.configs.root}>
+            <Button size="lg" className="text-lg px-8 py-3">
+              Comenzar
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </NavigationComponent>
         </div>
         <div className="mt-12 flex items-center justify-center space-x-8 text-sm text-gray-500">
           <div className="flex items-center">
