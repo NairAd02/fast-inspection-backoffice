@@ -18,14 +18,13 @@ export default function HomeProcessSection() {
         <div className="grid md:grid-cols-3 gap-8">
           <StepCard
             step="1"
-            title="Configura tu Proyecto"
-            description="Crea tu proyecto, define los tipos de inspección y configura los
-              formularios según tus necesidades específicas."
+            title="Crea una Configuración"
+            description="Crea una configuración para una configuración."
           />
           <StepCard
             step="2"
             title="Realiza Inspecciones"
-            description="Utiliza nuestra app móvil o web para realizar inspecciones en campo,
+            description="Utiliza nuestra app móvil para realizar inspecciones en campo,
                 capturar fotos y completar formularios detallados."
           />
 
