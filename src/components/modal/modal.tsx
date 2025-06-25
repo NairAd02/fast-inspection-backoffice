@@ -1,7 +1,14 @@
 "use client";
 import { ReactNode, useContext } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "../ui/dialog";
 import { ModalContext } from "./context/modalContext";
+import { XIcon } from "lucide-react";
 
 interface Props {
   formPath: string;
@@ -31,7 +38,7 @@ export default function Modal({
       onOpenChange={(_state: boolean) => onOpenChange(formPath)}
     >
       <DialogContent
-        className={`w-full max-h-screen pl-2 pr-2 xs:p-4 flex flex-col  ${
+        className={`w-full max-h-screen flex flex-col  ${
           !maxWidth
             ? wide === "normal"
               ? "sm:max-w-lg"
@@ -41,9 +48,9 @@ export default function Modal({
             : maxWidth
         } ${className && className}`}
       >
-        <DialogHeader>
+        <DialogHeader className="bg-primary flex gap-2 justify-between p-2 rounded-t-lg text-white">
           <DialogTitle
-            className={`flex ${
+            className={`flex gap-3 ${
               titleCenter ? "justify-center" : "justify-start"
             } ${
               titleSize === "medium"
@@ -55,8 +62,11 @@ export default function Modal({
           >
             {title || ""}
           </DialogTitle>
+          <DialogClose>
+            <XIcon className="w-4 h-4 cursor-pointer hover:text-destructive" />
+          </DialogClose>
         </DialogHeader>
-        <div className="flex-1 overflow-auto flex flex-col h-full">
+        <div className="flex-1 overflow-auto flex flex-col h-full p-4">
           {children}
         </div>
       </DialogContent>
