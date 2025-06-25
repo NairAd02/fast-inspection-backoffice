@@ -14,7 +14,7 @@ export default function TooltipContainer({
 }: Props) {
   return (
     <Tooltip>
-      <TooltipTrigger className={className}>{children}</TooltipTrigger>
+      <TooltipTrigger asChild className={className}>{children}</TooltipTrigger>
       <TooltipContent>{content}</TooltipContent>
     </Tooltip>
   );
