@@ -5,7 +5,7 @@ import HomeCtaSection from "./home-cta-section/home-cta-section";
 
 export default function HomeContainer() {
   return (
-    <div className="bg-gradient-to-b from-slate-50 to-white">
+    <div>
       {/* Hero Section */}
       <HomeHeroSection />
 
