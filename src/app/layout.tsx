@@ -10,6 +10,7 @@ import { modalTypes } from "@/components/modal/types/modalTypes";
 import ProfileUserModalContainer from "@/sections/user/form/profile/profile-user-form-modal-container";
 import VerifyCodeFormModalContainer from "@/sections/auth/form/verify-code/verify-code-form-modal-container";
 import ChangePasswordForgotFormModalContainer from "@/sections/auth/form/change-password-forgot/change-password-forgot-form-modal-container";
+import ProgressBar from "@/components/providers/progress-bar.";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,34 +40,36 @@ export default function RootLayout({
         <SessionProvider>
           <ModalProvider>
             <ToastContainer />
-            <main className="flex bg-background min-h-screen flex-col">
-              <Header />
-              {children}
-              <Modal
-                formPath={modalTypes.profileUserModal.name}
-                title={modalTypes.profileUserModal.title}
-                maxWidth="max-w-3xl"
-                className="min-h-[60vh]"
-              >
-                <ProfileUserModalContainer />
-              </Modal>
+            <ProgressBar>
+              <main className="flex bg-background min-h-screen flex-col">
+                <Header />
+                {children}
+                <Modal
+                  formPath={modalTypes.profileUserModal.name}
+                  title={modalTypes.profileUserModal.title}
+                  maxWidth="max-w-3xl"
+                  className="min-h-[60vh]"
+                >
+                  <ProfileUserModalContainer />
+                </Modal>
 
-              <Modal
-                formPath={modalTypes.verifyCodeModal.name}
-                title={modalTypes.verifyCodeModal.title}
-                maxWidth="max-w-2xl"
-              >
-                <VerifyCodeFormModalContainer />
-              </Modal>
+                <Modal
+                  formPath={modalTypes.verifyCodeModal.name}
+                  title={modalTypes.verifyCodeModal.title}
+                  maxWidth="max-w-2xl"
+                >
+                  <VerifyCodeFormModalContainer />
+                </Modal>
 
-              <Modal
-                formPath={modalTypes.changePasswordForgotModal.name}
-                title={modalTypes.changePasswordForgotModal.title}
-                maxWidth="max-w-lg"
-              >
-                <ChangePasswordForgotFormModalContainer />
-              </Modal>
-            </main>
+                <Modal
+                  formPath={modalTypes.changePasswordForgotModal.name}
+                  title={modalTypes.changePasswordForgotModal.title}
+                  maxWidth="max-w-lg"
+                >
+                  <ChangePasswordForgotFormModalContainer />
+                </Modal>
+              </main>
+            </ProgressBar>
           </ModalProvider>
         </SessionProvider>
       </body>
