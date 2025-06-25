@@ -42,7 +42,7 @@ export default function EdificationDetailsInspectionHistory({
           />
           <TooltipContainer content="Refrescar Inspecciones">
             <Button
-              variant="outline"
+              variant="default"
               size="icon"
               className="rounded-full"
               onClick={() => {
