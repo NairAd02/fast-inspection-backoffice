@@ -17,7 +17,6 @@ export default function InspectionsFilters({
   return (
     <div className="flex gap-4">
       <SelectInput
-        label="Configuración"
         placeHolder="Seleccione una configuración..."
         value={filters.configId}
         onValueChange={(value) => {
