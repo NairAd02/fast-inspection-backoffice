@@ -12,7 +12,7 @@ export default function Header() {
           <div className="flex items-center space-x-1 md:space-x-2">
             <Building2Icon className="h-6 w-6 md:h-8 md:w-8 text-primary" />
             <span className="text-md md:text-xl font-bold text-gray-900">
-              InspectPro
+              Fast-Inspection
             </span>
           </div>
         </NavigationComponent>
