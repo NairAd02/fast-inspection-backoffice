@@ -130,10 +130,10 @@ export default function InspectionDetailsContainer({ inspection }: Props) {
         {/* Footer */}
         <div className="text-center py-8">
           <div className="flex items-center justify-center gap-4 text-sm text-gray-500">
-            <Badge variant="outline">
+            <Badge variant="default">
               Última actualización: {new Date().toLocaleDateString("es-ES")}
             </Badge>
-            <Badge variant="outline">
+            <Badge variant="default">
               Total deterioros activos: {totalDeteriorations}
             </Badge>
           </div>
