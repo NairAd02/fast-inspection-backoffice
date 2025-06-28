@@ -27,10 +27,16 @@ import DeleteToolModalContainer from "@/sections/tools/delete/delete-tool-modal-
 import ToolDetailsModalContainer from "@/sections/tools/details/tool-details-modal-container";
 import EditToolModalContainer from "@/sections/tools/form/edit/edit-tool-form-modal-container";
 import NewToolFormModalContainer from "@/sections/tools/form/new/new-tool-form-modal-container";
+import { Metadata } from "next";
 import React from "react";
 
 type Props = {
   params: Promise<{ id: string }>;
+};
+
+export const metadata: Metadata = {
+  title: "Administración de Configuración",
+  description: "Administre la configuración especificada",
 };
 
 export default async function ConfigManagementPage({ params }: Props) {
