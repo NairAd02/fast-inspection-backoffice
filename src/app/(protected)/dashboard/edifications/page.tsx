@@ -28,6 +28,7 @@ export default async function EdificationsPage({ searchParams }: Props) {
         formPath={modalTypes.newEdificationModal.name}
         title={modalTypes.newEdificationModal.title}
         maxWidth="max-w-2xl"
+        icon={<Building2 />}
       >
         <NewEdificationFormContainer />
       </Modal>
@@ -37,6 +38,7 @@ export default async function EdificationsPage({ searchParams }: Props) {
         title={modalTypes.editEdificationModal.title}
         maxWidth="max-w-2xl"
         className="min-h-[70vh]"
+        icon={<Building2 />}
       >
         <EditEdificationModalContainer />
       </Modal>
@@ -54,6 +56,7 @@ export default async function EdificationsPage({ searchParams }: Props) {
       <Modal
         formPath={modalTypes.deleteEdificationModal.name}
         title={modalTypes.deleteEdificationModal.title}
+        icon={<Building2 />}
       >
         <DeleteEdificationModalContainer />
       </Modal>
