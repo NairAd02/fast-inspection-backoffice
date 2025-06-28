@@ -4,15 +4,13 @@ import {
   useEffect,
   useRef,
   useCallback,
-  useContext,
   forwardRef,
   useImperativeHandle,
 } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { ModalContext } from "../modal/context/modalContext";
-import { modalTypes } from "../modal/types/modalTypes";
+import EdificationPopoverContainer from "@/sections/edifications/components/edification-popover/edification-popover-container";
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -63,20 +61,8 @@ function FitBounds({ points }: { points: Point[] }) {
 
 const CustomMap = forwardRef<CustomMapRef, CustomMapProps>(
   ({ points }, ref) => {
-    const { handleOpenModal } = useContext(ModalContext);
     const mapRef = useRef<L.Map | null>(null);
     const markerRefs = useRef<Record<number, L.Marker<any>>>({});
-
-    // Función para abrir modal de inspecciones
-    const openDetalles = useCallback(
-      (point: Point) => {
-        handleOpenModal({
-          name: modalTypes.detailsEdificationModal.name,
-          entity: point.edificacion.id.toString(),
-        });
-      },
-      [handleOpenModal]
-    );
 
     // Función para centrar y hacer scroll al mapa
     const verEnMapa = useCallback((point: Point) => {
@@ -137,15 +123,9 @@ const CustomMap = forwardRef<CustomMapRef, CustomMapProps>(
               }}
             >
               <Popup>
-                <div>
-                  <div dangerouslySetInnerHTML={{ __html: point.info }} />
-                  <button
-                    onClick={() => openDetalles(point)}
-                    className="mt-2 px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
-                  >
-                    Detalles
-                  </button>
-                </div>
+                <EdificationPopoverContainer
+                  edificationId={point.edificacion.id.toString()}
+                />
               </Popup>
             </Marker>
           ))}
