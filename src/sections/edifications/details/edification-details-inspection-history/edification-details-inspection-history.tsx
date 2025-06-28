@@ -61,7 +61,7 @@ export default function EdificationDetailsInspectionHistory({
           ))}
         </div>
       ) : inspections.length > 0 ? (
-        <div className="space-y-4">
+        <div className="space-y-4 max-h-[57vh] p-2 overflow-auto">
           {inspections.map((inspection, index) => (
             <InspectionCard
               key={inspection.id}
