@@ -8,6 +8,7 @@ import NewEdificationFormContainer from "@/sections/edifications/form/new/new-ed
 import DeleteEdificationModalContainer from "@/sections/edifications/delete/delete-edification-modal-container";
 import EditEdificationModalContainer from "@/sections/edifications/form/edit/edit-edification-form-modal-container";
 import { Metadata } from "next";
+import { Building2 } from "lucide-react";
 
 type Props = {
   searchParams: Promise<SearchParamsPagination>;
@@ -45,6 +46,7 @@ export default async function EdificationsPage({ searchParams }: Props) {
         title={modalTypes.detailsEdificationModal.title}
         maxWidth="max-w-4xl"
         className="min-h-[70vh] max-h-[90vh]"
+        icon={<Building2 />}
       >
         <EdificationDetailsModalContainer />
       </Modal>
