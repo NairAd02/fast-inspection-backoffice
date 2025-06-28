@@ -7,9 +7,16 @@ import EdificationDetailsModalContainer from "@/sections/edifications/details/ed
 import NewEdificationFormContainer from "@/sections/edifications/form/new/new-edification-form-container";
 import DeleteEdificationModalContainer from "@/sections/edifications/delete/delete-edification-modal-container";
 import EditEdificationModalContainer from "@/sections/edifications/form/edit/edit-edification-form-modal-container";
+import { Metadata } from "next";
 
 type Props = {
   searchParams: Promise<SearchParamsPagination>;
+};
+
+export const metadata: Metadata = {
+  title: "Gestión de Edificaciones",
+  description:
+    "Administre las edificaciones a las cuales se les realizarán las inspecciones",
 };
 
 export default async function EdificationsPage({ searchParams }: Props) {
