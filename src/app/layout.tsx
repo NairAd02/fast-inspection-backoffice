@@ -11,6 +11,7 @@ import ProfileUserModalContainer from "@/sections/user/form/profile/profile-user
 import VerifyCodeFormModalContainer from "@/sections/auth/form/verify-code/verify-code-form-modal-container";
 import ChangePasswordForgotFormModalContainer from "@/sections/auth/form/change-password-forgot/change-password-forgot-form-modal-container";
 import ProgressBar from "@/components/providers/progress-bar.";
+import { User } from "lucide-react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,6 +50,7 @@ export default function RootLayout({
                   title={modalTypes.profileUserModal.title}
                   maxWidth="max-w-3xl"
                   className="min-h-[60vh]"
+                  icon={<User />}
                 >
                   <ProfileUserModalContainer />
                 </Modal>
@@ -57,6 +59,7 @@ export default function RootLayout({
                   formPath={modalTypes.verifyCodeModal.name}
                   title={modalTypes.verifyCodeModal.title}
                   maxWidth="max-w-2xl"
+                  icon={<User />}
                 >
                   <VerifyCodeFormModalContainer />
                 </Modal>
@@ -65,6 +68,7 @@ export default function RootLayout({
                   formPath={modalTypes.changePasswordForgotModal.name}
                   title={modalTypes.changePasswordForgotModal.title}
                   maxWidth="max-w-lg"
+                  icon={<User />}
                 >
                   <ChangePasswordForgotFormModalContainer />
                 </Modal>
