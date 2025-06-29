@@ -5,6 +5,7 @@ import EditConfigModalContainer from "@/sections/configs/form/edit/edit-config-m
 import NewConfigFormContainer from "@/sections/configs/form/new/new-config-form-container";
 import ReplicateConfigModalContainer from "@/sections/configs/form/replicate/replicate-config-modal-container";
 import MarkConfigAsActiveModalContainer from "@/sections/configs/mark-as-active/mark-config-as-active-modal-container";
+import { FolderCog } from "lucide-react";
 import React from "react";
 
 export default function Configlayout({
@@ -18,6 +19,7 @@ export default function Configlayout({
       <Modal
         formPath={modalTypes.newConfigModal.name}
         title={modalTypes.newConfigModal.title}
+        icon={<FolderCog />}
       >
         <NewConfigFormContainer />
       </Modal>
@@ -25,18 +27,21 @@ export default function Configlayout({
         formPath={modalTypes.editConfigModal.name}
         title={modalTypes.editConfigModal.title}
         className="min-h-[36vh]"
+        icon={<FolderCog />}
       >
         <EditConfigModalContainer />
       </Modal>
       <Modal
         formPath={modalTypes.deleteConfigModal.name}
         title={modalTypes.deleteConfigModal.title}
+        icon={<FolderCog />}
       >
         <DeleteConfigModalContainer />
       </Modal>
       <Modal
         formPath={modalTypes.markConfigAsActiveModal.name}
         title={modalTypes.markConfigAsActiveModal.title}
+        icon={<FolderCog />}
       >
         <MarkConfigAsActiveModalContainer />
       </Modal>
@@ -44,6 +49,7 @@ export default function Configlayout({
         formPath={modalTypes.replicateConfigModal.name}
         title={modalTypes.replicateConfigModal.title}
         className="min-h-[36vh]"
+        icon={<FolderCog />}
       >
         <ReplicateConfigModalContainer />
       </Modal>
