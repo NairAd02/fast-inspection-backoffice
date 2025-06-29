@@ -9,6 +9,8 @@ export interface Edification {
   direccion: string;
   coordX: number;
   coordY: number;
+  criticidad: number;
+  cantDeterioros: number;
 }
 
 export interface EdificationDetails {
@@ -17,6 +19,8 @@ export interface EdificationDetails {
   direccion: string;
   coordX: number;
   coordY: number;
+  criticidad: number;
+  cantDeterioros: number;
   inspecciones: {
     data: Inspection[];
   };
