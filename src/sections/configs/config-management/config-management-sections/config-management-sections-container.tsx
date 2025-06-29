@@ -4,7 +4,7 @@ import ToolsSection from "./sections/tools-section/tools-section";
 import IndicesSection from "./sections/indices-section/indices-section";
 import ConfigManagementSections from "./config-management-sections";
 import InspectionsStructureSectionContainer from "./sections/inspections-structure-section/inspections-structure-section-container";
-import { Building, PackageIcon, Ruler, Wrench } from "lucide-react";
+import { Building, Ruler, Wrench } from "lucide-react";
 
 interface Props {
   version: string;
