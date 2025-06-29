@@ -27,6 +27,7 @@ import DeleteToolModalContainer from "@/sections/tools/delete/delete-tool-modal-
 import ToolDetailsModalContainer from "@/sections/tools/details/tool-details-modal-container";
 import EditToolModalContainer from "@/sections/tools/form/edit/edit-tool-form-modal-container";
 import NewToolFormModalContainer from "@/sections/tools/form/new/new-tool-form-modal-container";
+import { Building, Ruler, Wrench } from "lucide-react";
 import { Metadata } from "next";
 import React from "react";
 
@@ -49,18 +50,21 @@ export default async function ConfigManagementPage({ params }: Props) {
         <Modal
           formPath={modalTypes.newSystemModal.name}
           title={modalTypes.newSystemModal.title}
+          icon={<Building />}
         >
           <NewSystemModalContainer />
         </Modal>
         <Modal
           formPath={modalTypes.editSystemModal.name}
           title={modalTypes.editSystemModal.title}
+          icon={<Building />}
         >
           <EditSystemModalContainer />
         </Modal>
         <Modal
           formPath={modalTypes.deleteSystemModal.name}
           title={modalTypes.deleteSystemModal.title}
+          icon={<Building />}
         >
           <DeleteSystemModalContainer />
         </Modal>
@@ -69,6 +73,7 @@ export default async function ConfigManagementPage({ params }: Props) {
         <Modal
           formPath={modalTypes.newSubsystemModal.name}
           title={modalTypes.newSubsystemModal.title}
+          icon={<Building />}
         >
           <NewSubsystemModalContainer />
         </Modal>
@@ -76,6 +81,7 @@ export default async function ConfigManagementPage({ params }: Props) {
         <Modal
           formPath={modalTypes.editSubsystemModal.name}
           title={modalTypes.editSubsystemModal.title}
+          icon={<Building />}
         >
           <EditSubsystemModalContainer />
         </Modal>
@@ -83,6 +89,7 @@ export default async function ConfigManagementPage({ params }: Props) {
         <Modal
           formPath={modalTypes.deleteSubsystemModal.name}
           title={modalTypes.deleteSubsystemModal.title}
+          icon={<Building />}
         >
           <DeleteSubsystemModalContainer />
         </Modal>
@@ -91,6 +98,7 @@ export default async function ConfigManagementPage({ params }: Props) {
         <Modal
           formPath={modalTypes.newMaterialModal.name}
           title={modalTypes.newMaterialModal.title}
+          icon={<Building />}
         >
           <NewMaterialModalContainer />
         </Modal>
@@ -98,6 +106,7 @@ export default async function ConfigManagementPage({ params }: Props) {
         <Modal
           formPath={modalTypes.editMaterialModal.name}
           title={modalTypes.editMaterialModal.title}
+          icon={<Building />}
         >
           <EditMaterialModalContainer />
         </Modal>
@@ -105,6 +114,7 @@ export default async function ConfigManagementPage({ params }: Props) {
         <Modal
           formPath={modalTypes.deleteMaterialModal.name}
           title={modalTypes.deleteMaterialModal.title}
+          icon={<Building />}
         >
           <DeleteMaterialModalContainer />
         </Modal>
@@ -113,6 +123,7 @@ export default async function ConfigManagementPage({ params }: Props) {
         <Modal
           formPath={modalTypes.newDeteriorationTypeModal.name}
           title={modalTypes.newDeteriorationTypeModal.title}
+          icon={<Building />}
           maxWidth="max-w-4xl"
           className="max-h-[90vh]"
         >
@@ -122,6 +133,7 @@ export default async function ConfigManagementPage({ params }: Props) {
         <Modal
           formPath={modalTypes.editDeteriorationTypeModal.name}
           title={modalTypes.editDeteriorationTypeModal.title}
+          icon={<Building />}
           maxWidth="max-w-4xl"
           className="min-h-[70vh] max-h-[90vh]"
         >
@@ -131,6 +143,7 @@ export default async function ConfigManagementPage({ params }: Props) {
         <Modal
           formPath={modalTypes.deleteDeteriorationTypeModal.name}
           title={modalTypes.deleteDeteriorationTypeModal.title}
+          icon={<Building />}
         >
           <DeleteDeteriorationTypeModalContainer />
         </Modal>
@@ -138,6 +151,7 @@ export default async function ConfigManagementPage({ params }: Props) {
         <Modal
           formPath={modalTypes.detailsDeteriorationTypeModal.name}
           title={modalTypes.detailsDeteriorationTypeModal.title}
+          icon={<Building />}
           maxWidth="max-w-4xl"
           className="min-h-[70vh] max-h-[90vh]"
         >
@@ -148,6 +162,7 @@ export default async function ConfigManagementPage({ params }: Props) {
         <Modal
           formPath={modalTypes.newToolModal.name}
           title={modalTypes.newToolModal.title}
+          icon={<Wrench />}
         >
           <NewToolFormModalContainer />
         </Modal>
@@ -157,6 +172,7 @@ export default async function ConfigManagementPage({ params }: Props) {
           title={modalTypes.editToolModal.title}
           maxWidth="max-w-2xl"
           className="min-h-[30vh] max-h-[90vh]"
+          icon={<Wrench />}
         >
           <EditToolModalContainer />
         </Modal>
@@ -164,6 +180,7 @@ export default async function ConfigManagementPage({ params }: Props) {
         <Modal
           formPath={modalTypes.deleteToolModal.name}
           title={modalTypes.deleteToolModal.title}
+          icon={<Wrench />}
         >
           <DeleteToolModalContainer />
         </Modal>
@@ -173,6 +190,7 @@ export default async function ConfigManagementPage({ params }: Props) {
           title={modalTypes.detailsToolModal.title}
           maxWidth="max-w-2xl"
           className="min-h-[70vh] max-h-[90vh]"
+          icon={<Wrench />}
         >
           <ToolDetailsModalContainer />
         </Modal>
@@ -181,6 +199,7 @@ export default async function ConfigManagementPage({ params }: Props) {
         <Modal
           formPath={modalTypes.newCalculableNoIntervalIndiceModal.name}
           title={modalTypes.newCalculableNoIntervalIndiceModal.title}
+          icon={<Ruler />}
         >
           <NewCalculableNoIntervalIndiceModalContainer />
         </Modal>
@@ -189,6 +208,7 @@ export default async function ConfigManagementPage({ params }: Props) {
           title={modalTypes.editCalculableNoIntervalIndiceModal.title}
           maxWidth="max-w-2xl"
           className="min-h-[40vh] max-h-[90vh]"
+          icon={<Ruler />}
         >
           <EditCalculableNoIntervalIndiceModalContainer />
         </Modal>
@@ -196,6 +216,7 @@ export default async function ConfigManagementPage({ params }: Props) {
         <Modal
           formPath={modalTypes.deleteCalculableNoIntervalIndiceModal.name}
           title={modalTypes.deleteCalculableNoIntervalIndiceModal.title}
+          icon={<Ruler />}
         >
           <DeleteCalculableNoIntervalIndiceModalContainer />
         </Modal>
@@ -203,6 +224,7 @@ export default async function ConfigManagementPage({ params }: Props) {
         <Modal
           formPath={modalTypes.detailsCalculableNoIntervalIndiceModal.name}
           title={modalTypes.detailsCalculableNoIntervalIndiceModal.title}
+          icon={<Ruler />}
           maxWidth="max-w-2xl"
           className="min-h-[70vh] max-h-[90vh]"
         >
@@ -213,6 +235,7 @@ export default async function ConfigManagementPage({ params }: Props) {
         <Modal
           formPath={modalTypes.newCalculableIntervalIndiceModal.name}
           title={modalTypes.newCalculableIntervalIndiceModal.title}
+          icon={<Ruler />}
           maxWidth="max-w-2xl"
         >
           <NewCalculableIntervalIndiceModalContainer />
@@ -221,6 +244,7 @@ export default async function ConfigManagementPage({ params }: Props) {
         <Modal
           formPath={modalTypes.editCalculableIntervalIndiceModal.name}
           title={modalTypes.editCalculableIntervalIndiceModal.title}
+          icon={<Ruler />}
           maxWidth="max-w-2xl"
           className="min-h-[40vh] max-h-[90vh]"
         >
@@ -230,6 +254,7 @@ export default async function ConfigManagementPage({ params }: Props) {
         <Modal
           formPath={modalTypes.deleteCalculableIntervalIndiceModal.name}
           title={modalTypes.deleteCalculableIntervalIndiceModal.title}
+          icon={<Ruler />}
         >
           <DeleteCalculableIntervalIndiceModalContainer />
         </Modal>
@@ -237,6 +262,7 @@ export default async function ConfigManagementPage({ params }: Props) {
         <Modal
           formPath={modalTypes.detailsCalculableIntervalIndiceModal.name}
           title={modalTypes.detailsCalculableIntervalIndiceModal.title}
+          icon={<Ruler />}
           maxWidth="max-w-2xl"
           className="min-h-[70vh] max-h-[90vh]"
         >
