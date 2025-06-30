@@ -11,6 +11,13 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import EdificationPopoverContainer from "@/sections/edifications/components/edification-popover/edification-popover-container";
+import {
+  Edification,
+  getEdificationCriticalityLabel,
+} from "@/lib/types/edifications";
+import { redMarkerIcon } from "./icons/red-marker";
+import { yellowMarkerIcon } from "./icons/yelow-marker";
+import { blueMarkerIcon } from "./icons/blue-marker";
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -20,19 +27,11 @@ L.Icon.Default.mergeOptions({
   shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
 });
 
-type Edificacion = {
-  id: number;
-  nombre: string;
-  direccion: string;
-  coordX: number;
-  coordY: number;
-};
-
 export type Point = {
   lat: number;
   lng: number;
   info: string;
-  edificacion: Edificacion;
+  edificacion: Edification;
 };
 
 interface CustomMapProps {
@@ -95,6 +94,14 @@ const CustomMap = forwardRef<CustomMapRef, CustomMapProps>(
       [verEnMapa]
     );
 
+    const getMarkerIcon = (point: Point) => {
+      const { criticidad } = point.edificacion;
+      const criticality = getEdificationCriticalityLabel(criticidad);
+      if (criticality === "Baja") return blueMarkerIcon;
+      if (criticality === "Media") return yellowMarkerIcon;
+      if (criticality === "Alta") return redMarkerIcon;
+    };
+
     return (
       <>
         <MapContainer
@@ -118,9 +125,7 @@ const CustomMap = forwardRef<CustomMapRef, CustomMapProps>(
             <Marker
               key={point.edificacion.id}
               position={[point.lat, point.lng]}
-              ref={(ref) => {
-                if (ref) markerRefs.current[point.edificacion.id] = ref;
-              }}
+              icon={getMarkerIcon(point)}
             >
               <Popup>
                 <EdificationPopoverContainer
