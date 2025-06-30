@@ -1,18 +1,12 @@
 import React from "react";
-import {
-  AlertTriangle,
-  Building2,
-  Calendar,
-  ExternalLink,
-  Wrench,
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Building2, Calendar, ExternalLink, Wrench } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { EdificationDetails } from "@/lib/types/edifications";
 import EdificationPopoverViewDetailsButton from "./components/edification-popover-view-details-button/edification-popover-view-details-button";
 import NavigationComponent from "@/components/navigation-component/navigation-component";
 import { paths } from "@/routes/path";
+import EdificationPopoverInfo from "./components/edification-popover-info/edification-popover-info";
 
 interface Props {
   edification: EdificationDetails;
@@ -91,24 +85,25 @@ export default function EdificationPopover({ edification }: Props) {
           </div>
         </div>
 
+        {/*Criticidad actual*/}
+        <EdificationPopoverInfo
+          title="Criticidad Actual"
+          value={edification.criticidad}
+          badge={{
+            label: getCriticalityLabel(edification.criticidad),
+            color: getCriticalityColor(edification.criticidad),
+          }}
+        />
+
         {/* Criticidad promedio */}
-        <div className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
-          <div className="flex items-center gap-2">
-            <AlertTriangle className="h-4 w-4 text-muted-foreground" />
-            <span className="text-sm font-medium">Criticidad Promedio</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-lg font-bold">
-              {averageCriticality.toFixed(1)}
-            </span>
-            <Badge
-              variant={getCriticalityColor(averageCriticality)}
-              className="text-xs"
-            >
-              {getCriticalityLabel(averageCriticality)}
-            </Badge>
-          </div>
-        </div>
+        <EdificationPopoverInfo
+          title="Criticidad Promedio"
+          value={averageCriticality}
+          badge={{
+            label: getCriticalityLabel(averageCriticality),
+            color: getCriticalityColor(averageCriticality),
+          }}
+        />
 
         <Separator />
 
