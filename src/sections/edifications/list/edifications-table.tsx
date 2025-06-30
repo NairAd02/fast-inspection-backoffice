@@ -3,12 +3,17 @@ import React from "react";
 import { useCallback, useContext } from "react";
 import { ModalContext } from "@/components/modal/context/modalContext";
 import { modalTypes } from "@/components/modal/types/modalTypes";
-import { Edification } from "@/lib/types/edifications";
+import {
+  Edification,
+  getEdificationCriticalitColor,
+  getEdificationCriticalityLabel,
+} from "@/lib/types/edifications";
 import { DataTable } from "@/components/ui/data-table";
 import TableMenu from "@/components/ui/table-menu";
 import { EditIcon, EyeIcon, MapPinIcon, Trash2Icon } from "lucide-react";
 import { ColumnDef } from "@tanstack/react-table";
 import EdificationsFiltersContainer from "../filters/edifications-filters-container";
+import { Badge } from "@/components/ui/badge";
 
 interface Props {
   edifications: Edification[];
@@ -60,6 +65,25 @@ export default function EdificationTable({ edifications, centeredMap }: Props) {
     {
       accessorKey: "direccion",
       header: "Dirección",
+    },
+    {
+      id: "criticidad",
+      cell: ({ row }) => {
+        return (
+          <div className="flex gap-2">
+            {row.getValue("criticidad")}
+            <Badge
+              color={getEdificationCriticalitColor(row.getValue("criticidad"))}
+            >
+              {getEdificationCriticalityLabel(row.getValue("criticidad"))}
+            </Badge>
+          </div>
+        );
+      },
+    },
+    {
+      accessorKey: "cantDeterioros",
+      header: "Cantidad de Deterioros",
     },
     {
       id: "actions",
