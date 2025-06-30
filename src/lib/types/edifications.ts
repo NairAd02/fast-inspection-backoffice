@@ -74,3 +74,10 @@ export const convertEdificationsFiltersDTO = (
     ...filters,
   };
 };
+
+export const getEdificationCriticalityLabel = (criticidad: number) => {
+  if (criticidad <= 2) return "Bajo";
+  if (criticidad <= 10) return "Medio";
+  if (criticidad <= 40) return "Alto";
+  return "Muy Alto";
+};
