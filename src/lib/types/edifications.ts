@@ -82,9 +82,11 @@ export const getEdificationCriticalityLabel = (criticidad: number) => {
   return "Muy Alta";
 };
 
-export const getEdificationCriticalitColor = (criticidad: number) => {
-  if (criticidad <= 2) return "bg-green-500";
-  if (criticidad <= 10) return "bg-yellow-500";
-  if (criticidad <= 40) return "bg-red-500";
-  return "bg-red-500";
+export const getEdificationCriticalitColor = (
+  criticidad: number
+): "destructive" | "default" | "secondary" | "outline" => {
+  if (criticidad <= 2) return "default";
+  if (criticidad <= 10) return "secondary";
+  if (criticidad <= 40) return "destructive";
+  return "destructive";
 };

@@ -74,7 +74,7 @@ export default function EdificationTable({ edifications, centeredMap }: Props) {
           <div className="flex gap-2">
             {row.getValue("criticidad")}
             <Badge
-              color={getEdificationCriticalitColor(row.getValue("criticidad"))}
+              variant={getEdificationCriticalitColor(row.getValue("criticidad"))}
             >
               {getEdificationCriticalityLabel(row.getValue("criticidad"))}
             </Badge>
