@@ -67,7 +67,8 @@ export default function EdificationTable({ edifications, centeredMap }: Props) {
       header: "Dirección",
     },
     {
-      id: "criticidad",
+      accessorKey: "criticidad",
+      header: "Criticidad",
       cell: ({ row }) => {
         return (
           <div className="flex gap-2">
